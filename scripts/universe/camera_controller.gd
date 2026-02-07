@@ -11,7 +11,7 @@ signal node_unhovered(node_id: String)
 @export var zoom_speed := 2.0
 @export var pan_speed := 0.1
 @export var min_distance := 5.0
-@export var max_distance := 300.0
+@export var max_distance := 800.0
 @export var fly_to_speed := 3.0
 @export var initial_distance := 120.0
 @export var follow_offset := Vector3(0, 8, 20)

@@ -135,6 +135,15 @@ func _on_node_unhovered(node_id: String) -> void:
 	hud.clear_hover(node_id)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("reset_progress"):
+		SaveManager.delete_save()
+		DiscoveryManager.reset()
+		QuestManager.reset()
+		Achievements.reset()
+		get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+
+
 func _setup_minimap(player_ship: Node3D) -> void:
 	if minimap and universe and universe.camera_controller:
 		minimap.setup(universe, universe.camera_controller, player_ship)

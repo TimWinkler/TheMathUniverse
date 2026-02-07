@@ -173,3 +173,10 @@ func restore_state(discovered_data: Dictionary, adjacent_data: Dictionary) -> vo
 	_discovered = discovered_data
 	_adjacent = adjacent_data
 	discovery_count_changed.emit(get_discovery_count(), get_total_count())
+
+
+func reset() -> void:
+	_discovered.clear()
+	_adjacent.clear()
+	_start_time = Time.get_unix_time_from_system()
+	_init_domains()

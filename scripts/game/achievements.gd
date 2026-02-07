@@ -118,6 +118,10 @@ func _try_unlock(achievement_id: String) -> void:
 	print("[Achievements] Unlocked: %s" % data["name"])
 
 
+func reset() -> void:
+	_unlocked.clear()
+
+
 func is_unlocked(achievement_id: String) -> bool:
 	return _unlocked.has(achievement_id)
 

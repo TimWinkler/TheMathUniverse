@@ -15,7 +15,7 @@ var _hovered_node_id: String = ""
 
 func _ready() -> void:
 	hover_label.text = ""
-	controls_label.text = "Right-drag: orbit | Scroll: zoom | WASD: move | Click: discover | H: home | J: quests | M: map | F1: mute | Esc: close"
+	controls_label.text = "Right-drag: orbit | Scroll: zoom | WASD: move | Click: discover | H: home | J: quests | M: map | F1: mute | F9: reset | Esc: close"
 
 	await get_tree().process_frame
 	await get_tree().process_frame

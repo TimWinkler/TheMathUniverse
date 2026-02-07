@@ -383,6 +383,13 @@ func restore_save_data(data: Dictionary) -> void:
 	_activate_initial_quests()
 
 
+func reset() -> void:
+	_active_quests.clear()
+	_completed_quests.clear()
+	_chain_progress.clear()
+	_activate_initial_quests()
+
+
 func _read_json(file_path: String) -> Variant:
 	if not FileAccess.file_exists(file_path):
 		return null
