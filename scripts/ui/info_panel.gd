@@ -1,6 +1,8 @@
 extends PanelContainer
 
 ## Info panel that displays details about a selected math node.
+## Shows discovery state: undiscovered teasers for adjacent nodes,
+## full info + discovery badge for discovered nodes.
 
 signal closed
 
@@ -14,20 +16,59 @@ var _current_node: MathTypes.MathNode = null
 @onready var keywords_label: Label = %KeywordsLabel
 @onready var close_button: Button = %CloseButton
 @onready var difficulty_label: Label = %DifficultyLabel
+@onready var discovery_status_label: Label = %DiscoveryStatusLabel
+@onready var discover_button: Button = %DiscoverButton
 
 
 func _ready() -> void:
 	visible = false
 	close_button.pressed.connect(_on_close)
+	discover_button.pressed.connect(_on_discover_pressed)
+	discover_button.visible = false
+	discovery_status_label.visible = false
 
 
 func show_node(math_node: MathTypes.MathNode) -> void:
 	_current_node = math_node
 	visible = true
 
+	var state := DiscoveryManager.get_state(math_node.id)
+
+	if state == "adjacent":
+		_show_adjacent_node(math_node)
+	else:
+		_show_discovered_node(math_node)
+
+
+func _show_adjacent_node(math_node: MathTypes.MathNode) -> void:
+	title_label.text = "???"
+
+	match math_node.level:
+		"domain":
+			level_label.text = "UNKNOWN GALAXY"
+		"subdomain":
+			level_label.text = "UNKNOWN STAR SYSTEM"
+		"topic":
+			level_label.text = "UNKNOWN PLANET"
+	level_label.add_theme_color_override("font_color", Color(0.5, 0.5, 0.6))
+
+	description_label.text = "This region of space has not been explored yet. Venture closer to discover its secrets..."
+	flavor_label.visible = false
+	difficulty_label.visible = false
+	keywords_label.visible = false
+	discovery_status_label.visible = false
+
+	discover_button.visible = true
+	discover_button.text = "Discover"
+
+	# Clear connections
+	for child in details_container.get_children():
+		child.queue_free()
+
+
+func _show_discovered_node(math_node: MathTypes.MathNode) -> void:
 	title_label.text = math_node.node_name
 
-	# Level badge
 	match math_node.level:
 		"domain":
 			level_label.text = "GALAXY"
@@ -37,7 +78,6 @@ func show_node(math_node: MathTypes.MathNode) -> void:
 			level_label.text = "PLANET"
 	level_label.add_theme_color_override("font_color", math_node.color)
 
-	# Description
 	description_label.text = math_node.description
 
 	# Flavor text
@@ -61,12 +101,22 @@ func show_node(math_node: MathTypes.MathNode) -> void:
 	else:
 		keywords_label.visible = false
 
+	# Discovery status
+	var timestamp := DiscoveryManager.get_discovery_timestamp(math_node.id)
+	if timestamp > 0:
+		var dt := Time.get_datetime_dict_from_unix_time(int(timestamp))
+		discovery_status_label.text = "Discovered: %04d-%02d-%02d %02d:%02d" % [dt["year"], dt["month"], dt["day"], dt["hour"], dt["minute"]]
+		discovery_status_label.visible = true
+	else:
+		discovery_status_label.visible = false
+
+	discover_button.visible = false
+
 	# Show connections
 	_show_connections(math_node)
 
 
 func _show_connections(math_node: MathTypes.MathNode) -> void:
-	# Clear existing connection labels
 	for child in details_container.get_children():
 		child.queue_free()
 
@@ -87,7 +137,7 @@ func _show_connections(math_node: MathTypes.MathNode) -> void:
 			continue
 
 		var lbl := Label.new()
-		var arrow := " → " if edge.from_id == math_node.id else " ← "
+		var arrow := " -> " if edge.from_id == math_node.id else " <- "
 		var type_str := ""
 		match edge.edge_type:
 			"prerequisite":
@@ -96,10 +146,23 @@ func _show_connections(math_node: MathTypes.MathNode) -> void:
 				type_str = "[prepares]"
 			"bridges":
 				type_str = "[bridges]"
-		lbl.text = "  %s %s%s %s" % [type_str, arrow, other_node.node_name, ""]
+
+		var other_state := DiscoveryManager.get_state(other_id)
+		var display_name := other_node.node_name if other_state == "discovered" else "???"
+		lbl.text = "  %s %s%s" % [type_str, arrow, display_name]
 		lbl.add_theme_font_size_override("font_size", 12)
-		lbl.add_theme_color_override("font_color", other_node.color.lightened(0.3))
+		if other_state == "discovered":
+			lbl.add_theme_color_override("font_color", other_node.color.lightened(0.3))
+		else:
+			lbl.add_theme_color_override("font_color", Color(0.4, 0.4, 0.5))
 		details_container.add_child(lbl)
+
+
+func _on_discover_pressed() -> void:
+	if _current_node and DiscoveryManager.is_adjacent(_current_node.id):
+		DiscoveryManager.discover_node(_current_node.id)
+		# Refresh the panel with discovered info
+		_show_discovered_node(_current_node)
 
 
 func _on_close() -> void:

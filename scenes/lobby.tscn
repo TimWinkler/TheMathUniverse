@@ -1,0 +1,188 @@
+[gd_scene load_steps=2 format=3 uid="uid://lobby"]
+
+[ext_resource type="Script" path="res://scripts/ui/lobby_ui.gd" id="1_lobby_ui"]
+
+[node name="Lobby" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lobby_ui")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.04, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MainPanel" type="PanelContainer" parent="CenterContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(500, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/MainPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+text = "The Math Universe"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 32
+
+[node name="Subtitle" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+text = "Co-op Space Exploration"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.6, 0.6, 0.7, 1)
+
+[node name="Sep1" type="HSeparator" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="NameRow" type="HBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox/NameRow"]
+layout_mode = 2
+text = "Name:"
+custom_minimum_size = Vector2(80, 0)
+
+[node name="NameInput" type="LineEdit" parent="CenterContainer/MainPanel/MarginContainer/VBox/NameRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Explorer"
+placeholder_text = "Enter your name"
+
+[node name="ColorRow" type="HBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="ColorLabel" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox/ColorRow"]
+layout_mode = 2
+text = "Ship Color:"
+custom_minimum_size = Vector2(80, 0)
+
+[node name="ColorPicker" type="ColorPickerButton" parent="CenterContainer/MainPanel/MarginContainer/VBox/ColorRow"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(60, 30)
+color = Color(0.6, 0.75, 0.9, 1)
+
+[node name="Sep2" type="HSeparator" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="ButtonRow" type="HBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HostButton" type="Button" parent="CenterContainer/MainPanel/MarginContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host Game"
+
+[node name="JoinButton" type="Button" parent="CenterContainer/MainPanel/MarginContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join Game"
+
+[node name="SoloButton" type="Button" parent="CenterContainer/MainPanel/MarginContainer/VBox/ButtonRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play Solo"
+
+[node name="JoinPanel" type="VBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+theme_override_constants/separation = 8
+
+[node name="AddressRow" type="HBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel"]
+layout_mode = 2
+
+[node name="AddressLabel" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel/AddressRow"]
+layout_mode = 2
+text = "Address:"
+custom_minimum_size = Vector2(80, 0)
+
+[node name="AddressInput" type="LineEdit" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel/AddressRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "127.0.0.1"
+placeholder_text = "Host IP address"
+
+[node name="PortRow" type="HBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel"]
+layout_mode = 2
+
+[node name="PortLabel" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel/PortRow"]
+layout_mode = 2
+text = "Port:"
+custom_minimum_size = Vector2(80, 0)
+
+[node name="PortInput" type="LineEdit" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel/PortRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9050"
+placeholder_text = "Port"
+
+[node name="ConnectButton" type="Button" parent="CenterContainer/MainPanel/MarginContainer/VBox/JoinPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Connect"
+
+[node name="Sep3" type="HSeparator" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+
+[node name="StatusLabel" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.8, 0.8, 0.5, 1)
+
+[node name="PlayersHeader" type="Label" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+text = "Players:"
+theme_override_font_sizes/font_size = 18
+
+[node name="PlayerList" type="VBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ActionRow" type="HBoxContainer" parent="CenterContainer/MainPanel/MarginContainer/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="CenterContainer/MainPanel/MarginContainer/VBox/ActionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+visible = false
+text = "Start Game"
+
+[node name="DisconnectButton" type="Button" parent="CenterContainer/MainPanel/MarginContainer/VBox/ActionRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+visible = false
+text = "Disconnect"

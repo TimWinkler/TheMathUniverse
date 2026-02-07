@@ -1,7 +1,7 @@
 class_name CameraController
 extends Node3D
 
-## Orbit camera with zoom, pan, and fly-to-node.
+## Orbit camera with zoom, pan, fly-to-node, and ship follow mode.
 
 signal node_clicked(node_id: String)
 signal node_hovered(node_id: String)
@@ -14,6 +14,8 @@ signal node_unhovered(node_id: String)
 @export var max_distance := 300.0
 @export var fly_to_speed := 3.0
 @export var initial_distance := 120.0
+@export var follow_offset := Vector3(0, 8, 20)
+@export var follow_smoothness := 4.0
 
 var _orbit_angle_x := 0.3  # pitch
 var _orbit_angle_y := 0.0  # yaw
@@ -27,12 +29,24 @@ var _fly_target_distance := 30.0
 var _last_hovered_id := ""
 var _last_hovered_node: MathNodeBase = null
 
+# Follow mode
+var follow_target: Node3D = null
+var _follow_mode := false
+
 @onready var camera: Camera3D = $Camera3D
 
 
 func _ready() -> void:
 	_distance = initial_distance
 	_update_camera_transform()
+
+
+func set_follow_target(target: Node3D) -> void:
+	follow_target = target
+	_follow_mode = target != null
+	if _follow_mode:
+		_distance = 25.0
+		_orbit_angle_x = 0.35
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -52,7 +66,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			_orbit_angle_x = clamp(_orbit_angle_x, -PI * 0.45, PI * 0.45)
 			_is_flying = false
 			_update_camera_transform()
-		elif _is_panning:
+		elif _is_panning and not _follow_mode:
 			var right := camera.global_transform.basis.x
 			var up := camera.global_transform.basis.y
 			_target_position -= right * motion.relative.x * pan_speed * (_distance * 0.01)
@@ -76,39 +90,54 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	# Home key
 	if event.is_action_pressed("home"):
-		fly_to(Vector3.ZERO, initial_distance)
+		if _follow_mode and follow_target:
+			fly_to(follow_target.global_position, 25.0)
+		else:
+			fly_to(Vector3.ZERO, initial_distance)
 
 
 func _process(delta: float) -> void:
-	# WASD movement
-	var input_dir := Vector3.ZERO
-	if Input.is_action_pressed("move_forward"):
-		input_dir.z -= 1
-	if Input.is_action_pressed("move_backward"):
-		input_dir.z += 1
-	if Input.is_action_pressed("move_left"):
-		input_dir.x -= 1
-	if Input.is_action_pressed("move_right"):
-		input_dir.x += 1
-	if Input.is_action_pressed("move_up"):
-		input_dir.y += 1
-	if Input.is_action_pressed("move_down"):
-		input_dir.y -= 1
+	# Follow mode: track the ship (WASD moves ship, not camera)
+	if _follow_mode and follow_target:
+		if not _is_flying:
+			_target_position = _target_position.lerp(follow_target.global_position, delta * follow_smoothness)
+			_update_camera_transform()
+		else:
+			_target_position = _target_position.lerp(_fly_target, delta * fly_to_speed)
+			_distance = lerp(_distance, _fly_target_distance, delta * fly_to_speed)
+			_update_camera_transform()
+			if _target_position.distance_to(_fly_target) < 0.5:
+				_is_flying = false
+	else:
+		# Free camera mode: WASD pans the view
+		var input_dir := Vector3.ZERO
+		if Input.is_action_pressed("move_forward"):
+			input_dir.z -= 1
+		if Input.is_action_pressed("move_backward"):
+			input_dir.z += 1
+		if Input.is_action_pressed("move_left"):
+			input_dir.x -= 1
+		if Input.is_action_pressed("move_right"):
+			input_dir.x += 1
+		if Input.is_action_pressed("move_up"):
+			input_dir.y += 1
+		if Input.is_action_pressed("move_down"):
+			input_dir.y -= 1
 
-	if input_dir != Vector3.ZERO:
-		_is_flying = false
-		var cam_basis := camera.global_transform.basis
-		var move := (cam_basis.x * input_dir.x + cam_basis.y * input_dir.y - cam_basis.z * input_dir.z).normalized()
-		_target_position += move * pan_speed * _distance * 0.02 * 60.0 * delta
-		_update_camera_transform()
-
-	# Smooth fly-to animation
-	if _is_flying:
-		_target_position = _target_position.lerp(_fly_target, delta * fly_to_speed)
-		_distance = lerp(_distance, _fly_target_distance, delta * fly_to_speed)
-		_update_camera_transform()
-		if _target_position.distance_to(_fly_target) < 0.5:
+		if input_dir != Vector3.ZERO:
 			_is_flying = false
+			var cam_basis := camera.global_transform.basis
+			var move := (cam_basis.x * input_dir.x + cam_basis.y * input_dir.y - cam_basis.z * input_dir.z).normalized()
+			_target_position += move * pan_speed * _distance * 0.02 * 60.0 * delta
+			_update_camera_transform()
+
+		# Smooth fly-to animation
+		if _is_flying:
+			_target_position = _target_position.lerp(_fly_target, delta * fly_to_speed)
+			_distance = lerp(_distance, _fly_target_distance, delta * fly_to_speed)
+			_update_camera_transform()
+			if _target_position.distance_to(_fly_target) < 0.5:
+				_is_flying = false
 
 	# Hover detection via raycast
 	_raycast_hover()
@@ -145,16 +174,17 @@ func _raycast_click(event: InputEventMouseButton) -> void:
 		if node_base:
 			node_base.on_click()
 			emit_signal("node_clicked", node_base.node_id)
-			# Fly to the clicked node
-			var fly_dist := 15.0
-			match node_base.node_level:
-				"domain":
-					fly_dist = 50.0
-				"subdomain":
-					fly_dist = 25.0
-				"topic":
-					fly_dist = 12.0
-			fly_to(node_base.global_position, fly_dist)
+			# Only fly camera to node in free-camera mode
+			if not _follow_mode:
+				var fly_dist := 15.0
+				match node_base.node_level:
+					"domain":
+						fly_dist = 50.0
+					"subdomain":
+						fly_dist = 25.0
+					"topic":
+						fly_dist = 12.0
+				fly_to(node_base.global_position, fly_dist)
 
 
 func _raycast_hover() -> void:

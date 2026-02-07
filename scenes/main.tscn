@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://main"]
+[gd_scene load_steps=7 format=3 uid="uid://main"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://universe" path="res://scenes/universe.tscn" id="2_universe"]
 [ext_resource type="PackedScene" uid="uid://info_panel" path="res://scenes/ui/info_panel.tscn" id="3_info_panel"]
 [ext_resource type="PackedScene" uid="uid://hud" path="res://scenes/ui/hud.tscn" id="4_hud"]
+[ext_resource type="PackedScene" uid="uid://achievement_toast" path="res://scenes/ui/achievement_toast.tscn" id="5_achievement_toast"]
+[ext_resource type="PackedScene" uid="uid://chat_panel" path="res://scenes/ui/chat_panel.tscn" id="6_chat_panel"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -20,3 +22,7 @@ mouse_filter = 2
 [node name="InfoPanel" parent="UI" instance=ExtResource("3_info_panel")]
 
 [node name="HUD" parent="UI" instance=ExtResource("4_hud")]
+
+[node name="AchievementToast" parent="UI" instance=ExtResource("5_achievement_toast")]
+
+[node name="ChatPanel" parent="UI" instance=ExtResource("6_chat_panel")]

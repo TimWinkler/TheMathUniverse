@@ -15,6 +15,9 @@ var math_node: MathTypes.MathNode
 var _is_hovered: bool = false
 var _target_scale: Vector3
 var _base_scale: Vector3
+var _discovery_state: String = "discovered"  # "hidden", "adjacent", "discovered"
+var _original_color: Color = Color.WHITE
+var _original_glow: float = 1.5
 
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 @onready var label_3d: Label3D = $Label3D
@@ -25,6 +28,7 @@ func setup(p_math_node: MathTypes.MathNode) -> void:
 	math_node = p_math_node
 	node_id = p_math_node.id
 	node_color = p_math_node.color
+	_original_color = p_math_node.color
 	node_level = p_math_node.level
 	position = p_math_node.position
 
@@ -78,6 +82,7 @@ func _apply_material() -> void:
 				mat.set_shader_parameter("pulse_speed", 1.5)
 				mat.set_shader_parameter("pulse_amount", 0.08)
 		mat.set_shader_parameter("glow_intensity", intensity)
+		_original_glow = intensity
 
 
 func _process(delta: float) -> void:
@@ -85,11 +90,13 @@ func _process(delta: float) -> void:
 	scale = scale.lerp(_target_scale, delta * 8.0)
 
 
-func set_hovered(hovered: bool) -> void:
-	_is_hovered = hovered
-	if hovered:
+func set_hovered(is_hovered: bool) -> void:
+	if _discovery_state == "hidden":
+		return
+	_is_hovered = is_hovered
+	if is_hovered:
 		_target_scale = _base_scale * 1.2
-		if label_3d:
+		if label_3d and _discovery_state == "discovered":
 			label_3d.visible = true
 		emit_signal("hovered", node_id)
 	else:
@@ -100,4 +107,114 @@ func set_hovered(hovered: bool) -> void:
 
 
 func on_click() -> void:
+	if _discovery_state == "hidden":
+		return
 	emit_signal("clicked", node_id)
+
+
+## Set fog of war state: "hidden", "adjacent", or "discovered"
+func set_discovery_state(state: String, animate: bool = false) -> void:
+	_discovery_state = state
+
+	match state:
+		"hidden":
+			_apply_hidden_state()
+		"adjacent":
+			_apply_adjacent_state(animate)
+		"discovered":
+			_apply_discovered_state(animate)
+
+
+func _apply_hidden_state() -> void:
+	visible = false
+	if collision:
+		collision.disabled = true
+
+
+func _apply_adjacent_state(animate: bool) -> void:
+	visible = true
+	if collision:
+		collision.disabled = false
+
+	# Grey silhouette, dim glow
+	if mesh_instance:
+		var mat = mesh_instance.get_surface_override_material(0) as ShaderMaterial
+		if mat:
+			var grey := Color(0.3, 0.3, 0.4)
+			if animate:
+				var tween := create_tween()
+				tween.tween_method(func(c: Color): mat.set_shader_parameter("base_color", c),
+					mat.get_shader_parameter("base_color"), grey, 0.5)
+				tween.parallel().tween_method(func(v: float): mat.set_shader_parameter("glow_intensity", v),
+					mat.get_shader_parameter("glow_intensity"), 0.3, 0.5)
+			else:
+				mat.set_shader_parameter("base_color", grey)
+				mat.set_shader_parameter("glow_intensity", 0.3)
+				mat.set_shader_parameter("pulse_amount", 0.02)
+
+	# Hide label for adjacent nodes
+	if label_3d:
+		label_3d.visible = false
+
+
+func _apply_discovered_state(animate: bool) -> void:
+	visible = true
+	if collision:
+		collision.disabled = false
+
+	if mesh_instance:
+		var mat = mesh_instance.get_surface_override_material(0) as ShaderMaterial
+		if mat:
+			if animate:
+				var tween := create_tween()
+				tween.tween_method(func(c: Color): mat.set_shader_parameter("base_color", c),
+					mat.get_shader_parameter("base_color"), _original_color, 0.5)
+				tween.parallel().tween_method(func(v: float): mat.set_shader_parameter("glow_intensity", v),
+					mat.get_shader_parameter("glow_intensity"), _original_glow, 0.5)
+			else:
+				mat.set_shader_parameter("base_color", _original_color)
+				mat.set_shader_parameter("glow_intensity", _original_glow)
+
+	# Restore label visibility
+	if label_3d:
+		label_3d.modulate = _original_color
+		label_3d.visible = node_level != "topic"
+
+	# Restore material pulse
+	_restore_pulse()
+
+
+func _restore_pulse() -> void:
+	if mesh_instance == null:
+		return
+	var mat = mesh_instance.get_surface_override_material(0) as ShaderMaterial
+	if mat == null:
+		return
+	match node_level:
+		"domain":
+			mat.set_shader_parameter("pulse_speed", 0.8)
+			mat.set_shader_parameter("pulse_amount", 0.2)
+		"subdomain":
+			mat.set_shader_parameter("pulse_speed", 1.2)
+			mat.set_shader_parameter("pulse_amount", 0.1)
+		"topic":
+			mat.set_shader_parameter("pulse_speed", 1.5)
+			mat.set_shader_parameter("pulse_amount", 0.08)
+
+
+## Play a flash animation when a node is first discovered
+func play_discovery_animation() -> void:
+	var tween := create_tween()
+	# Scale burst: 0 -> 1.5 -> 1
+	tween.tween_property(self, "scale", _base_scale * 1.5, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
+	tween.tween_property(self, "scale", _base_scale, 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+
+	# White flash on material
+	if mesh_instance:
+		var mat = mesh_instance.get_surface_override_material(0) as ShaderMaterial
+		if mat:
+			var flash_tween := create_tween()
+			flash_tween.tween_method(func(c: Color): mat.set_shader_parameter("base_color", c),
+				Color.WHITE, _original_color, 0.6)
+			flash_tween.parallel().tween_method(func(v: float): mat.set_shader_parameter("glow_intensity", v),
+				_original_glow * 3.0, _original_glow, 0.8)

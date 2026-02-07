@@ -13,8 +13,6 @@ const ConnectionScene := preload("res://scenes/nodes/connection.tscn")
 var _node_instances: Dictionary = {}  # id -> MathNodeBase
 var _connection_instances: Array[ConnectionLine] = []
 var _layout: ForceLayout
-var _is_simulating := false
-var _sim_steps_remaining := 0
 
 @onready var nodes_container: Node3D = $Nodes
 @onready var connections_container: Node3D = $Connections
@@ -30,6 +28,9 @@ func _ready() -> void:
 		push_warning("[UniverseManager] No data loaded!")
 		return
 
+	# Fix RNG seed so all clients compute identical layout
+	seed(42)
+
 	# Run force-directed layout
 	_layout = ForceLayout.new()
 	_layout.simulate(graph, 150)
@@ -43,6 +44,16 @@ func _ready() -> void:
 	# Connect camera signals
 	if camera_controller:
 		camera_controller.node_clicked.connect(_on_node_clicked)
+
+	# Try to load saved progress (only in single-player)
+	if not NetworkManager.is_online:
+		SaveManager.load_game()
+
+	# Apply initial fog states
+	_apply_all_fog_states()
+
+	# Listen for new discoveries
+	DiscoveryManager.node_discovered.connect(_on_node_discovered)
 
 	print("[UniverseManager] Spawned %d nodes, %d connections" % [_node_instances.size(), _connection_instances.size()])
 
@@ -87,15 +98,84 @@ func _spawn_connections(graph: MathTypes.MathGraph) -> void:
 		_connection_instances.append(conn)
 
 
+func _apply_all_fog_states() -> void:
+	for node_id in _node_instances:
+		var instance: MathNodeBase = _node_instances[node_id]
+		var state := DiscoveryManager.get_state(node_id)
+		instance.set_discovery_state(state, false)
+
+	_update_all_connections()
+
+
+func _update_all_connections() -> void:
+	for conn in _connection_instances:
+		var from_discovered := DiscoveryManager.is_discovered(conn.from_id)
+		var to_discovered := DiscoveryManager.is_discovered(conn.to_id)
+		conn.set_visibility_state(from_discovered and to_discovered)
+
+
+func _on_node_discovered(node_id: String) -> void:
+	# Animate the discovered node
+	var instance = _node_instances.get(node_id)
+	if instance:
+		instance.set_discovery_state("discovered", true)
+		instance.play_discovery_animation()
+
+	# Update neighbors to adjacent state (with animation)
+	_update_neighbors_visual(node_id)
+
+	# Update connection visibility
+	_update_all_connections()
+
+
+func _update_neighbors_visual(node_id: String) -> void:
+	if DataLoader.graph == null:
+		return
+
+	# Graph edge neighbors
+	var neighbors := DataLoader.graph.get_neighbors(node_id)
+	for neighbor_id in neighbors:
+		var neighbor_instance = _node_instances.get(neighbor_id)
+		if neighbor_instance:
+			var state := DiscoveryManager.get_state(neighbor_id)
+			neighbor_instance.set_discovery_state(state, true)
+
+	# Hierarchy children
+	var children := DataLoader.graph.get_children(node_id)
+	for child in children:
+		var child_instance = _node_instances.get(child.id)
+		if child_instance:
+			var state := DiscoveryManager.get_state(child.id)
+			child_instance.set_discovery_state(state, true)
+
+	# Parent
+	var math_node = DataLoader.graph.get_node(node_id)
+	if math_node and not math_node.parent_id.is_empty():
+		var parent_instance = _node_instances.get(math_node.parent_id)
+		if parent_instance:
+			var state := DiscoveryManager.get_state(math_node.parent_id)
+			parent_instance.set_discovery_state(state, true)
+
+
 func _on_node_clicked(node_id: String) -> void:
 	_on_node_instance_clicked(node_id)
 
 
 func _on_node_instance_clicked(node_id: String) -> void:
 	var math_node := DataLoader.graph.get_node(node_id)
-	if math_node:
-		emit_signal("node_selected", math_node)
+	if math_node == null:
+		return
+
+	# If adjacent, discover it on click
+	if DiscoveryManager.is_adjacent(node_id):
+		DiscoveryManager.discover_node(node_id)
+
+	emit_signal("node_selected", math_node)
 
 
 func get_node_instance(node_id: String) -> MathNodeBase:
 	return _node_instances.get(node_id, null)
+
+
+func get_all_node_instances() -> Dictionary:
+	return _node_instances

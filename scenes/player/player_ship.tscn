@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://player_ship"]
+
+[ext_resource type="Script" path="res://scripts/player/player_ship.gd" id="1_script"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1"]
+top_radius = 0.0
+bottom_radius = 0.6
+height = 1.8
+radial_segments = 6
+
+[node name="PlayerShip" type="Node3D"]
+script = ExtResource("1_script")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
+mesh = SubResource("CylinderMesh_1")

@@ -7,6 +7,7 @@ var from_id: String
 var to_id: String
 var edge_type: String
 var line_color: Color = Color(1, 1, 1, 0.3)
+var _base_alpha: float = 0.3
 
 
 func setup(p_from_pos: Vector3, p_to_pos: Vector3, p_color: Color, p_type: String) -> void:
@@ -76,11 +77,19 @@ func _apply_material() -> void:
 		"prerequisite":
 			mat.albedo_color.a = 0.5
 			mat.emission_energy_multiplier = 1.0
+			_base_alpha = 0.5
 		"prepares":
 			mat.albedo_color.a = 0.25
 			mat.emission_energy_multiplier = 0.5
+			_base_alpha = 0.25
 		"bridges":
 			mat.albedo_color.a = 0.4
 			mat.emission_energy_multiplier = 0.8
+			_base_alpha = 0.4
 
 	material_override = mat
+
+
+## Show connection only when both endpoints are discovered
+func set_visibility_state(show: bool) -> void:
+	visible = show
