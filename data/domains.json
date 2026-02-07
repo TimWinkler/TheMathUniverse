@@ -31,6 +31,78 @@
       "color": "#ff6b9d",
       "importance": 9,
       "flavor": "The Rose Spiral — ancient and mysterious, its prime stars are scattered in patterns no one fully understands."
+    },
+    {
+      "id": "probability",
+      "name": "Probability & Statistics",
+      "description": "The mathematics of uncertainty. From the laws of chance to the science of drawing conclusions from data.",
+      "color": "#e056a0",
+      "importance": 9,
+      "flavor": "The Dice Nebula — where randomness has rules and uncertainty is quantified with precision."
+    },
+    {
+      "id": "topology",
+      "name": "Topology",
+      "description": "The study of properties preserved under continuous deformation. Stretching, bending, but never tearing or gluing.",
+      "color": "#9b59b6",
+      "importance": 8,
+      "flavor": "The Rubber Galaxy — where a coffee mug and a donut are one and the same."
+    },
+    {
+      "id": "combinatorics",
+      "name": "Combinatorics",
+      "description": "The mathematics of counting, arrangement, and selection. Discrete structures and their properties.",
+      "color": "#f39c12",
+      "importance": 9,
+      "flavor": "The Mosaic Cluster — infinite arrangements of finite pieces, each pattern a story."
+    },
+    {
+      "id": "logic",
+      "name": "Logic & Set Theory",
+      "description": "The foundations of mathematical reasoning. Formal systems, proofs, sets, and the limits of computation.",
+      "color": "#1abc9c",
+      "importance": 9,
+      "flavor": "The Axiom Core — the bedrock upon which all of mathematics is built."
+    },
+    {
+      "id": "discrete-math",
+      "name": "Discrete Mathematics",
+      "description": "The mathematics of countable structures. Algorithms, number systems, cryptography, and computational thinking.",
+      "color": "#3498db",
+      "importance": 9,
+      "flavor": "The Digital Frontier — where mathematics meets computation and powers the modern world."
+    },
+    {
+      "id": "differential-equations",
+      "name": "Differential Equations",
+      "description": "Equations involving derivatives. The language of change, modeling everything from orbits to epidemics.",
+      "color": "#e74c3c",
+      "importance": 10,
+      "flavor": "The Flux Streams — rivers of change flowing through every branch of science."
+    },
+    {
+      "id": "optimization",
+      "name": "Optimization",
+      "description": "Finding the best solution among many possibilities. Linear programming, convex optimization, and combinatorial optimization.",
+      "color": "#2ecc71",
+      "importance": 8,
+      "flavor": "The Summit Seekers — always climbing, always searching for the highest peak or deepest valley."
+    },
+    {
+      "id": "applied-math",
+      "name": "Applied Mathematics",
+      "description": "Mathematics in action. Numerical methods, modeling, signal processing, machine learning, and information theory.",
+      "color": "#e67e22",
+      "importance": 9,
+      "flavor": "The Workshop Galaxy — where abstract ideas become tools that shape the real world."
+    },
+    {
+      "id": "category-theory",
+      "name": "Category Theory",
+      "description": "The mathematics of mathematics itself. Abstract structures, functors, and natural transformations that unify all fields.",
+      "color": "#95a5a6",
+      "importance": 7,
+      "flavor": "The Mirror Dimension — where you see not the objects, but the patterns between them."
     }
   ],
   "cross_domain_edges": [
@@ -40,6 +112,44 @@
     { "from": "algebra.polynomials", "to": "number-theory.algebraic-number-theory", "type": "bridges", "label": "Polynomial roots connect to algebraic integers" },
     { "from": "geometry.trigonometry", "to": "analysis.calculus", "type": "bridges", "label": "Trig functions are fundamental in calculus" },
     { "from": "algebra.abstract-algebra", "to": "number-theory.algebraic-number-theory", "type": "bridges", "label": "Group/ring theory applied to number theory" },
-    { "from": "geometry.differential-geometry", "to": "analysis.multivariable-calculus", "type": "bridges", "label": "Calculus on curves and surfaces" }
+    { "from": "geometry.differential-geometry", "to": "analysis.multivariable-calculus", "type": "bridges", "label": "Calculus on curves and surfaces" },
+
+    { "from": "combinatorics.enumerative", "to": "probability.foundations", "type": "bridges", "label": "Counting methods are essential for probability" },
+    { "from": "analysis.calculus", "to": "probability.distributions", "type": "bridges", "label": "Calculus enables continuous probability" },
+    { "from": "probability.statistics", "to": "applied-math.ml", "type": "bridges", "label": "Statistical inference underpins machine learning" },
+    { "from": "probability.stochastic", "to": "differential-equations.systems", "type": "bridges", "label": "Stochastic differential equations bridge both fields" },
+
+    { "from": "geometry.differential-geometry", "to": "topology.differential", "type": "bridges", "label": "Differential geometry meets differential topology" },
+    { "from": "algebra.abstract-algebra", "to": "topology.algebraic", "type": "bridges", "label": "Algebraic structures classify topological spaces" },
+    { "from": "topology.surfaces", "to": "geometry.non-euclidean", "type": "bridges", "label": "Surfaces connect topology and non-Euclidean geometry" },
+
+    { "from": "combinatorics.graph-theory", "to": "discrete-math.algorithms", "type": "bridges", "label": "Graph algorithms are a core of discrete math" },
+    { "from": "number-theory.primes-divisibility", "to": "discrete-math.number-systems", "type": "bridges", "label": "Number theory foundations power discrete math" },
+    { "from": "discrete-math.cryptography", "to": "number-theory.algebraic-number-theory", "type": "bridges", "label": "Number theory enables modern cryptography" },
+
+    { "from": "analysis.calculus", "to": "differential-equations.first-order", "type": "bridges", "label": "Calculus is the language of differential equations" },
+    { "from": "algebra.linear-algebra", "to": "differential-equations.systems", "type": "bridges", "label": "Linear algebra solves systems of ODEs" },
+    { "from": "analysis.multivariable-calculus", "to": "differential-equations.pde", "type": "bridges", "label": "Multivariable calculus enables PDEs" },
+
+    { "from": "algebra.linear-algebra", "to": "optimization.linear", "type": "bridges", "label": "Linear algebra is the backbone of linear programming" },
+    { "from": "analysis.multivariable-calculus", "to": "optimization.convex", "type": "bridges", "label": "Multivariable calculus powers convex optimization" },
+    { "from": "combinatorics.graph-theory", "to": "optimization.combinatorial", "type": "bridges", "label": "Graph theory feeds combinatorial optimization" },
+
+    { "from": "analysis.calculus", "to": "applied-math.numerical", "type": "bridges", "label": "Numerical methods approximate calculus operations" },
+    { "from": "analysis.sequences-series", "to": "applied-math.signals", "type": "bridges", "label": "Fourier series connect analysis and signal processing" },
+    { "from": "algebra.linear-algebra", "to": "applied-math.ml", "type": "bridges", "label": "Linear algebra powers machine learning" },
+    { "from": "probability.distributions", "to": "applied-math.information", "type": "bridges", "label": "Probability distributions define information entropy" },
+    { "from": "differential-equations.numerical", "to": "applied-math.numerical", "type": "bridges", "label": "Numerical ODE/PDE methods are applied math staples" },
+
+    { "from": "algebra.abstract-algebra", "to": "category-theory.foundations", "type": "bridges", "label": "Abstract algebra motivated category theory" },
+    { "from": "topology.algebraic", "to": "category-theory.foundations", "type": "bridges", "label": "Algebraic topology inspired category theory" },
+    { "from": "category-theory.applications", "to": "logic.computability", "type": "bridges", "label": "Categorical logic connects to computability" },
+    { "from": "logic.set-theory", "to": "category-theory.foundations", "type": "bridges", "label": "Set theory provides foundations for categories" },
+
+    { "from": "logic.propositional", "to": "discrete-math.algorithms", "type": "bridges", "label": "Logic underpins algorithm design and correctness" },
+    { "from": "logic.computability", "to": "discrete-math.algorithms", "type": "bridges", "label": "Computability theory defines algorithmic limits" },
+
+    { "from": "optimization.nonlinear", "to": "applied-math.ml", "type": "bridges", "label": "Nonlinear optimization trains machine learning models" },
+    { "from": "differential-equations.pde", "to": "applied-math.signals", "type": "bridges", "label": "PDEs model wave propagation in signal processing" }
   ]
 }

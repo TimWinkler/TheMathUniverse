@@ -1,0 +1,247 @@
+{
+  "domain": "optimization",
+  "subdomains": [
+    {
+      "id": "optimization.linear",
+      "name": "Linear Programming",
+      "description": "Optimizing a linear objective function subject to linear constraints. The workhorse of operations research.",
+      "importance": 9,
+      "difficulty": 2,
+      "flavor": "The Straight-Edge Frontier — where flat planes carve out the best possible world.",
+      "topics": [
+        {
+          "id": "optimization.linear.programs",
+          "name": "Linear Programs",
+          "description": "Formulating optimization problems with linear objectives and linear inequality constraints. Standard form, slack variables, and feasible regions.",
+          "keywords": ["linear program", "feasible region", "objective function", "constraint", "slack variable"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The art of asking the right question — in straight lines only."
+        },
+        {
+          "id": "optimization.linear.simplex",
+          "name": "Simplex Method",
+          "description": "An algorithm that walks along the vertices of a polytope to find the optimal solution. Efficient in practice despite exponential worst-case complexity.",
+          "keywords": ["simplex", "pivot", "basis", "tableau", "vertex"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Hopping from corner to corner of a crystal, always climbing upward."
+        },
+        {
+          "id": "optimization.linear.duality",
+          "name": "Duality Theory",
+          "description": "Every linear program has a dual problem whose optimal value bounds the original. Strong duality and complementary slackness connect primal and dual solutions.",
+          "keywords": ["dual", "primal", "strong duality", "complementary slackness", "shadow price"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Every question has a mirror — and both mirrors agree on the answer."
+        },
+        {
+          "id": "optimization.linear.sensitivity",
+          "name": "Sensitivity Analysis",
+          "description": "Studying how the optimal solution changes when problem data varies. Ranges for objective coefficients and right-hand sides.",
+          "keywords": ["sensitivity", "shadow price", "reduced cost", "parametric", "robustness"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "How fragile is perfection? Nudge the world and watch the optimum shift."
+        },
+        {
+          "id": "optimization.linear.integer",
+          "name": "Integer Programming",
+          "description": "Linear programs where some or all variables must be integers. Branch-and-bound, cutting planes, and NP-hardness.",
+          "keywords": ["integer programming", "branch and bound", "cutting plane", "relaxation", "NP-hard"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "When the universe insists on whole numbers, the easy becomes impossibly hard."
+        }
+      ]
+    },
+    {
+      "id": "optimization.convex",
+      "name": "Convex Optimization",
+      "description": "Minimizing convex functions over convex sets. Local optima are global — the golden property that makes these problems tractable.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Valley of Certainty — every downhill path leads to the same destination.",
+      "topics": [
+        {
+          "id": "optimization.convex.sets-functions",
+          "name": "Convex Sets & Functions",
+          "description": "Sets where line segments between any two points stay inside, and functions that curve upward. The foundation of tractable optimization.",
+          "keywords": ["convex set", "convex function", "epigraph", "Jensen inequality", "convex combination"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "A world with no hidden valleys — what you see is all there is."
+        },
+        {
+          "id": "optimization.convex.gradient-descent",
+          "name": "Gradient Descent",
+          "description": "Iteratively moving in the direction of steepest descent. Step sizes, convergence rates, and variants like stochastic gradient descent.",
+          "keywords": ["gradient", "learning rate", "convergence", "stochastic", "step size"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Follow gravity downhill — the simplest idea that powers modern machine learning."
+        },
+        {
+          "id": "optimization.convex.lagrange",
+          "name": "Lagrange Multipliers",
+          "description": "Optimizing a function subject to equality constraints by introducing multiplier variables. The gradient of the objective aligns with constraint gradients at the optimum.",
+          "keywords": ["Lagrange multiplier", "equality constraint", "Lagrangian", "stationary point", "constraint qualification"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "A ghost variable that whispers the cost of every constraint."
+        },
+        {
+          "id": "optimization.convex.kkt",
+          "name": "KKT Conditions",
+          "description": "Karush-Kuhn-Tucker conditions generalize Lagrange multipliers to inequality constraints. Necessary and sufficient conditions for convex problems.",
+          "keywords": ["KKT", "complementarity", "stationarity", "primal feasibility", "dual feasibility"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "The four commandments of optimality — obey them all, or your solution is false."
+        },
+        {
+          "id": "optimization.convex.sdp",
+          "name": "Semidefinite Programming",
+          "description": "Optimizing over the cone of positive semidefinite matrices. A powerful generalization of linear programming with applications in control and combinatorics.",
+          "keywords": ["semidefinite", "positive semidefinite", "cone", "matrix inequality", "relaxation"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "When your variables are entire matrices, optimization reaches a higher plane."
+        }
+      ]
+    },
+    {
+      "id": "optimization.nonlinear",
+      "name": "Nonlinear Optimization",
+      "description": "Optimizing general nonlinear functions. Multiple local optima, saddle points, and the challenge of finding the global best.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Twisted Landscape — peaks, valleys, and ridges where nothing is guaranteed.",
+      "topics": [
+        {
+          "id": "optimization.nonlinear.unconstrained",
+          "name": "Unconstrained Optimization",
+          "description": "Finding minima of functions with no constraints. Necessary and sufficient conditions using gradients and Hessians.",
+          "keywords": ["gradient", "Hessian", "critical point", "saddle point", "local minimum"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Wander freely through the landscape, searching for the lowest valley."
+        },
+        {
+          "id": "optimization.nonlinear.newton",
+          "name": "Newton's Method",
+          "description": "Using second-order information to take optimal steps toward the minimum. Quadratic convergence near the solution but requires computing the Hessian.",
+          "keywords": ["Newton", "Hessian", "quadratic convergence", "line search", "trust region"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "The impatient optimizer — why walk when you can leap to the answer?"
+        },
+        {
+          "id": "optimization.nonlinear.quasi-newton",
+          "name": "Quasi-Newton Methods",
+          "description": "Approximating the Hessian from gradient information alone. BFGS and L-BFGS achieve superlinear convergence without second derivatives.",
+          "keywords": ["BFGS", "L-BFGS", "secant condition", "superlinear", "Hessian approximation"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Too expensive to compute the truth? A clever approximation will do."
+        },
+        {
+          "id": "optimization.nonlinear.constrained",
+          "name": "Constrained Optimization",
+          "description": "Nonlinear optimization with nonlinear constraints. Penalty methods, augmented Lagrangian, and sequential quadratic programming.",
+          "keywords": ["penalty method", "augmented Lagrangian", "SQP", "barrier", "feasibility"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Chained to the walls of reality, yet still striving for the best."
+        },
+        {
+          "id": "optimization.nonlinear.global",
+          "name": "Global Optimization",
+          "description": "Finding the absolute best solution among many local optima. Simulated annealing, genetic algorithms, and branch-and-bound for nonconvex problems.",
+          "keywords": ["global optimum", "simulated annealing", "genetic algorithm", "multistart", "branch and bound"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "Somewhere in this vast landscape hides the one true answer — but where?"
+        }
+      ]
+    },
+    {
+      "id": "optimization.combinatorial",
+      "name": "Combinatorial Optimization",
+      "description": "Finding the best solution from a finite but astronomically large set of possibilities. Graphs, networks, and the P vs NP frontier.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Labyrinth of Choices — a trillion paths, and only one is shortest.",
+      "topics": [
+        {
+          "id": "optimization.combinatorial.tsp",
+          "name": "Traveling Salesman",
+          "description": "Find the shortest route visiting every city exactly once and returning home. The iconic NP-hard problem that launched a thousand algorithms.",
+          "keywords": ["TSP", "Hamiltonian cycle", "tour", "NP-hard", "heuristic"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Visit every star and return home — easy to state, maddening to solve."
+        },
+        {
+          "id": "optimization.combinatorial.mst",
+          "name": "Minimum Spanning Tree",
+          "description": "Connecting all nodes in a graph with minimum total edge weight. Kruskal's and Prim's algorithms solve it efficiently in polynomial time.",
+          "keywords": ["spanning tree", "Kruskal", "Prim", "greedy", "cut property"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "The cheapest web that holds the universe together."
+        },
+        {
+          "id": "optimization.combinatorial.shortest-path",
+          "name": "Shortest Path",
+          "description": "Finding the minimum-cost path between nodes in a graph. Dijkstra's algorithm, Bellman-Ford, and dynamic programming on networks.",
+          "keywords": ["Dijkstra", "Bellman-Ford", "shortest path", "relaxation", "negative cycle"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The navigator's eternal question — what is the fastest way from here to there?"
+        },
+        {
+          "id": "optimization.combinatorial.assignment",
+          "name": "Assignment Problem",
+          "description": "Optimally matching agents to tasks with minimum total cost. The Hungarian algorithm solves it in polynomial time using augmenting paths.",
+          "keywords": ["assignment", "Hungarian algorithm", "bipartite matching", "augmenting path", "cost matrix"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "The perfect pairing — every worker finds their ideal task."
+        },
+        {
+          "id": "optimization.combinatorial.approximation",
+          "name": "Approximation Algorithms",
+          "description": "When exact solutions are intractable, find provably near-optimal answers. Approximation ratios guarantee how close to optimal the solution is.",
+          "keywords": ["approximation ratio", "polynomial time", "hardness of approximation", "PTAS", "greedy"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Perfection is impossible — but how close can we get, and can we prove it?"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "optimization.linear.programs", "to": "optimization.linear.simplex", "type": "prerequisite" },
+    { "from": "optimization.linear.simplex", "to": "optimization.linear.duality", "type": "prerequisite" },
+    { "from": "optimization.linear.duality", "to": "optimization.linear.sensitivity", "type": "prerequisite" },
+    { "from": "optimization.linear.programs", "to": "optimization.linear.integer", "type": "prerequisite" },
+    { "from": "optimization.linear.simplex", "to": "optimization.linear.integer", "type": "prepares" },
+    { "from": "optimization.convex.sets-functions", "to": "optimization.convex.gradient-descent", "type": "prerequisite" },
+    { "from": "optimization.convex.sets-functions", "to": "optimization.convex.lagrange", "type": "prerequisite" },
+    { "from": "optimization.convex.lagrange", "to": "optimization.convex.kkt", "type": "prerequisite" },
+    { "from": "optimization.convex.sets-functions", "to": "optimization.convex.sdp", "type": "prerequisite" },
+    { "from": "optimization.linear.duality", "to": "optimization.convex.sdp", "type": "prepares" },
+    { "from": "optimization.nonlinear.unconstrained", "to": "optimization.nonlinear.newton", "type": "prerequisite" },
+    { "from": "optimization.nonlinear.newton", "to": "optimization.nonlinear.quasi-newton", "type": "prerequisite" },
+    { "from": "optimization.convex.lagrange", "to": "optimization.nonlinear.constrained", "type": "prerequisite" },
+    { "from": "optimization.nonlinear.unconstrained", "to": "optimization.nonlinear.constrained", "type": "prerequisite" },
+    { "from": "optimization.nonlinear.constrained", "to": "optimization.nonlinear.global", "type": "prepares" },
+    { "from": "optimization.convex.gradient-descent", "to": "optimization.nonlinear.unconstrained", "type": "prepares" },
+    { "from": "optimization.combinatorial.shortest-path", "to": "optimization.combinatorial.mst", "type": "prepares" },
+    { "from": "optimization.combinatorial.mst", "to": "optimization.combinatorial.tsp", "type": "prepares" },
+    { "from": "optimization.combinatorial.tsp", "to": "optimization.combinatorial.approximation", "type": "prerequisite" },
+    { "from": "optimization.linear.integer", "to": "optimization.combinatorial.tsp", "type": "prepares" }
+  ]
+}

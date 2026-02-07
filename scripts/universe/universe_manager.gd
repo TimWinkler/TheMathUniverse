@@ -33,7 +33,7 @@ func _ready() -> void:
 
 	# Run force-directed layout
 	_layout = ForceLayout.new()
-	_layout.simulate(graph, 150)
+	_layout.simulate(graph, 100)
 
 	# Spawn all nodes
 	_spawn_nodes(graph)

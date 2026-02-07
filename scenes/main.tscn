@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://main"]
+[gd_scene load_steps=10 format=3 uid="uid://main"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://universe" path="res://scenes/universe.tscn" id="2_universe"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://hud" path="res://scenes/ui/hud.tscn" id="4_hud"]
 [ext_resource type="PackedScene" uid="uid://achievement_toast" path="res://scenes/ui/achievement_toast.tscn" id="5_achievement_toast"]
 [ext_resource type="PackedScene" uid="uid://chat_panel" path="res://scenes/ui/chat_panel.tscn" id="6_chat_panel"]
+[ext_resource type="PackedScene" uid="uid://quest_tracker" path="res://scenes/ui/quest_tracker.tscn" id="7_quest_tracker"]
+[ext_resource type="PackedScene" uid="uid://quest_log_panel" path="res://scenes/ui/quest_log_panel.tscn" id="8_quest_log_panel"]
+[ext_resource type="PackedScene" uid="uid://minimap" path="res://scenes/ui/minimap.tscn" id="9_minimap"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_main")
@@ -26,3 +29,9 @@ mouse_filter = 2
 [node name="AchievementToast" parent="UI" instance=ExtResource("5_achievement_toast")]
 
 [node name="ChatPanel" parent="UI" instance=ExtResource("6_chat_panel")]
+
+[node name="QuestTracker" parent="UI" instance=ExtResource("7_quest_tracker")]
+
+[node name="QuestLogPanel" parent="UI" instance=ExtResource("8_quest_log_panel")]
+
+[node name="Minimap" parent="UI" instance=ExtResource("9_minimap")]

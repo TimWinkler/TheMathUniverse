@@ -11,10 +11,11 @@ func save_game() -> void:
 		return
 
 	var data := {
-		"version": 1,
+		"version": 2,
 		"timestamp": Time.get_unix_time_from_system(),
 		"discovered": DiscoveryManager._discovered.duplicate(),
 		"adjacent": DiscoveryManager._adjacent.duplicate(),
+		"quests": QuestManager.get_save_data(),
 	}
 
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -62,6 +63,12 @@ func load_game() -> bool:
 		adjacent[key] = true
 
 	DiscoveryManager.restore_state(discovered, adjacent)
+
+	# Restore quest progress (version 2+)
+	var quest_data = data.get("quests", {})
+	if not quest_data.is_empty():
+		QuestManager.restore_save_data(quest_data)
+
 	print("[SaveManager] Loaded save: %d discovered, %d adjacent" % [discovered.size(), adjacent.size()])
 	return true
 

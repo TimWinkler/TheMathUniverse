@@ -15,7 +15,7 @@ var _hovered_node_id: String = ""
 
 func _ready() -> void:
 	hover_label.text = ""
-	controls_label.text = "Right-drag: orbit | Scroll: zoom | WASD: move | Click: discover | H: home | Esc: close"
+	controls_label.text = "Right-drag: orbit | Scroll: zoom | WASD: move | Click: discover | H: home | J: quests | M: map | F1: mute | Esc: close"
 
 	await get_tree().process_frame
 	await get_tree().process_frame
@@ -59,7 +59,7 @@ func _build_domain_indicators() -> void:
 
 	for domain in DataLoader.graph.domains:
 		var dot := ColorRect.new()
-		dot.custom_minimum_size = Vector2(12, 12)
+		dot.custom_minimum_size = Vector2(8, 8)
 		dot.color = domain.color
 		dot.name = domain.id
 		dot.tooltip_text = domain.node_name
@@ -67,7 +67,7 @@ func _build_domain_indicators() -> void:
 
 		var lbl := Label.new()
 		lbl.name = domain.id + "_pct"
-		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_font_size_override("font_size", 8)
 		lbl.add_theme_color_override("font_color", domain.color.lightened(0.3))
 		lbl.text = "0%"
 		domain_indicators.add_child(lbl)

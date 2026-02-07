@@ -21,13 +21,25 @@ const ACHIEVEMENTS := {
 		"name": "Bridge Builder",
 		"description": "Discover topics in 3+ galaxies",
 	},
+	"galactic_tourist": {
+		"name": "Galactic Tourist",
+		"description": "Discover topics in 5 galaxies",
+	},
+	"polymath": {
+		"name": "Polymath",
+		"description": "Discover topics in 10 galaxies",
+	},
 	"speed_runner": {
 		"name": "Speed Runner",
 		"description": "Discover 20 topics in 10 minutes",
 	},
 	"cartographer": {
 		"name": "The Cartographer",
-		"description": "Discover 50% of the universe",
+		"description": "Discover 30% of the universe",
+	},
+	"quest_master": {
+		"name": "Quest Master",
+		"description": "Complete 10 quests",
 	},
 	"universal_mind": {
 		"name": "Universal Mind",
@@ -51,6 +63,7 @@ func _check_all() -> void:
 	var topic_count := DiscoveryManager.get_topic_discovery_count()
 	var total_discovered := DiscoveryManager.get_discovery_count()
 	var total_nodes := DiscoveryManager.get_total_count()
+	var domains_with := DiscoveryManager.get_domains_with_discoveries()
 
 	# First Contact: discover 1 topic
 	if topic_count >= 1:
@@ -68,16 +81,28 @@ func _check_all() -> void:
 				break
 
 	# Bridge Builder: discoveries in 3+ domains
-	if DiscoveryManager.get_domains_with_discoveries() >= 3:
+	if domains_with >= 3:
 		_try_unlock("bridge_builder")
+
+	# Galactic Tourist: discoveries in 5 domains
+	if domains_with >= 5:
+		_try_unlock("galactic_tourist")
+
+	# Polymath: discoveries in 10 domains
+	if domains_with >= 10:
+		_try_unlock("polymath")
 
 	# Speed Runner: 20 topics in 10 minutes
 	if topic_count >= 20 and DiscoveryManager.get_elapsed_minutes() <= 10.0:
 		_try_unlock("speed_runner")
 
-	# Cartographer: 50% of all nodes
-	if total_nodes > 0 and float(total_discovered) / float(total_nodes) >= 0.5:
+	# Cartographer: 30% of all nodes (300+ nodes makes 50% very hard)
+	if total_nodes > 0 and float(total_discovered) / float(total_nodes) >= 0.3:
 		_try_unlock("cartographer")
+
+	# Quest Master: 10 quests completed
+	if QuestManager.get_completed_count() >= 10:
+		_try_unlock("quest_master")
 
 	# Universal Mind: everything
 	if total_nodes > 0 and total_discovered >= total_nodes:

@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://quest_tracker"]
+
+[ext_resource type="Script" path="res://scripts/ui/quest_tracker.gd" id="1_script"]
+
+[node name="QuestTracker" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -690
+offset_top = 10
+offset_right = -410
+offset_bottom = 120
+grow_horizontal = 0
+mouse_filter = 2
+script = ExtResource("1_script")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="QuestName" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quest Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="QuestDesc" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quest description..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 10.0
+value = 3.0
+show_percentage = false
+
+[node name="ProgressLabel" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "3 / 10"
+horizontal_alignment = 1

@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://quest_log_panel"]
+
+[ext_resource type="Script" path="res://scripts/ui/quest_log_panel.gd" id="1_script"]
+
+[node name="QuestLogPanel" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 200
+offset_top = 80
+offset_right = -200
+offset_bottom = -80
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quest Log (0/0)"
+
+[node name="CloseButton" type="Button" parent="VBox/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
+
+[node name="TabContainer" type="TabContainer" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Active" type="MarginContainer" parent="VBox/TabContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox/TabContainer/Active"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ActiveList" type="VBoxContainer" parent="VBox/TabContainer/Active/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Completed" type="MarginContainer" parent="VBox/TabContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox/TabContainer/Completed"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CompletedList" type="VBoxContainer" parent="VBox/TabContainer/Completed/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3

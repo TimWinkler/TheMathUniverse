@@ -8,6 +8,7 @@ const PlayerShipScene := preload("res://scenes/player/player_ship.tscn")
 @onready var universe: UniverseManager = $Universe
 @onready var info_panel: PanelContainer = $UI/InfoPanel
 @onready var hud: CanvasLayer = $UI/HUD
+@onready var minimap = $UI/Minimap
 
 var _ships: Dictionary = {}  # peer_id -> PlayerShip
 
@@ -38,6 +39,9 @@ func _ready() -> void:
 	else:
 		_spawn_local_ship()
 
+	# Start background music (runs silently if file missing)
+	AudioManager.play_music("res://assets/audio/music/ambient.ogg")
+
 	print("[Main] The Math Universe is ready!")
 
 
@@ -47,6 +51,7 @@ func _spawn_local_ship() -> void:
 	var cam := universe.camera_controller
 	if cam:
 		cam.set_follow_target(ship)
+	_setup_minimap(ship)
 
 
 func _spawn_all_ships() -> void:
@@ -60,6 +65,7 @@ func _spawn_all_ships() -> void:
 	var cam := universe.camera_controller
 	if cam:
 		cam.set_follow_target(local_ship)
+	_setup_minimap(local_ship)
 
 	# Spawn remote ships for existing players
 	for peer_id in NetworkManager.players:
@@ -127,3 +133,8 @@ func _on_node_hovered(node_id: String) -> void:
 
 func _on_node_unhovered(node_id: String) -> void:
 	hud.clear_hover(node_id)
+
+
+func _setup_minimap(player_ship: Node3D) -> void:
+	if minimap and universe and universe.camera_controller:
+		minimap.setup(universe, universe.camera_controller, player_ship)

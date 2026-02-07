@@ -1,0 +1,252 @@
+{
+  "domain": "discrete-math",
+  "subdomains": [
+    {
+      "id": "discrete-math.number-systems",
+      "name": "Number Systems",
+      "description": "The arithmetic of integers — divisibility, modular worlds, and the hidden structure within whole numbers.",
+      "importance": 9,
+      "difficulty": 2,
+      "flavor": "The Clockwork Galaxy — where numbers wrap around and ancient algorithms still reign supreme.",
+      "topics": [
+        {
+          "id": "discrete-math.number-systems.divisibility",
+          "name": "Integers & Divisibility",
+          "description": "The fundamental properties of whole numbers. Divisibility rules, prime factorization, and the building blocks of number theory.",
+          "keywords": ["integer", "divisibility", "prime", "factorization", "fundamental theorem of arithmetic"],
+          "importance": 9,
+          "difficulty": 1,
+          "flavor": "Every integer carries a secret fingerprint — its unique prime signature."
+        },
+        {
+          "id": "discrete-math.number-systems.modular",
+          "name": "Modular Arithmetic",
+          "description": "Arithmetic on a circle where numbers wrap around a modulus. Congruences, residues, and clock mathematics.",
+          "keywords": ["modular", "congruence", "residue", "modulus", "clock arithmetic"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The universe bends back on itself — numbers that forget how far they have traveled."
+        },
+        {
+          "id": "discrete-math.number-systems.gcd",
+          "name": "GCD & Euclidean Algorithm",
+          "description": "Finding the greatest common divisor through repeated division. The oldest known algorithm, still powering modern cryptography.",
+          "keywords": ["GCD", "Euclidean algorithm", "extended Euclidean", "Bezout identity", "coprime"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "An algorithm older than empires, dividing its way to the truth since 300 BC."
+        },
+        {
+          "id": "discrete-math.number-systems.crt",
+          "name": "Chinese Remainder Theorem",
+          "description": "Solving systems of simultaneous congruences. A powerful tool for reconstructing numbers from their remainders.",
+          "keywords": ["Chinese remainder theorem", "simultaneous congruences", "coprime moduli", "reconstruction", "isomorphism"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "Shattered into remainders, yet perfectly reassembled — a puzzle from ancient China."
+        },
+        {
+          "id": "discrete-math.number-systems.primitive-roots",
+          "name": "Primitive Roots",
+          "description": "Generators of cyclic groups modulo n. Elements whose powers produce every residue, linking algebra to number theory.",
+          "keywords": ["primitive root", "generator", "cyclic group", "order", "discrete logarithm"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "One element to generate them all — the heartbeat of a cyclic universe."
+        }
+      ]
+    },
+    {
+      "id": "discrete-math.recursion",
+      "name": "Recursion & Recurrences",
+      "description": "Self-referential definitions and equations that build solutions from smaller pieces. The art of mathematical bootstrapping.",
+      "importance": 9,
+      "difficulty": 2,
+      "flavor": "The Mirror Nebula — where every answer contains a smaller copy of itself.",
+      "topics": [
+        {
+          "id": "discrete-math.recursion.induction",
+          "name": "Mathematical Induction",
+          "description": "Proving statements for all natural numbers by establishing a base case and an inductive step. The domino principle of mathematics.",
+          "keywords": ["induction", "base case", "inductive step", "strong induction", "well-ordering"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Knock down the first domino and trust that infinity will do the rest."
+        },
+        {
+          "id": "discrete-math.recursion.definitions",
+          "name": "Recursive Definitions",
+          "description": "Defining objects in terms of simpler versions of themselves. Fibonacci numbers, factorials, and recursive data structures.",
+          "keywords": ["recursion", "Fibonacci", "factorial", "base case", "recursive definition"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "To understand recursion, you must first understand recursion."
+        },
+        {
+          "id": "discrete-math.recursion.linear-recurrences",
+          "name": "Linear Recurrences",
+          "description": "Recurrence relations with constant coefficients. Characteristic equations, closed-form solutions, and the Fibonacci connection.",
+          "keywords": ["recurrence relation", "characteristic equation", "homogeneous", "particular solution", "closed form"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Hidden beneath the recursion lies a polynomial key that unlocks the pattern."
+        },
+        {
+          "id": "discrete-math.recursion.master-theorem",
+          "name": "Master Theorem",
+          "description": "A formula for solving divide-and-conquer recurrences. Three cases that classify the growth of recursive algorithms.",
+          "keywords": ["master theorem", "divide and conquer", "asymptotic", "branching factor", "recurrence"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "Three sacred cases that reveal the destiny of every divide-and-conquer quest."
+        },
+        {
+          "id": "discrete-math.recursion.divide-conquer",
+          "name": "Divide and Conquer",
+          "description": "Solving problems by breaking them into smaller subproblems, conquering each, and combining results. Merge sort, Karatsuba, and Strassen.",
+          "keywords": ["divide and conquer", "merge sort", "Karatsuba", "Strassen", "subproblem"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Split the world in two, conquer each half, and stitch reality back together."
+        }
+      ]
+    },
+    {
+      "id": "discrete-math.algorithms",
+      "name": "Algorithms",
+      "description": "The systematic study of computational procedures — their design, correctness, and efficiency.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Engine Room — where abstract ideas become precise, executable recipes.",
+      "topics": [
+        {
+          "id": "discrete-math.algorithms.big-o",
+          "name": "Algorithm Analysis (Big-O)",
+          "description": "Measuring the efficiency of algorithms using asymptotic notation. Big-O, Big-Omega, and Big-Theta as lenses on growth rates.",
+          "keywords": ["Big-O", "asymptotic analysis", "time complexity", "space complexity", "growth rate"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Not how fast it runs today, but how it scales toward infinity."
+        },
+        {
+          "id": "discrete-math.algorithms.sorting",
+          "name": "Sorting Algorithms",
+          "description": "Arranging elements in order. Comparison-based sorts, their lower bounds, and the quest for optimal performance.",
+          "keywords": ["sorting", "quicksort", "mergesort", "heapsort", "comparison lower bound"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Order from chaos — the oldest computational ritual, endlessly refined."
+        },
+        {
+          "id": "discrete-math.algorithms.graph-algorithms",
+          "name": "Graph Algorithms",
+          "description": "Traversals, shortest paths, and spanning trees. BFS, DFS, Dijkstra, and the art of navigating networks.",
+          "keywords": ["BFS", "DFS", "Dijkstra", "shortest path", "minimum spanning tree"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Every network hides a shortest path — graph algorithms know how to find it."
+        },
+        {
+          "id": "discrete-math.algorithms.dynamic-programming",
+          "name": "Dynamic Programming",
+          "description": "Solving complex problems by storing and reusing solutions to overlapping subproblems. Memoization and tabulation techniques.",
+          "keywords": ["dynamic programming", "memoization", "tabulation", "optimal substructure", "overlapping subproblems"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Remember what you have already solved, and the hardest problems become simple."
+        },
+        {
+          "id": "discrete-math.algorithms.np-completeness",
+          "name": "NP-Completeness",
+          "description": "The boundary between tractable and intractable problems. P vs NP, reductions, and the hardest problems in computer science.",
+          "keywords": ["NP-complete", "P vs NP", "reduction", "polynomial time", "intractability"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "A million-dollar question — are the hardest puzzles truly harder, or are we just not clever enough?"
+        }
+      ]
+    },
+    {
+      "id": "discrete-math.cryptography",
+      "name": "Cryptography",
+      "description": "The science of secure communication — transforming messages into secrets and proving identity without revealing knowledge.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Cipher Vaults — where number theory becomes the guardian of every secret.",
+      "topics": [
+        {
+          "id": "discrete-math.cryptography.classical",
+          "name": "Classical Ciphers",
+          "description": "Historical encryption methods from Caesar shifts to Vigenere and Enigma. The foundations of cryptographic thinking.",
+          "keywords": ["Caesar cipher", "Vigenere", "substitution", "transposition", "frequency analysis"],
+          "importance": 7,
+          "difficulty": 1,
+          "flavor": "Ancient whispers encoded in shifted letters — where the story of secrecy begins."
+        },
+        {
+          "id": "discrete-math.cryptography.rsa",
+          "name": "RSA Algorithm",
+          "description": "Public-key encryption based on the difficulty of factoring large numbers. Key generation, encryption, and digital signatures.",
+          "keywords": ["RSA", "public key", "private key", "factoring", "digital signature"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Multiplying primes is easy; undoing it guards the secrets of the digital age."
+        },
+        {
+          "id": "discrete-math.cryptography.ecc",
+          "name": "Elliptic Curve Cryptography",
+          "description": "Cryptography built on the algebraic structure of elliptic curves over finite fields. Stronger security with shorter keys.",
+          "keywords": ["elliptic curve", "point addition", "discrete logarithm", "finite field", "ECDSA"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Curves over finite fields — bending geometry into an unbreakable lock."
+        },
+        {
+          "id": "discrete-math.cryptography.hashing",
+          "name": "Hash Functions",
+          "description": "One-way functions that map data to fixed-size digests. Collision resistance, SHA families, and integrity verification.",
+          "keywords": ["hash function", "SHA", "collision resistance", "digest", "integrity"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "A fingerprint for data — unique, irreversible, and unmistakable."
+        },
+        {
+          "id": "discrete-math.cryptography.zkp",
+          "name": "Zero-Knowledge Proofs",
+          "description": "Proving you know a secret without revealing it. Interactive protocols, zk-SNARKs, and the frontier of cryptographic trust.",
+          "keywords": ["zero-knowledge", "prover", "verifier", "zk-SNARK", "interactive proof"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "Convince the world you hold the key, yet never let them glimpse it."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "discrete-math.number-systems.divisibility", "to": "discrete-math.number-systems.modular", "type": "prerequisite" },
+    { "from": "discrete-math.number-systems.divisibility", "to": "discrete-math.number-systems.gcd", "type": "prerequisite" },
+    { "from": "discrete-math.number-systems.modular", "to": "discrete-math.number-systems.crt", "type": "prerequisite" },
+    { "from": "discrete-math.number-systems.modular", "to": "discrete-math.number-systems.primitive-roots", "type": "prerequisite" },
+    { "from": "discrete-math.number-systems.gcd", "to": "discrete-math.number-systems.crt", "type": "prerequisite" },
+    { "from": "discrete-math.recursion.induction", "to": "discrete-math.recursion.definitions", "type": "prerequisite" },
+    { "from": "discrete-math.recursion.definitions", "to": "discrete-math.recursion.linear-recurrences", "type": "prerequisite" },
+    { "from": "discrete-math.recursion.definitions", "to": "discrete-math.recursion.divide-conquer", "type": "prerequisite" },
+    { "from": "discrete-math.recursion.linear-recurrences", "to": "discrete-math.recursion.master-theorem", "type": "prerequisite" },
+    { "from": "discrete-math.recursion.divide-conquer", "to": "discrete-math.recursion.master-theorem", "type": "prerequisite" },
+    { "from": "discrete-math.recursion.induction", "to": "discrete-math.algorithms.big-o", "type": "prepares" },
+    { "from": "discrete-math.algorithms.big-o", "to": "discrete-math.algorithms.sorting", "type": "prerequisite" },
+    { "from": "discrete-math.algorithms.big-o", "to": "discrete-math.algorithms.graph-algorithms", "type": "prerequisite" },
+    { "from": "discrete-math.algorithms.sorting", "to": "discrete-math.algorithms.dynamic-programming", "type": "prepares" },
+    { "from": "discrete-math.algorithms.graph-algorithms", "to": "discrete-math.algorithms.dynamic-programming", "type": "prepares" },
+    { "from": "discrete-math.algorithms.dynamic-programming", "to": "discrete-math.algorithms.np-completeness", "type": "prepares" },
+    { "from": "discrete-math.algorithms.big-o", "to": "discrete-math.algorithms.np-completeness", "type": "prerequisite" },
+    { "from": "discrete-math.number-systems.modular", "to": "discrete-math.cryptography.classical", "type": "prepares" },
+    { "from": "discrete-math.number-systems.primitive-roots", "to": "discrete-math.cryptography.rsa", "type": "prerequisite" },
+    { "from": "discrete-math.number-systems.gcd", "to": "discrete-math.cryptography.rsa", "type": "prerequisite" },
+    { "from": "discrete-math.cryptography.rsa", "to": "discrete-math.cryptography.ecc", "type": "prepares" },
+    { "from": "discrete-math.cryptography.classical", "to": "discrete-math.cryptography.hashing", "type": "prepares" },
+    { "from": "discrete-math.cryptography.hashing", "to": "discrete-math.cryptography.zkp", "type": "prerequisite" },
+    { "from": "discrete-math.cryptography.ecc", "to": "discrete-math.cryptography.zkp", "type": "prepares" },
+    { "from": "discrete-math.recursion.divide-conquer", "to": "discrete-math.algorithms.sorting", "type": "prepares" }
+  ]
+}

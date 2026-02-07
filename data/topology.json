@@ -1,0 +1,248 @@
+{
+  "domain": "topology",
+  "subdomains": [
+    {
+      "id": "topology.point-set",
+      "name": "Point-Set Topology",
+      "description": "The foundation of topology: open sets, continuity, compactness, and connectedness in abstract spaces.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Fabric of Space — where the very notion of 'nearness' is defined without distance.",
+      "topics": [
+        {
+          "id": "topology.point-set.open-sets",
+          "name": "Topological Spaces & Open Sets",
+          "description": "Defining topology through open sets. The most general notion of space and continuity.",
+          "keywords": ["topological space", "open set", "closed set", "topology", "neighborhood"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Forget distance — all you need is the idea of openness."
+        },
+        {
+          "id": "topology.point-set.continuity",
+          "name": "Continuity & Homeomorphisms",
+          "description": "Continuous maps between topological spaces. Homeomorphisms as the isomorphisms of topology.",
+          "keywords": ["continuous", "homeomorphism", "topological invariant", "map", "preimage"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "A coffee mug and a donut are the same — topologically speaking."
+        },
+        {
+          "id": "topology.point-set.compactness",
+          "name": "Compactness",
+          "description": "Finite subcovers from open covers. The topological generalization of closed and bounded sets.",
+          "keywords": ["compact", "cover", "subcover", "Heine-Borel", "sequentially compact"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "The mathematical art of fitting infinity into a finite package."
+        },
+        {
+          "id": "topology.point-set.connectedness",
+          "name": "Connectedness",
+          "description": "Spaces that cannot be split into two disjoint open sets. Path-connectedness and components.",
+          "keywords": ["connected", "path-connected", "component", "separation", "intermediate value"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "A space in one piece — no cuts, no gaps, no separation."
+        },
+        {
+          "id": "topology.point-set.metric-spaces",
+          "name": "Metric Spaces",
+          "description": "Topological spaces with a distance function. Completeness, Cauchy sequences, and Baire category.",
+          "keywords": ["metric", "distance", "complete", "Cauchy", "Baire category"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "When you can measure distance, topology gains a ruler."
+        }
+      ]
+    },
+    {
+      "id": "topology.algebraic",
+      "name": "Algebraic Topology",
+      "description": "Using algebraic structures to classify topological spaces. Homotopy, homology, and the bridge between algebra and geometry.",
+      "importance": 9,
+      "difficulty": 4,
+      "flavor": "The Rosetta Stone — translating geometric puzzles into algebraic equations.",
+      "topics": [
+        {
+          "id": "topology.algebraic.fundamental-group",
+          "name": "Fundamental Group",
+          "description": "Loops in a space, up to continuous deformation. The first homotopy group that detects holes.",
+          "keywords": ["fundamental group", "loop", "homotopy", "simply connected", "pi-one"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Walk in a loop — can you shrink it to a point? The answer reveals the space's soul."
+        },
+        {
+          "id": "topology.algebraic.covering-spaces",
+          "name": "Covering Spaces",
+          "description": "Spaces that locally look like another space. Universal covers and deck transformations.",
+          "keywords": ["covering space", "universal cover", "deck transformation", "lift", "fiber"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Unwrapping a space to see its hidden symmetries."
+        },
+        {
+          "id": "topology.algebraic.homology",
+          "name": "Homology",
+          "description": "Detecting holes of all dimensions using chains, cycles, and boundaries. The Betti numbers.",
+          "keywords": ["homology", "cycle", "boundary", "Betti number", "chain complex"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "Counting holes — not just tunnels, but cavities and voids in every dimension."
+        },
+        {
+          "id": "topology.algebraic.cohomology",
+          "name": "Cohomology",
+          "description": "The dual of homology. Cohomology rings, cup products, and de Rham cohomology.",
+          "keywords": ["cohomology", "cup product", "de Rham", "ring", "Poincare duality"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "Homology's mirror image — where holes gain an algebraic multiplication."
+        },
+        {
+          "id": "topology.algebraic.homotopy-theory",
+          "name": "Higher Homotopy",
+          "description": "Higher homotopy groups, fibrations, and the Hurewicz theorem. Beyond the fundamental group.",
+          "keywords": ["homotopy group", "fibration", "Hurewicz", "sphere", "suspension"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "Higher-dimensional loops probing higher-dimensional holes."
+        }
+      ]
+    },
+    {
+      "id": "topology.surfaces",
+      "name": "Surfaces & Manifolds",
+      "description": "Two-dimensional manifolds and their classification. The topology of shapes we can visualize.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Shape Gallery — from the sphere to the Klein bottle, every surface tells a story.",
+      "topics": [
+        {
+          "id": "topology.surfaces.classification",
+          "name": "Classification of Surfaces",
+          "description": "Every closed surface is a sphere with handles or crosscaps. Genus and orientability.",
+          "keywords": ["surface", "genus", "orientable", "handle", "crosscap"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "A complete catalog of all possible surfaces — a rare achievement in mathematics."
+        },
+        {
+          "id": "topology.surfaces.euler-characteristic",
+          "name": "Euler Characteristic",
+          "description": "V - E + F: the topological invariant that counts. From polyhedra to surfaces to higher dimensions.",
+          "keywords": ["Euler characteristic", "vertices", "edges", "faces", "chi"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "A single number that captures the essence of a shape."
+        },
+        {
+          "id": "topology.surfaces.knot-theory",
+          "name": "Knot Theory",
+          "description": "The mathematics of tangled loops in 3D space. Knot invariants and the unknotting problem.",
+          "keywords": ["knot", "link", "invariant", "Reidemeister", "Jones polynomial"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Is it really knotted, or can you untangle it? Harder than it sounds."
+        },
+        {
+          "id": "topology.surfaces.mobius-klein",
+          "name": "Non-Orientable Surfaces",
+          "description": "The Mobius strip and Klein bottle. Surfaces where left and right have no meaning.",
+          "keywords": ["Mobius strip", "Klein bottle", "non-orientable", "one-sided", "projective plane"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Surfaces that twist reality — where inside becomes outside."
+        },
+        {
+          "id": "topology.surfaces.manifolds-intro",
+          "name": "Introduction to Manifolds",
+          "description": "Spaces that locally look like Euclidean space. Charts, atlases, and smooth structures.",
+          "keywords": ["manifold", "chart", "atlas", "smooth", "dimension"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Locally flat, globally curved — the mathematical model of our universe."
+        }
+      ]
+    },
+    {
+      "id": "topology.differential",
+      "name": "Differential Topology",
+      "description": "Smooth manifolds and differentiable maps. Where calculus meets topology.",
+      "importance": 7,
+      "difficulty": 5,
+      "flavor": "The Smooth Frontier — where the tools of calculus illuminate topological truths.",
+      "topics": [
+        {
+          "id": "topology.differential.smooth-manifolds",
+          "name": "Smooth Manifolds",
+          "description": "Manifolds with smooth transition maps. Tangent spaces, vector fields, and differential forms.",
+          "keywords": ["smooth manifold", "tangent space", "vector field", "differential form", "cotangent"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "A surface so smooth that calculus works everywhere on it."
+        },
+        {
+          "id": "topology.differential.morse-theory",
+          "name": "Morse Theory",
+          "description": "Understanding topology through critical points of smooth functions. A bridge between analysis and topology.",
+          "keywords": ["Morse function", "critical point", "index", "handle decomposition", "gradient flow"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "The peaks, valleys, and saddle points of a landscape reveal its topology."
+        },
+        {
+          "id": "topology.differential.transversality",
+          "name": "Transversality",
+          "description": "When submanifolds meet generically. Sard's theorem and intersection theory.",
+          "keywords": ["transversality", "Sard", "regular value", "intersection", "generic"],
+          "importance": 6,
+          "difficulty": 5,
+          "flavor": "Most things that can happen, do happen — generically."
+        },
+        {
+          "id": "topology.differential.vector-bundles",
+          "name": "Vector Bundles",
+          "description": "Attaching a vector space to each point of a manifold. The tangent bundle and beyond.",
+          "keywords": ["vector bundle", "tangent bundle", "section", "fiber", "trivial"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "A vector space at every point — geometry's way of packaging linear algebra."
+        },
+        {
+          "id": "topology.differential.cobordism",
+          "name": "Cobordism",
+          "description": "When is one manifold the boundary of another? The equivalence relation that classifies manifolds.",
+          "keywords": ["cobordism", "boundary", "bordism", "Thom", "equivalence"],
+          "importance": 6,
+          "difficulty": 5,
+          "flavor": "Two manifolds are cobordant if they're opposite shores of the same higher-dimensional sea."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "topology.point-set.open-sets", "to": "topology.point-set.continuity", "type": "prerequisite" },
+    { "from": "topology.point-set.open-sets", "to": "topology.point-set.compactness", "type": "prerequisite" },
+    { "from": "topology.point-set.open-sets", "to": "topology.point-set.connectedness", "type": "prerequisite" },
+    { "from": "topology.point-set.open-sets", "to": "topology.point-set.metric-spaces", "type": "prerequisite" },
+    { "from": "topology.point-set.continuity", "to": "topology.algebraic.fundamental-group", "type": "prerequisite" },
+    { "from": "topology.point-set.connectedness", "to": "topology.algebraic.fundamental-group", "type": "prerequisite" },
+    { "from": "topology.algebraic.fundamental-group", "to": "topology.algebraic.covering-spaces", "type": "prerequisite" },
+    { "from": "topology.algebraic.fundamental-group", "to": "topology.algebraic.homology", "type": "prepares" },
+    { "from": "topology.algebraic.homology", "to": "topology.algebraic.cohomology", "type": "prerequisite" },
+    { "from": "topology.algebraic.fundamental-group", "to": "topology.algebraic.homotopy-theory", "type": "prerequisite" },
+    { "from": "topology.point-set.compactness", "to": "topology.surfaces.classification", "type": "prerequisite" },
+    { "from": "topology.point-set.connectedness", "to": "topology.surfaces.classification", "type": "prerequisite" },
+    { "from": "topology.surfaces.classification", "to": "topology.surfaces.euler-characteristic", "type": "prerequisite" },
+    { "from": "topology.algebraic.fundamental-group", "to": "topology.surfaces.knot-theory", "type": "prepares" },
+    { "from": "topology.surfaces.classification", "to": "topology.surfaces.mobius-klein", "type": "prerequisite" },
+    { "from": "topology.surfaces.classification", "to": "topology.surfaces.manifolds-intro", "type": "prerequisite" },
+    { "from": "topology.surfaces.manifolds-intro", "to": "topology.differential.smooth-manifolds", "type": "prerequisite" },
+    { "from": "topology.differential.smooth-manifolds", "to": "topology.differential.morse-theory", "type": "prerequisite" },
+    { "from": "topology.differential.smooth-manifolds", "to": "topology.differential.transversality", "type": "prerequisite" },
+    { "from": "topology.differential.smooth-manifolds", "to": "topology.differential.vector-bundles", "type": "prerequisite" },
+    { "from": "topology.differential.transversality", "to": "topology.differential.cobordism", "type": "prerequisite" }
+  ]
+}

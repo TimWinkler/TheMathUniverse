@@ -1,0 +1,311 @@
+{
+  "domain": "differential-equations",
+  "subdomains": [
+    {
+      "id": "differential-equations.first-order",
+      "name": "First-Order ODEs",
+      "description": "Ordinary differential equations involving only the first derivative. The gateway to modeling change.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The First Current — where motion begins and every changing thing finds its voice.",
+      "topics": [
+        {
+          "id": "differential-equations.first-order.separable",
+          "name": "Separable Equations",
+          "description": "ODEs where variables can be isolated on opposite sides. Solved by direct integration after separation.",
+          "keywords": ["separable", "separation of variables", "integration", "implicit solution", "initial value"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Pull the variables apart and let each side tell its own story."
+        },
+        {
+          "id": "differential-equations.first-order.linear",
+          "name": "Linear First-Order",
+          "description": "Equations of the form y' + P(x)y = Q(x). Solved using integrating factors.",
+          "keywords": ["linear", "integrating factor", "standard form", "homogeneous", "particular solution"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "A single multiplying trick transforms the unsolvable into the obvious."
+        },
+        {
+          "id": "differential-equations.first-order.exact",
+          "name": "Exact Equations",
+          "description": "Equations M dx + N dy = 0 where a potential function exists. Exactness tested by matching partial derivatives.",
+          "keywords": ["exact", "potential function", "partial derivative", "integrating factor", "total differential"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "Hidden beneath the equation lies a surface — find it, and the solution is a contour line."
+        },
+        {
+          "id": "differential-equations.first-order.existence-uniqueness",
+          "name": "Existence & Uniqueness",
+          "description": "The Picard-Lindelof theorem guarantees when solutions exist and are unique. Lipschitz continuity is the key condition.",
+          "keywords": ["existence", "uniqueness", "Picard-Lindelof", "Lipschitz", "initial value problem"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Before you solve, ask: does an answer even exist, and is it the only one?"
+        },
+        {
+          "id": "differential-equations.first-order.applications",
+          "name": "Applications (Growth/Decay)",
+          "description": "Modeling exponential growth, radioactive decay, Newton's cooling, and mixing problems with first-order ODEs.",
+          "keywords": ["exponential growth", "decay", "half-life", "Newton cooling", "population model"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The language of change written into every living and dying thing."
+        }
+      ]
+    },
+    {
+      "id": "differential-equations.higher-order",
+      "name": "Higher-Order ODEs",
+      "description": "Differential equations involving second derivatives and beyond. The mathematics of oscillation, resonance, and mechanical systems.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Harmonic Spire — where springs oscillate and bridges sway to the rhythm of higher derivatives.",
+      "topics": [
+        {
+          "id": "differential-equations.higher-order.second-order-linear",
+          "name": "Second-Order Linear",
+          "description": "Equations of the form y'' + p(x)y' + q(x)y = g(x). The Wronskian determines linear independence of solutions.",
+          "keywords": ["second order", "Wronskian", "linear independence", "fundamental set", "superposition"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Two independent solutions span a universe of possibilities."
+        },
+        {
+          "id": "differential-equations.higher-order.constant-coefficients",
+          "name": "Constant Coefficients",
+          "description": "Linear ODEs with constant coefficients solved via the characteristic equation. Real, repeated, and complex roots each yield distinct solution forms.",
+          "keywords": ["characteristic equation", "constant coefficients", "auxiliary equation", "complex roots", "repeated roots"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "An algebraic equation unlocks the differential one — polynomials and derivatives, secretly the same."
+        },
+        {
+          "id": "differential-equations.higher-order.undetermined-coefficients",
+          "name": "Undetermined Coefficients",
+          "description": "Guessing the form of a particular solution for nonhomogeneous equations. Works when the forcing function is a polynomial, exponential, or sinusoid.",
+          "keywords": ["particular solution", "nonhomogeneous", "annihilator", "guess method", "forcing function"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Guess wisely, and the universe fills in the blanks."
+        },
+        {
+          "id": "differential-equations.higher-order.variation-of-parameters",
+          "name": "Variation of Parameters",
+          "description": "A general method for finding particular solutions by allowing constants in the homogeneous solution to vary. Works for any forcing function.",
+          "keywords": ["variation of parameters", "Wronskian", "particular solution", "general method", "nonhomogeneous"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Let the constants dance, and they will find the particular answer you seek."
+        },
+        {
+          "id": "differential-equations.higher-order.series-solutions",
+          "name": "Series Solutions",
+          "description": "Representing solutions as power series around ordinary and singular points. Frobenius method for regular singular points.",
+          "keywords": ["power series", "Frobenius", "recurrence relation", "singular point", "radius of convergence"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "When closed forms fail, infinite sums carry the truth one coefficient at a time."
+        }
+      ]
+    },
+    {
+      "id": "differential-equations.systems",
+      "name": "Systems of ODEs",
+      "description": "Multiple coupled differential equations solved simultaneously. The bridge between single equations and the complexity of interacting dynamics.",
+      "importance": 9,
+      "difficulty": 4,
+      "flavor": "The Constellation Web — where equations intertwine and futures depend on every neighbor.",
+      "topics": [
+        {
+          "id": "differential-equations.systems.linear-systems",
+          "name": "Linear Systems",
+          "description": "Systems of the form x' = Ax solved using eigenvalues and eigenvectors of the coefficient matrix.",
+          "keywords": ["matrix exponential", "eigenvalue", "eigenvector", "fundamental matrix", "coupled equations"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Matrices breathe life into vectors, sending them spiraling through state space."
+        },
+        {
+          "id": "differential-equations.systems.phase-portraits",
+          "name": "Phase Portraits",
+          "description": "Visualizing solution trajectories in the phase plane. Nodes, spirals, saddles, and centers reveal qualitative behavior.",
+          "keywords": ["phase plane", "trajectory", "node", "spiral", "saddle point"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Forget the formula — draw the flow and see where the universe drifts."
+        },
+        {
+          "id": "differential-equations.systems.stability",
+          "name": "Stability Analysis",
+          "description": "Classifying equilibrium points as stable, unstable, or asymptotically stable. Eigenvalue signs determine the fate of nearby trajectories.",
+          "keywords": ["stability", "equilibrium", "asymptotic", "Lyapunov", "attractor"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Will the system settle, or will it fly apart? The eigenvalues know."
+        },
+        {
+          "id": "differential-equations.systems.nonlinear",
+          "name": "Nonlinear Systems",
+          "description": "Linearization near equilibria via the Jacobian matrix. The Hartman-Grobman theorem connects local behavior to the linearized system.",
+          "keywords": ["nonlinear", "Jacobian", "linearization", "Hartman-Grobman", "limit cycle"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Beyond the straight lines, the true shape of nature emerges — curved, tangled, alive."
+        },
+        {
+          "id": "differential-equations.systems.chaos",
+          "name": "Chaos Theory",
+          "description": "Sensitive dependence on initial conditions in deterministic systems. Strange attractors, Lyapunov exponents, and the butterfly effect.",
+          "keywords": ["chaos", "Lorenz attractor", "butterfly effect", "Lyapunov exponent", "strange attractor"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "Deterministic yet unpredictable — a butterfly flaps its wings and a storm is born."
+        }
+      ]
+    },
+    {
+      "id": "differential-equations.pde",
+      "name": "Partial Differential Equations",
+      "description": "Equations involving partial derivatives with respect to multiple independent variables. The language of heat, waves, and fields.",
+      "importance": 9,
+      "difficulty": 4,
+      "flavor": "The Nebula of Fields — where functions stretch across space and time simultaneously.",
+      "topics": [
+        {
+          "id": "differential-equations.pde.heat",
+          "name": "Heat Equation",
+          "description": "The parabolic PDE u_t = k u_xx modeling diffusion and heat conduction. Solutions smooth out initial discontinuities over time.",
+          "keywords": ["heat equation", "diffusion", "parabolic", "boundary conditions", "thermal conductivity"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Heat flows from hot to cold, and the equation knows exactly how fast."
+        },
+        {
+          "id": "differential-equations.pde.wave",
+          "name": "Wave Equation",
+          "description": "The hyperbolic PDE u_tt = c^2 u_xx describing vibrating strings, sound, and electromagnetic waves. D'Alembert's solution reveals traveling waves.",
+          "keywords": ["wave equation", "hyperbolic", "d'Alembert", "vibration", "propagation speed"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Every vibration, every ripple, every note of music — all solutions to one equation."
+        },
+        {
+          "id": "differential-equations.pde.laplace",
+          "name": "Laplace Equation",
+          "description": "The elliptic PDE nabla^2 u = 0 describing steady-state potentials. Solutions satisfy the maximum principle and are infinitely smooth.",
+          "keywords": ["Laplace", "harmonic function", "elliptic", "maximum principle", "potential theory"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "The quiet equilibrium — where nothing changes and every point is the average of its neighbors."
+        },
+        {
+          "id": "differential-equations.pde.separation",
+          "name": "Separation of Variables",
+          "description": "Reducing a PDE to a system of ODEs by assuming the solution is a product of single-variable functions. The cornerstone technique for classical PDEs.",
+          "keywords": ["separation of variables", "product solution", "eigenfunction", "boundary value", "Sturm-Liouville"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Assume the solution splits, and suddenly the impossible becomes a set of familiar problems."
+        },
+        {
+          "id": "differential-equations.pde.fourier",
+          "name": "Fourier Series",
+          "description": "Representing periodic functions as infinite sums of sines and cosines. Essential for expressing initial and boundary conditions in PDE solutions.",
+          "keywords": ["Fourier series", "orthogonality", "coefficients", "convergence", "Gibbs phenomenon"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Any shape, any signal — decomposed into an orchestra of pure tones."
+        }
+      ]
+    },
+    {
+      "id": "differential-equations.numerical",
+      "name": "Numerical Methods",
+      "description": "Approximate solutions to differential equations using computation. When analytic methods fail, algorithms carry on.",
+      "importance": 8,
+      "difficulty": 3,
+      "flavor": "The Computational Forge — where machines step through time, one tiny increment at a time.",
+      "topics": [
+        {
+          "id": "differential-equations.numerical.euler",
+          "name": "Euler's Method",
+          "description": "The simplest numerical ODE solver: step forward using the tangent line. First-order accurate but foundational for understanding all methods.",
+          "keywords": ["Euler method", "step size", "tangent line", "first order", "truncation error"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Follow the slope, take a step, look again — the simplest dance with the infinite."
+        },
+        {
+          "id": "differential-equations.numerical.runge-kutta",
+          "name": "Runge-Kutta Methods",
+          "description": "Higher-order numerical methods that sample the slope at multiple points per step. RK4 is the workhorse of scientific computing.",
+          "keywords": ["Runge-Kutta", "RK4", "higher order", "stage", "adaptive step"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Four glances at the slope, and the next step becomes almost perfect."
+        },
+        {
+          "id": "differential-equations.numerical.finite-differences",
+          "name": "Finite Differences",
+          "description": "Approximating derivatives by differences on a discrete grid. Transforms PDEs into systems of algebraic equations.",
+          "keywords": ["finite difference", "grid", "discretization", "stencil", "truncation error"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Replace the smooth with the discrete, and the continuous world yields to computation."
+        },
+        {
+          "id": "differential-equations.numerical.finite-elements",
+          "name": "Finite Elements",
+          "description": "Dividing the domain into elements and approximating solutions with piecewise basis functions. The variational approach to PDEs.",
+          "keywords": ["finite element", "mesh", "basis function", "weak form", "variational"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Break space into pieces, solve each one, and stitch together the truth."
+        },
+        {
+          "id": "differential-equations.numerical.stability-methods",
+          "name": "Stability of Methods",
+          "description": "Analyzing when numerical methods produce bounded, accurate solutions. CFL conditions and A-stability govern which methods work for which problems.",
+          "keywords": ["numerical stability", "CFL condition", "A-stability", "stiffness", "convergence"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "A method that grows when it should shrink is worse than no method at all."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "differential-equations.first-order.separable", "to": "differential-equations.first-order.linear", "type": "prerequisite" },
+    { "from": "differential-equations.first-order.linear", "to": "differential-equations.first-order.exact", "type": "prerequisite" },
+    { "from": "differential-equations.first-order.separable", "to": "differential-equations.first-order.existence-uniqueness", "type": "prepares" },
+    { "from": "differential-equations.first-order.linear", "to": "differential-equations.first-order.applications", "type": "prerequisite" },
+    { "from": "differential-equations.first-order.separable", "to": "differential-equations.first-order.applications", "type": "prerequisite" },
+    { "from": "differential-equations.first-order.linear", "to": "differential-equations.higher-order.second-order-linear", "type": "prerequisite" },
+    { "from": "differential-equations.higher-order.second-order-linear", "to": "differential-equations.higher-order.constant-coefficients", "type": "prerequisite" },
+    { "from": "differential-equations.higher-order.constant-coefficients", "to": "differential-equations.higher-order.undetermined-coefficients", "type": "prerequisite" },
+    { "from": "differential-equations.higher-order.second-order-linear", "to": "differential-equations.higher-order.variation-of-parameters", "type": "prerequisite" },
+    { "from": "differential-equations.higher-order.undetermined-coefficients", "to": "differential-equations.higher-order.variation-of-parameters", "type": "prepares" },
+    { "from": "differential-equations.higher-order.constant-coefficients", "to": "differential-equations.higher-order.series-solutions", "type": "prepares" },
+    { "from": "differential-equations.higher-order.constant-coefficients", "to": "differential-equations.systems.linear-systems", "type": "prerequisite" },
+    { "from": "differential-equations.systems.linear-systems", "to": "differential-equations.systems.phase-portraits", "type": "prerequisite" },
+    { "from": "differential-equations.systems.phase-portraits", "to": "differential-equations.systems.stability", "type": "prerequisite" },
+    { "from": "differential-equations.systems.stability", "to": "differential-equations.systems.nonlinear", "type": "prerequisite" },
+    { "from": "differential-equations.systems.nonlinear", "to": "differential-equations.systems.chaos", "type": "prerequisite" },
+    { "from": "differential-equations.systems.linear-systems", "to": "differential-equations.systems.nonlinear", "type": "prepares" },
+    { "from": "differential-equations.first-order.separable", "to": "differential-equations.pde.separation", "type": "prepares" },
+    { "from": "differential-equations.pde.separation", "to": "differential-equations.pde.heat", "type": "prerequisite" },
+    { "from": "differential-equations.pde.separation", "to": "differential-equations.pde.wave", "type": "prerequisite" },
+    { "from": "differential-equations.pde.separation", "to": "differential-equations.pde.laplace", "type": "prerequisite" },
+    { "from": "differential-equations.pde.fourier", "to": "differential-equations.pde.heat", "type": "prerequisite" },
+    { "from": "differential-equations.pde.fourier", "to": "differential-equations.pde.wave", "type": "prerequisite" },
+    { "from": "differential-equations.first-order.applications", "to": "differential-equations.numerical.euler", "type": "prepares" },
+    { "from": "differential-equations.numerical.euler", "to": "differential-equations.numerical.runge-kutta", "type": "prerequisite" },
+    { "from": "differential-equations.numerical.finite-differences", "to": "differential-equations.numerical.finite-elements", "type": "prepares" },
+    { "from": "differential-equations.numerical.euler", "to": "differential-equations.numerical.stability-methods", "type": "prepares" },
+    { "from": "differential-equations.numerical.runge-kutta", "to": "differential-equations.numerical.stability-methods", "type": "prerequisite" },
+    { "from": "differential-equations.pde.heat", "to": "differential-equations.numerical.finite-differences", "type": "prepares" }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "chains": [
+    {
+      "id": "tutorial",
+      "name": "Tutorial",
+      "quests": [
+        {
+          "id": "first_light",
+          "name": "First Light",
+          "description": "Discover your first topic node. Click on a glowing silhouette near any galaxy.",
+          "type": "discover_count",
+          "target": 1,
+          "filter": "topic",
+          "reward_text": "You've taken your first step into the Math Universe!"
+        },
+        {
+          "id": "expanding_horizons",
+          "name": "Expanding Horizons",
+          "description": "Discover 5 topic nodes to begin charting the universe.",
+          "type": "discover_count",
+          "target": 5,
+          "filter": "topic",
+          "reward_text": "The universe grows with every discovery."
+        },
+        {
+          "id": "galaxy_hopping",
+          "name": "Galaxy Hopping",
+          "description": "Discover at least one topic in 2 different galaxies.",
+          "type": "domain_count",
+          "target": 2,
+          "reward_text": "You've crossed the void between galaxies!"
+        },
+        {
+          "id": "deep_dive",
+          "name": "Deep Dive",
+          "description": "Discover all topics within any single subdomain.",
+          "type": "discover_all_children",
+          "target_level": "subdomain",
+          "reward_text": "You've mastered an entire star system!"
+        }
+      ]
+    },
+    {
+      "id": "explorer",
+      "name": "Explorer's Path",
+      "quests": [
+        {
+          "id": "star_collector",
+          "name": "Star Collector",
+          "description": "Discover 25 topics across the universe.",
+          "type": "discover_count",
+          "target": 25,
+          "filter": "topic",
+          "reward_text": "25 stars charted — the map grows!"
+        },
+        {
+          "id": "five_galaxy_tour",
+          "name": "Five Galaxy Tour",
+          "description": "Discover topics in 5 different galaxies.",
+          "type": "domain_count",
+          "target": 5,
+          "reward_text": "Five galaxies explored — you're a true navigator."
+        },
+        {
+          "id": "century_mark",
+          "name": "Century Mark",
+          "description": "Discover 100 nodes in total (topics, subdomains, and domains).",
+          "type": "discover_count",
+          "target": 100,
+          "filter": "any",
+          "reward_text": "One hundred discoveries — a milestone!"
+        },
+        {
+          "id": "ten_galaxy_tour",
+          "name": "Ten Galaxy Tour",
+          "description": "Discover topics in 10 different galaxies.",
+          "type": "domain_count",
+          "target": 10,
+          "reward_text": "Most of the universe has felt your presence."
+        }
+      ]
+    },
+    {
+      "id": "mastery",
+      "name": "Path of Mastery",
+      "quests": [
+        {
+          "id": "domain_master",
+          "name": "Domain Master",
+          "description": "Fully explore one entire galaxy (100% discovery).",
+          "type": "domain_percentage",
+          "target": 1.0,
+          "count": 1,
+          "reward_text": "You've conquered an entire galaxy!"
+        },
+        {
+          "id": "triple_master",
+          "name": "Triple Master",
+          "description": "Fully explore 3 galaxies.",
+          "type": "domain_percentage",
+          "target": 1.0,
+          "count": 3,
+          "reward_text": "Three galaxies mastered — unstoppable!"
+        },
+        {
+          "id": "half_universe",
+          "name": "Half the Universe",
+          "description": "Discover 50% of all nodes in the Math Universe.",
+          "type": "discover_count",
+          "target": 0.5,
+          "filter": "percentage",
+          "reward_text": "Halfway there — the universe is half-charted."
+        },
+        {
+          "id": "completionist",
+          "name": "The Completionist",
+          "description": "Discover every single node in the Math Universe. 100% completion.",
+          "type": "discover_all",
+          "reward_text": "You have explored the entire Math Universe. You are the Universal Mind."
+        }
+      ]
+    }
+  ],
+  "standalone": [
+    {
+      "id": "bridge_explorer",
+      "name": "Bridge Explorer",
+      "description": "Discover 5 nodes that have cross-domain connections.",
+      "type": "discover_count",
+      "target": 5,
+      "filter": "cross_domain",
+      "reward_text": "Bridges between galaxies — you see the connections others miss."
+    },
+    {
+      "id": "speed_demon",
+      "name": "Speed Demon",
+      "description": "Discover 30 topics within 15 minutes of starting.",
+      "type": "timed_discovery",
+      "target": 30,
+      "time_limit_minutes": 15,
+      "reward_text": "Speed and curiosity combined — blazing through the universe!"
+    },
+    {
+      "id": "algebra_aficionado",
+      "name": "Algebra Aficionado",
+      "description": "Discover every node in the Algebra galaxy.",
+      "type": "domain_percentage",
+      "target": 1.0,
+      "domain": "algebra",
+      "reward_text": "The Golden Galaxy has no more secrets from you."
+    },
+    {
+      "id": "analysis_adept",
+      "name": "Analysis Adept",
+      "description": "Discover every node in the Analysis galaxy.",
+      "type": "domain_percentage",
+      "target": 1.0,
+      "domain": "analysis",
+      "reward_text": "The Blue Nebula is fully charted."
+    },
+    {
+      "id": "geometry_guru",
+      "name": "Geometry Guru",
+      "description": "Discover every node in the Geometry galaxy.",
+      "type": "domain_percentage",
+      "target": 1.0,
+      "domain": "geometry",
+      "reward_text": "The Emerald Cluster shines in full."
+    },
+    {
+      "id": "number_ninja",
+      "name": "Number Ninja",
+      "description": "Discover every node in the Number Theory galaxy.",
+      "type": "domain_percentage",
+      "target": 1.0,
+      "domain": "number-theory",
+      "reward_text": "The Rose Spiral reveals all its prime secrets."
+    }
+  ]
+}

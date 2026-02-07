@@ -12,9 +12,9 @@ const MAX_VELOCITY := 5.0
 const CONVERGENCE_THRESHOLD := 0.01
 
 # Layout spacing per level
-const DOMAIN_SPREAD := 60.0
-const SUBDOMAIN_SPREAD := 25.0
-const TOPIC_SPREAD := 10.0
+const DOMAIN_SPREAD := 120.0
+const SUBDOMAIN_SPREAD := 40.0
+const TOPIC_SPREAD := 12.0
 
 var _velocities: Dictionary = {}  # node_id -> Vector3
 var _iteration: int = 0
@@ -161,7 +161,7 @@ func step(graph: MathTypes.MathGraph) -> float:
 
 
 ## Run simulation until convergence or max iterations.
-func simulate(graph: MathTypes.MathGraph, max_iterations: int = 200) -> void:
+func simulate(graph: MathTypes.MathGraph, max_iterations: int = 100) -> void:
 	initial_placement(graph)
 	for i in range(max_iterations):
 		var disp := step(graph)

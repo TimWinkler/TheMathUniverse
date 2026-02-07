@@ -9,6 +9,15 @@ var domain_files: Array[String] = [
 	"res://data/analysis.json",
 	"res://data/geometry.json",
 	"res://data/number-theory.json",
+	"res://data/probability.json",
+	"res://data/topology.json",
+	"res://data/combinatorics.json",
+	"res://data/logic.json",
+	"res://data/discrete-math.json",
+	"res://data/differential-equations.json",
+	"res://data/optimization.json",
+	"res://data/applied-math.json",
+	"res://data/category-theory.json",
 ]
 
 

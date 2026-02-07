@@ -1,0 +1,232 @@
+{
+  "domain": "category-theory",
+  "subdomains": [
+    {
+      "id": "category-theory.foundations",
+      "name": "Foundations",
+      "description": "The basic building blocks of category theory — objects, arrows, and the rules that govern them.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Primordial Arrows — where mathematics learns to speak about itself.",
+      "topics": [
+        {
+          "id": "category-theory.foundations.categories",
+          "name": "Categories & Morphisms",
+          "description": "A category consists of objects and morphisms (arrows) between them, with composition and identity laws. The fundamental abstraction underlying all of category theory.",
+          "keywords": ["category", "morphism", "composition", "identity", "associativity"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Objects and arrows — the alphabet of abstract structure."
+        },
+        {
+          "id": "category-theory.foundations.functors",
+          "name": "Functors",
+          "description": "Structure-preserving maps between categories, sending objects to objects and morphisms to morphisms while respecting composition and identities.",
+          "keywords": ["functor", "covariant", "contravariant", "faithful", "forgetful"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Translations between mathematical worlds that preserve meaning."
+        },
+        {
+          "id": "category-theory.foundations.natural-transformations",
+          "name": "Natural Transformations",
+          "description": "Morphisms between functors that commute with the underlying structure. The notion that makes functor categories possible.",
+          "keywords": ["natural transformation", "naturality square", "component", "functor category", "isomorphism"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "The arrows between arrows — where abstraction reaches its second level."
+        },
+        {
+          "id": "category-theory.foundations.universal-properties",
+          "name": "Universal Properties",
+          "description": "Characterizing objects by their relationships to all other objects rather than by internal structure. The categorical way of defining things.",
+          "keywords": ["universal property", "initial object", "terminal object", "unique morphism", "representation"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "To know something truly, describe how everything else relates to it."
+        }
+      ]
+    },
+    {
+      "id": "category-theory.constructions",
+      "name": "Constructions",
+      "description": "The fundamental ways to build new objects and relate existing ones within and across categories.",
+      "importance": 9,
+      "difficulty": 4,
+      "flavor": "The Architect's Forge — assembling new structures from universal blueprints.",
+      "topics": [
+        {
+          "id": "category-theory.constructions.products",
+          "name": "Products & Coproducts",
+          "description": "Products generalize Cartesian products; coproducts generalize disjoint unions. Dual constructions defined by universal properties.",
+          "keywords": ["product", "coproduct", "projection", "injection", "duality"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Pairing things together and taking them apart — the twin operations of construction."
+        },
+        {
+          "id": "category-theory.constructions.limits",
+          "name": "Limits & Colimits",
+          "description": "The most general construction in category theory, encompassing products, equalizers, and pullbacks as special cases. Colimits are their dual.",
+          "keywords": ["limit", "colimit", "cone", "cocone", "diagram"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Where all diagrams converge to a single, universal point."
+        },
+        {
+          "id": "category-theory.constructions.pullbacks",
+          "name": "Pullbacks & Pushouts",
+          "description": "Pullbacks are limits of cospan diagrams, capturing fiber products. Pushouts are their colimit duals, gluing objects along shared substructure.",
+          "keywords": ["pullback", "pushout", "fiber product", "cospan", "amalgamation"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Meeting at crossroads — where two paths converge over common ground."
+        },
+        {
+          "id": "category-theory.constructions.adjoints",
+          "name": "Adjoint Functors",
+          "description": "A pair of functors standing in a universal relationship: the left adjoint freely constructs, the right adjoint forgets. Ubiquitous throughout mathematics.",
+          "keywords": ["adjunction", "left adjoint", "right adjoint", "unit", "counit"],
+          "importance": 10,
+          "difficulty": 5,
+          "flavor": "The deepest duality in mathematics — free creation and structured forgetting, perfectly balanced."
+        },
+        {
+          "id": "category-theory.constructions.kan-extensions",
+          "name": "Kan Extensions",
+          "description": "The universal way to extend a functor along another functor. Mac Lane said all concepts are Kan extensions.",
+          "keywords": ["Kan extension", "left Kan", "right Kan", "pointwise", "colimit formula"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "The concept so general that all others are but special cases of it."
+        }
+      ]
+    },
+    {
+      "id": "category-theory.special",
+      "name": "Special Categories",
+      "description": "Categories with extra structure or properties that give rise to rich and powerful theories.",
+      "importance": 8,
+      "difficulty": 4,
+      "flavor": "The Exotic Galaxies — categories with special powers and hidden symmetries.",
+      "topics": [
+        {
+          "id": "category-theory.special.abelian",
+          "name": "Abelian Categories",
+          "description": "Categories where morphisms form abelian groups and kernels, cokernels, images, and coimages all exist. The natural home for homological algebra.",
+          "keywords": ["abelian category", "kernel", "cokernel", "exact sequence", "additive"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "A category so well-behaved that algebra feels right at home within it."
+        },
+        {
+          "id": "category-theory.special.topos",
+          "name": "Topos Theory",
+          "description": "Categories that behave like generalized spaces of sets, with an internal logic. A bridge between geometry, logic, and algebra.",
+          "keywords": ["topos", "subobject classifier", "internal logic", "Grothendieck", "geometric morphism"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "A universe unto itself — where sets, spaces, and logic merge into one."
+        },
+        {
+          "id": "category-theory.special.enriched",
+          "name": "Enriched Categories",
+          "description": "Categories where hom-sets are replaced by objects of a monoidal category, allowing richer notions of morphism space.",
+          "keywords": ["enriched category", "monoidal category", "hom-object", "V-category", "tensor"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "When arrows carry more than mere direction — they carry structure."
+        },
+        {
+          "id": "category-theory.special.higher",
+          "name": "Higher Categories",
+          "description": "Categories with morphisms between morphisms, and morphisms between those, ad infinitum. Capturing homotopical and higher-dimensional algebra.",
+          "keywords": ["infinity-category", "2-category", "n-category", "homotopy", "weak equivalence"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "Arrows all the way up — an infinite tower of structure within structure."
+        }
+      ]
+    },
+    {
+      "id": "category-theory.applications",
+      "name": "Applications",
+      "description": "The powerful tools and theorems that connect category theory to the rest of mathematics and beyond.",
+      "importance": 9,
+      "difficulty": 4,
+      "flavor": "The Outward Reach — where abstract arrows illuminate concrete worlds.",
+      "topics": [
+        {
+          "id": "category-theory.applications.monads",
+          "name": "Monads",
+          "description": "An endofunctor with unit and multiplication satisfying associativity and unit laws. Captures algebraic theories and computational effects.",
+          "keywords": ["monad", "endofunctor", "Kleisli category", "Eilenberg-Moore", "algebra"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "A self-contained engine of computation — wrap, transform, flatten, repeat."
+        },
+        {
+          "id": "category-theory.applications.yoneda",
+          "name": "Yoneda Lemma",
+          "description": "An object is completely determined by its relationships to all other objects. The most important result in category theory.",
+          "keywords": ["Yoneda lemma", "representable functor", "presheaf", "embedding", "hom-functor"],
+          "importance": 10,
+          "difficulty": 4,
+          "flavor": "You are the sum of all your relationships — the deepest truth of abstract mathematics."
+        },
+        {
+          "id": "category-theory.applications.sheaves",
+          "name": "Sheaves",
+          "description": "Presheaves satisfying a gluing condition, encoding local-to-global principles. Central to algebraic geometry and topology.",
+          "keywords": ["sheaf", "presheaf", "gluing", "section", "stalk"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "Local knowledge woven together into a global tapestry of data."
+        },
+        {
+          "id": "category-theory.applications.homological",
+          "name": "Homological Algebra",
+          "description": "Using chain complexes, exact sequences, and derived functors to study algebraic structures through their categorical properties.",
+          "keywords": ["chain complex", "exact sequence", "derived functor", "Ext", "Tor"],
+          "importance": 8,
+          "difficulty": 5,
+          "flavor": "The algebra of holes and obstructions — measuring what fails to be exact."
+        },
+        {
+          "id": "category-theory.applications.logic",
+          "name": "Categorical Logic",
+          "description": "Interpreting logical systems as categories, where propositions are objects and proofs are morphisms. The Curry-Howard-Lambek correspondence.",
+          "keywords": ["categorical logic", "Curry-Howard", "Lambek", "cartesian closed", "type theory"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "When proof and program become one — logic itself is a category."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "category-theory.foundations.categories", "to": "category-theory.foundations.functors", "type": "prerequisite" },
+    { "from": "category-theory.foundations.functors", "to": "category-theory.foundations.natural-transformations", "type": "prerequisite" },
+    { "from": "category-theory.foundations.categories", "to": "category-theory.foundations.universal-properties", "type": "prerequisite" },
+    { "from": "category-theory.foundations.universal-properties", "to": "category-theory.constructions.products", "type": "prerequisite" },
+    { "from": "category-theory.constructions.products", "to": "category-theory.constructions.limits", "type": "prerequisite" },
+    { "from": "category-theory.constructions.limits", "to": "category-theory.constructions.pullbacks", "type": "prerequisite" },
+    { "from": "category-theory.foundations.functors", "to": "category-theory.constructions.adjoints", "type": "prerequisite" },
+    { "from": "category-theory.foundations.natural-transformations", "to": "category-theory.constructions.adjoints", "type": "prerequisite" },
+    { "from": "category-theory.constructions.adjoints", "to": "category-theory.constructions.kan-extensions", "type": "prerequisite" },
+    { "from": "category-theory.constructions.limits", "to": "category-theory.constructions.kan-extensions", "type": "prepares" },
+    { "from": "category-theory.foundations.categories", "to": "category-theory.special.abelian", "type": "prepares" },
+    { "from": "category-theory.constructions.limits", "to": "category-theory.special.abelian", "type": "prerequisite" },
+    { "from": "category-theory.foundations.natural-transformations", "to": "category-theory.special.topos", "type": "prepares" },
+    { "from": "category-theory.constructions.limits", "to": "category-theory.special.topos", "type": "prerequisite" },
+    { "from": "category-theory.foundations.functors", "to": "category-theory.special.enriched", "type": "prerequisite" },
+    { "from": "category-theory.foundations.natural-transformations", "to": "category-theory.special.higher", "type": "prerequisite" },
+    { "from": "category-theory.constructions.adjoints", "to": "category-theory.applications.monads", "type": "prerequisite" },
+    { "from": "category-theory.foundations.functors", "to": "category-theory.applications.yoneda", "type": "prerequisite" },
+    { "from": "category-theory.foundations.natural-transformations", "to": "category-theory.applications.yoneda", "type": "prerequisite" },
+    { "from": "category-theory.applications.yoneda", "to": "category-theory.applications.sheaves", "type": "prerequisite" },
+    { "from": "category-theory.special.abelian", "to": "category-theory.applications.homological", "type": "prerequisite" },
+    { "from": "category-theory.special.topos", "to": "category-theory.applications.logic", "type": "prepares" },
+    { "from": "category-theory.constructions.adjoints", "to": "category-theory.applications.logic", "type": "prepares" }
+  ]
+}

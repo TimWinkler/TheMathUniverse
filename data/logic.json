@@ -1,0 +1,249 @@
+{
+  "domain": "logic",
+  "subdomains": [
+    {
+      "id": "logic.propositional",
+      "name": "Propositional Logic",
+      "description": "The logic of statements connected by AND, OR, NOT, and IF-THEN. The foundation of all formal reasoning.",
+      "importance": 9,
+      "difficulty": 1,
+      "flavor": "The Gateway of Reason — where truth and falsehood first learn to dance.",
+      "topics": [
+        {
+          "id": "logic.propositional.truth-tables",
+          "name": "Truth Tables & Connectives",
+          "description": "Systematic enumeration of all possible truth values for compound propositions built from AND, OR, NOT, IF-THEN, and IFF.",
+          "keywords": ["truth table", "conjunction", "disjunction", "negation", "implication"],
+          "importance": 9,
+          "difficulty": 1,
+          "flavor": "Every possible world, laid out in rows and columns."
+        },
+        {
+          "id": "logic.propositional.equivalence",
+          "name": "Logical Equivalence",
+          "description": "Two statements are logically equivalent when they share the same truth value in every possible scenario. De Morgan's laws and contrapositive reasoning.",
+          "keywords": ["equivalence", "tautology", "contradiction", "De Morgan", "contrapositive"],
+          "importance": 8,
+          "difficulty": 1,
+          "flavor": "Different words, same truth — the art of saying it another way."
+        },
+        {
+          "id": "logic.propositional.normal-forms",
+          "name": "Normal Forms (CNF/DNF)",
+          "description": "Canonical representations of logical formulas as conjunctions of disjunctions (CNF) or disjunctions of conjunctions (DNF).",
+          "keywords": ["CNF", "DNF", "conjunctive normal form", "disjunctive normal form", "clause"],
+          "importance": 7,
+          "difficulty": 2,
+          "flavor": "Every formula has a skeleton — strip away the flesh and find the bones."
+        },
+        {
+          "id": "logic.propositional.boolean-algebra",
+          "name": "Boolean Algebra",
+          "description": "An algebraic structure over {0, 1} with operations AND, OR, and NOT. The mathematical backbone of digital circuits and logic gates.",
+          "keywords": ["Boolean", "logic gate", "lattice", "complement", "duality"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Zeros and ones — the binary heartbeat of every machine ever built."
+        },
+        {
+          "id": "logic.propositional.natural-deduction",
+          "name": "Proof Systems (Natural Deduction)",
+          "description": "Formal systems for deriving conclusions from premises using introduction and elimination rules for each connective.",
+          "keywords": ["natural deduction", "inference rule", "derivation", "modus ponens", "proof"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Step by careful step, truth is built from the ground up."
+        }
+      ]
+    },
+    {
+      "id": "logic.predicate",
+      "name": "Predicate Logic",
+      "description": "Extending propositional logic with variables, predicates, and quantifiers to reason about objects and their properties.",
+      "importance": 9,
+      "difficulty": 2,
+      "flavor": "The Voice of Universes — where logic learns to speak about everything and anything.",
+      "topics": [
+        {
+          "id": "logic.predicate.quantifiers",
+          "name": "Quantifiers",
+          "description": "The universal quantifier (for all) and existential quantifier (there exists), enabling statements about collections of objects.",
+          "keywords": ["universal", "existential", "quantifier", "bound variable", "scope"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "For all stars in the sky, there exists one that shines just for you."
+        },
+        {
+          "id": "logic.predicate.first-order",
+          "name": "First-Order Logic",
+          "description": "A formal language with predicates, functions, constants, and quantifiers over individuals. The standard framework for mathematical reasoning.",
+          "keywords": ["first-order", "predicate", "interpretation", "satisfiability", "formula"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "The common tongue of mathematics — precise enough to leave no room for ambiguity."
+        },
+        {
+          "id": "logic.predicate.completeness",
+          "name": "Completeness Theorem",
+          "description": "Godel's completeness theorem: every logically valid first-order sentence is provable. Semantics and syntax perfectly align.",
+          "keywords": ["completeness", "Godel", "soundness", "validity", "provability"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Everything true can be proven — a rare and beautiful harmony."
+        },
+        {
+          "id": "logic.predicate.compactness",
+          "name": "Compactness Theorem",
+          "description": "A set of first-order sentences has a model if and only if every finite subset has a model. A bridge between the finite and the infinite.",
+          "keywords": ["compactness", "finite satisfiability", "model", "consistency", "ultraproduct"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Infinity bows to the finite — if every piece fits, the whole must too."
+        },
+        {
+          "id": "logic.predicate.model-theory",
+          "name": "Model Theory Basics",
+          "description": "The study of mathematical structures through the lens of formal languages. Interpretations, structures, and the relationship between syntax and semantics.",
+          "keywords": ["model", "structure", "interpretation", "elementary equivalence", "Lowenheim-Skolem"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Words shape worlds — and every sentence carves out the universes that obey it."
+        }
+      ]
+    },
+    {
+      "id": "logic.set-theory",
+      "name": "Set Theory",
+      "description": "The study of collections of objects and the axioms that govern them. The bedrock upon which all of modern mathematics is constructed.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Foundations — the soil from which every mathematical structure grows.",
+      "topics": [
+        {
+          "id": "logic.set-theory.zfc",
+          "name": "Naive Set Theory (ZFC Axioms)",
+          "description": "Sets as collections of objects, governed by the Zermelo-Fraenkel axioms with Choice. Union, intersection, power set, and the avoidance of paradoxes.",
+          "keywords": ["ZFC", "axiom", "set", "power set", "Russell paradox"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Gather things together — but carefully, lest the universe collapse into paradox."
+        },
+        {
+          "id": "logic.set-theory.relations",
+          "name": "Relations & Functions",
+          "description": "Binary relations, equivalence relations, partial orders, and functions as special relations. The structural glue of mathematics.",
+          "keywords": ["relation", "function", "equivalence", "partial order", "injection"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "How things connect — the invisible threads binding every mathematical object."
+        },
+        {
+          "id": "logic.set-theory.cardinality",
+          "name": "Cardinality & Countability",
+          "description": "Comparing the sizes of infinite sets. Cantor's diagonal argument, countable vs uncountable, and the continuum hypothesis.",
+          "keywords": ["cardinality", "countable", "uncountable", "diagonal argument", "continuum hypothesis"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Some infinities are bigger than others — Cantor dared to count the uncountable."
+        },
+        {
+          "id": "logic.set-theory.ordinals",
+          "name": "Ordinals & Cardinals",
+          "description": "Ordinal numbers extend counting beyond the finite. Cardinal numbers measure set sizes. Transfinite induction and arithmetic.",
+          "keywords": ["ordinal", "cardinal", "transfinite", "well-ordering", "aleph"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Numbers that reach past infinity, climbing an endless staircase of alephs."
+        },
+        {
+          "id": "logic.set-theory.axiom-of-choice",
+          "name": "Axiom of Choice",
+          "description": "The controversial axiom stating that a choice function exists for every collection of non-empty sets. Equivalent to Zorn's lemma and the well-ordering theorem.",
+          "keywords": ["axiom of choice", "Zorn's lemma", "well-ordering", "Banach-Tarski", "independence"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "You can always choose — even when the choices are infinite and invisible."
+        }
+      ]
+    },
+    {
+      "id": "logic.computability",
+      "name": "Computability",
+      "description": "The mathematical study of what can and cannot be computed. Turing machines, decidability, and the inherent limits of algorithms.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Edge of the Knowable — where mathematics meets the limits of mechanical thought.",
+      "topics": [
+        {
+          "id": "logic.computability.turing-machines",
+          "name": "Turing Machines",
+          "description": "An abstract model of computation with a tape, head, and finite set of states. The formal definition of what it means to compute.",
+          "keywords": ["Turing machine", "tape", "state", "transition", "Church-Turing thesis"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "A strip of tape, a reading head, and a handful of rules — enough to compute anything computable."
+        },
+        {
+          "id": "logic.computability.decidability",
+          "name": "Decidability",
+          "description": "A problem is decidable if a Turing machine can always halt with the correct yes/no answer. Separating the solvable from the unsolvable.",
+          "keywords": ["decidable", "undecidable", "decision problem", "algorithm", "semi-decidable"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Some questions have no algorithm — no matter how clever you are."
+        },
+        {
+          "id": "logic.computability.halting-problem",
+          "name": "Halting Problem",
+          "description": "The undecidable problem of determining whether a given Turing machine halts on a given input. Proven by diagonalization.",
+          "keywords": ["halting problem", "undecidable", "diagonalization", "self-reference", "reduction"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Will it stop? The question no machine can answer about itself."
+        },
+        {
+          "id": "logic.computability.recursive-functions",
+          "name": "Recursive Functions",
+          "description": "The class of functions computable by Turing machines. Primitive recursive and mu-recursive functions as an alternative formalization of computability.",
+          "keywords": ["recursive", "primitive recursive", "mu-recursive", "composition", "minimization"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Functions that call themselves into existence, spiraling down to an answer."
+        },
+        {
+          "id": "logic.computability.incompleteness",
+          "name": "Godel's Incompleteness",
+          "description": "Any consistent formal system strong enough to express arithmetic contains true statements it cannot prove. The inherent limitations of formal reasoning.",
+          "keywords": ["incompleteness", "Godel", "self-reference", "consistency", "arithmetic"],
+          "importance": 10,
+          "difficulty": 5,
+          "flavor": "Truth outruns proof — there will always be stars beyond the reach of any telescope."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "logic.propositional.truth-tables", "to": "logic.propositional.equivalence", "type": "prerequisite" },
+    { "from": "logic.propositional.equivalence", "to": "logic.propositional.normal-forms", "type": "prerequisite" },
+    { "from": "logic.propositional.truth-tables", "to": "logic.propositional.boolean-algebra", "type": "prerequisite" },
+    { "from": "logic.propositional.equivalence", "to": "logic.propositional.natural-deduction", "type": "prerequisite" },
+    { "from": "logic.propositional.truth-tables", "to": "logic.predicate.quantifiers", "type": "prerequisite" },
+    { "from": "logic.propositional.natural-deduction", "to": "logic.predicate.first-order", "type": "prerequisite" },
+    { "from": "logic.predicate.quantifiers", "to": "logic.predicate.first-order", "type": "prerequisite" },
+    { "from": "logic.predicate.first-order", "to": "logic.predicate.completeness", "type": "prerequisite" },
+    { "from": "logic.predicate.first-order", "to": "logic.predicate.compactness", "type": "prerequisite" },
+    { "from": "logic.predicate.completeness", "to": "logic.predicate.model-theory", "type": "prerequisite" },
+    { "from": "logic.predicate.compactness", "to": "logic.predicate.model-theory", "type": "prepares" },
+    { "from": "logic.propositional.truth-tables", "to": "logic.set-theory.zfc", "type": "prepares" },
+    { "from": "logic.set-theory.zfc", "to": "logic.set-theory.relations", "type": "prerequisite" },
+    { "from": "logic.set-theory.relations", "to": "logic.set-theory.cardinality", "type": "prerequisite" },
+    { "from": "logic.set-theory.cardinality", "to": "logic.set-theory.ordinals", "type": "prerequisite" },
+    { "from": "logic.set-theory.ordinals", "to": "logic.set-theory.axiom-of-choice", "type": "prerequisite" },
+    { "from": "logic.predicate.first-order", "to": "logic.computability.turing-machines", "type": "prepares" },
+    { "from": "logic.computability.turing-machines", "to": "logic.computability.decidability", "type": "prerequisite" },
+    { "from": "logic.computability.decidability", "to": "logic.computability.halting-problem", "type": "prerequisite" },
+    { "from": "logic.computability.turing-machines", "to": "logic.computability.recursive-functions", "type": "prerequisite" },
+    { "from": "logic.computability.halting-problem", "to": "logic.computability.incompleteness", "type": "prepares" },
+    { "from": "logic.predicate.completeness", "to": "logic.computability.incompleteness", "type": "prepares" }
+  ]
+}

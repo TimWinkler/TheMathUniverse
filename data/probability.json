@@ -1,0 +1,248 @@
+{
+  "domain": "probability",
+  "subdomains": [
+    {
+      "id": "probability.foundations",
+      "name": "Probability Foundations",
+      "description": "The axiomatic framework of probability. Sample spaces, events, and the rules that govern chance.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The First Roll — where randomness meets rigor, and uncertainty finds its laws.",
+      "topics": [
+        {
+          "id": "probability.foundations.sample-spaces",
+          "name": "Sample Spaces & Events",
+          "description": "The set of all possible outcomes and the events we care about. The building blocks of probability.",
+          "keywords": ["sample space", "event", "outcome", "complement", "union"],
+          "importance": 10,
+          "difficulty": 1,
+          "flavor": "Every random process begins with a question: what could possibly happen?"
+        },
+        {
+          "id": "probability.foundations.axioms",
+          "name": "Probability Axioms",
+          "description": "Kolmogorov's axioms: non-negativity, normalization, and countable additivity. The foundation of modern probability.",
+          "keywords": ["axiom", "Kolmogorov", "measure", "sigma-algebra", "probability space"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Three simple rules that tame the chaos of randomness."
+        },
+        {
+          "id": "probability.foundations.conditional",
+          "name": "Conditional Probability",
+          "description": "The probability of an event given that another event has occurred. Bayes' theorem and independence.",
+          "keywords": ["conditional", "Bayes", "independence", "prior", "posterior"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Knowing something changes everything — or sometimes, nothing at all."
+        },
+        {
+          "id": "probability.foundations.counting",
+          "name": "Counting Methods",
+          "description": "Permutations, combinations, and the multiplication principle applied to probability calculations.",
+          "keywords": ["permutation", "combination", "factorial", "binomial coefficient", "counting"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Before you can find the odds, you must count the possibilities."
+        },
+        {
+          "id": "probability.foundations.law-of-total",
+          "name": "Law of Total Probability",
+          "description": "Partitioning sample spaces to compute probabilities. The bridge between conditional and unconditional probability.",
+          "keywords": ["partition", "total probability", "marginalization", "law", "decomposition"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Break the whole into parts, and the answer reveals itself."
+        }
+      ]
+    },
+    {
+      "id": "probability.distributions",
+      "name": "Probability Distributions",
+      "description": "The shapes of randomness. Discrete and continuous distributions that model real-world phenomena.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Gallery of Chance — each distribution a portrait of a different kind of randomness.",
+      "topics": [
+        {
+          "id": "probability.distributions.discrete",
+          "name": "Discrete Distributions",
+          "description": "Bernoulli, binomial, Poisson, geometric. Distributions for countable outcomes.",
+          "keywords": ["Bernoulli", "binomial", "Poisson", "geometric", "PMF"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Coins, dice, and counts — the discrete face of randomness."
+        },
+        {
+          "id": "probability.distributions.continuous",
+          "name": "Continuous Distributions",
+          "description": "Normal, exponential, uniform, gamma. Distributions for measurements on a continuum.",
+          "keywords": ["normal", "exponential", "uniform", "gamma", "PDF"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "The bell curve and its cousins — smooth landscapes of probability."
+        },
+        {
+          "id": "probability.distributions.expectation",
+          "name": "Expected Value & Variance",
+          "description": "The mean and spread of a random variable. Moments that capture the essence of a distribution.",
+          "keywords": ["expected value", "variance", "standard deviation", "moment", "mean"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "What do you expect? And how surprised should you be?"
+        },
+        {
+          "id": "probability.distributions.joint",
+          "name": "Joint Distributions",
+          "description": "Multiple random variables together. Marginal distributions, covariance, and correlation.",
+          "keywords": ["joint", "marginal", "covariance", "correlation", "bivariate"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "When two random variables dance together, their relationship matters."
+        },
+        {
+          "id": "probability.distributions.moment-generating",
+          "name": "Moment Generating Functions",
+          "description": "A powerful tool for characterizing distributions. Transforms that encode all moments.",
+          "keywords": ["MGF", "moment", "generating function", "characteristic function", "transform"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "A single function that remembers everything about a distribution."
+        }
+      ]
+    },
+    {
+      "id": "probability.statistics",
+      "name": "Statistical Inference",
+      "description": "Drawing conclusions from data. Estimation, hypothesis testing, and confidence intervals.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Observatory — where data meets theory, and evidence guides belief.",
+      "topics": [
+        {
+          "id": "probability.statistics.estimation",
+          "name": "Point Estimation",
+          "description": "Maximum likelihood, method of moments, and properties of estimators: bias, consistency, efficiency.",
+          "keywords": ["MLE", "estimator", "bias", "consistency", "efficiency"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Guessing the truth from a sample — the art of estimation."
+        },
+        {
+          "id": "probability.statistics.confidence",
+          "name": "Confidence Intervals",
+          "description": "Ranges of plausible values for parameters. Constructing and interpreting interval estimates.",
+          "keywords": ["confidence interval", "margin of error", "coverage", "pivotal quantity", "t-distribution"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Not a single guess, but a range of honest uncertainty."
+        },
+        {
+          "id": "probability.statistics.hypothesis",
+          "name": "Hypothesis Testing",
+          "description": "Testing claims about populations. Null and alternative hypotheses, p-values, and test statistics.",
+          "keywords": ["null hypothesis", "p-value", "significance", "test statistic", "type I error"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "The court of statistics — where data testifies for or against a claim."
+        },
+        {
+          "id": "probability.statistics.regression",
+          "name": "Regression Analysis",
+          "description": "Modeling relationships between variables. Least squares, residuals, and prediction.",
+          "keywords": ["regression", "least squares", "residual", "R-squared", "prediction"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Drawing the best line through a cloud of points."
+        },
+        {
+          "id": "probability.statistics.bayesian",
+          "name": "Bayesian Inference",
+          "description": "Updating beliefs with data. Prior distributions, likelihood, and posterior inference.",
+          "keywords": ["Bayesian", "prior", "posterior", "likelihood", "conjugate"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Belief evolves — each new observation refines what we think we know."
+        }
+      ]
+    },
+    {
+      "id": "probability.stochastic",
+      "name": "Stochastic Processes",
+      "description": "Random phenomena evolving over time. From random walks to Markov chains.",
+      "importance": 8,
+      "difficulty": 4,
+      "flavor": "The River of Chance — randomness in motion, flowing through time.",
+      "topics": [
+        {
+          "id": "probability.stochastic.random-walks",
+          "name": "Random Walks",
+          "description": "Steps in random directions. The drunkard's walk and its surprising properties.",
+          "keywords": ["random walk", "step", "return probability", "recurrence", "gambler's ruin"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "One step at a time, going nowhere in particular — yet patterns emerge."
+        },
+        {
+          "id": "probability.stochastic.markov-chains",
+          "name": "Markov Chains",
+          "description": "Memoryless random processes. Transition matrices, stationary distributions, and ergodicity.",
+          "keywords": ["Markov", "transition matrix", "stationary", "ergodic", "absorbing"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "The future depends only on the present — the past is forgotten."
+        },
+        {
+          "id": "probability.stochastic.poisson-process",
+          "name": "Poisson Processes",
+          "description": "Random events occurring in continuous time. Arrivals, waiting times, and intensity.",
+          "keywords": ["Poisson process", "arrival", "exponential", "intensity", "memoryless"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Phone calls, earthquakes, bus arrivals — events scattered randomly in time."
+        },
+        {
+          "id": "probability.stochastic.brownian-motion",
+          "name": "Brownian Motion",
+          "description": "Continuous random movement. The mathematical model of diffusion and stock prices.",
+          "keywords": ["Brownian motion", "Wiener process", "diffusion", "continuous", "Ito"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "Pollen grains jittering in water — randomness made continuous and beautiful."
+        },
+        {
+          "id": "probability.stochastic.martingales",
+          "name": "Martingales",
+          "description": "Fair game processes. Sequences where the expected future value equals the present value.",
+          "keywords": ["martingale", "fair game", "stopping time", "optional stopping", "submartingale"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "A perfectly fair game — no strategy can beat pure chance."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "probability.foundations.sample-spaces", "to": "probability.foundations.axioms", "type": "prerequisite" },
+    { "from": "probability.foundations.axioms", "to": "probability.foundations.conditional", "type": "prerequisite" },
+    { "from": "probability.foundations.sample-spaces", "to": "probability.foundations.counting", "type": "prerequisite" },
+    { "from": "probability.foundations.conditional", "to": "probability.foundations.law-of-total", "type": "prerequisite" },
+    { "from": "probability.foundations.counting", "to": "probability.distributions.discrete", "type": "prerequisite" },
+    { "from": "probability.foundations.axioms", "to": "probability.distributions.discrete", "type": "prerequisite" },
+    { "from": "probability.distributions.discrete", "to": "probability.distributions.continuous", "type": "prerequisite" },
+    { "from": "probability.distributions.discrete", "to": "probability.distributions.expectation", "type": "prerequisite" },
+    { "from": "probability.distributions.continuous", "to": "probability.distributions.joint", "type": "prerequisite" },
+    { "from": "probability.distributions.expectation", "to": "probability.distributions.moment-generating", "type": "prerequisite" },
+    { "from": "probability.distributions.expectation", "to": "probability.statistics.estimation", "type": "prerequisite" },
+    { "from": "probability.statistics.estimation", "to": "probability.statistics.confidence", "type": "prerequisite" },
+    { "from": "probability.statistics.estimation", "to": "probability.statistics.hypothesis", "type": "prerequisite" },
+    { "from": "probability.distributions.joint", "to": "probability.statistics.regression", "type": "prerequisite" },
+    { "from": "probability.foundations.conditional", "to": "probability.statistics.bayesian", "type": "prerequisite" },
+    { "from": "probability.statistics.estimation", "to": "probability.statistics.bayesian", "type": "prepares" },
+    { "from": "probability.distributions.discrete", "to": "probability.stochastic.random-walks", "type": "prerequisite" },
+    { "from": "probability.stochastic.random-walks", "to": "probability.stochastic.markov-chains", "type": "prerequisite" },
+    { "from": "probability.distributions.continuous", "to": "probability.stochastic.poisson-process", "type": "prerequisite" },
+    { "from": "probability.stochastic.random-walks", "to": "probability.stochastic.brownian-motion", "type": "prerequisite" },
+    { "from": "probability.stochastic.markov-chains", "to": "probability.stochastic.martingales", "type": "prepares" }
+  ]
+}

@@ -1,0 +1,246 @@
+{
+  "domain": "combinatorics",
+  "subdomains": [
+    {
+      "id": "combinatorics.enumerative",
+      "name": "Enumerative Combinatorics",
+      "description": "The art of counting. How many ways can something happen? Exact formulas and generating functions.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Counting House — where even infinity can be tallied, one arrangement at a time.",
+      "topics": [
+        {
+          "id": "combinatorics.enumerative.permutations",
+          "name": "Permutations & Combinations",
+          "description": "Ordered and unordered selections. The binomial coefficient and its combinatorial identity.",
+          "keywords": ["permutation", "combination", "binomial coefficient", "Pascal's triangle", "selection"],
+          "importance": 10,
+          "difficulty": 1,
+          "flavor": "How many ways to arrange, to choose, to order? The first questions of counting."
+        },
+        {
+          "id": "combinatorics.enumerative.pigeonhole",
+          "name": "Pigeonhole Principle",
+          "description": "If more pigeons than holes, some hole has two pigeons. Simple but devastatingly powerful.",
+          "keywords": ["pigeonhole", "Dirichlet", "existence proof", "average argument", "extremal"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The simplest idea in combinatorics — and one of the most powerful."
+        },
+        {
+          "id": "combinatorics.enumerative.inclusion-exclusion",
+          "name": "Inclusion-Exclusion",
+          "description": "Counting by overcounting and correcting. The alternating sum formula for unions of sets.",
+          "keywords": ["inclusion-exclusion", "overcounting", "derangement", "sieve", "alternating sum"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Add, subtract, add, subtract — the rhythmic dance of precise counting."
+        },
+        {
+          "id": "combinatorics.enumerative.generating-functions",
+          "name": "Generating Functions",
+          "description": "Encoding sequences as power series. Ordinary and exponential generating functions.",
+          "keywords": ["generating function", "power series", "OGF", "EGF", "coefficient extraction"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Packaging a whole sequence into a single function — algebra does the counting for you."
+        },
+        {
+          "id": "combinatorics.enumerative.catalan-numbers",
+          "name": "Catalan Numbers",
+          "description": "The sequence that counts balanced parentheses, binary trees, triangulations, and hundreds more.",
+          "keywords": ["Catalan number", "binary tree", "parenthesization", "lattice path", "ballot"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "One sequence, hundreds of faces — the Catalan numbers appear everywhere."
+        }
+      ]
+    },
+    {
+      "id": "combinatorics.graph-theory",
+      "name": "Graph Theory",
+      "description": "The study of networks. Vertices, edges, paths, and the deep structure of connections.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Web of Connections — where dots and lines reveal the hidden structure of everything.",
+      "topics": [
+        {
+          "id": "combinatorics.graph-theory.basics",
+          "name": "Graphs & Connectivity",
+          "description": "Vertices, edges, degree, paths, cycles. The fundamental language of discrete structures.",
+          "keywords": ["graph", "vertex", "edge", "degree", "connected"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Dots and lines — the simplest possible mathematical objects, yet infinitely rich."
+        },
+        {
+          "id": "combinatorics.graph-theory.trees",
+          "name": "Trees & Forests",
+          "description": "Connected acyclic graphs. Spanning trees, Prufer sequences, and tree counting.",
+          "keywords": ["tree", "spanning tree", "leaf", "Prufer sequence", "forest"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Graphs stripped to their essence — no loops, no redundancy, pure connection."
+        },
+        {
+          "id": "combinatorics.graph-theory.coloring",
+          "name": "Graph Coloring",
+          "description": "Assigning colors so adjacent vertices differ. The chromatic number and the four-color theorem.",
+          "keywords": ["coloring", "chromatic number", "four-color", "planar", "chromatic polynomial"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "How few colors do you need? A question that stumped mathematicians for over a century."
+        },
+        {
+          "id": "combinatorics.graph-theory.matchings",
+          "name": "Matchings & Flows",
+          "description": "Pairing vertices optimally. Hall's theorem, network flows, and the max-flow min-cut theorem.",
+          "keywords": ["matching", "Hall's theorem", "network flow", "max-flow", "min-cut"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Perfect pairings and optimal flows — when connections become resources."
+        },
+        {
+          "id": "combinatorics.graph-theory.planarity",
+          "name": "Planar Graphs",
+          "description": "Graphs that can be drawn without crossings. Euler's formula and Kuratowski's theorem.",
+          "keywords": ["planar", "Euler formula", "Kuratowski", "dual graph", "embedding"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Can you draw it flat? The geometry of graphs meets topology."
+        }
+      ]
+    },
+    {
+      "id": "combinatorics.extremal",
+      "name": "Extremal Combinatorics",
+      "description": "How large or small can a structure be while satisfying certain properties? Ramsey theory and Turan-type problems.",
+      "importance": 8,
+      "difficulty": 4,
+      "flavor": "The Edge of Possibility — pushing structures to their limits.",
+      "topics": [
+        {
+          "id": "combinatorics.extremal.ramsey",
+          "name": "Ramsey Theory",
+          "description": "Complete disorder is impossible. In any large enough structure, patterns must emerge.",
+          "keywords": ["Ramsey number", "party problem", "van der Waerden", "Hales-Jewett", "unavoidable"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Order from chaos — guaranteed. The only question is: how much chaos do you need?"
+        },
+        {
+          "id": "combinatorics.extremal.turan",
+          "name": "Turan-Type Problems",
+          "description": "Maximum edges in a graph with no forbidden subgraph. The extremal graph theory of Turan.",
+          "keywords": ["Turan", "extremal graph", "forbidden subgraph", "density", "Kruskal-Katona"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "How many edges can you have without creating a triangle? A clique? Any pattern?"
+        },
+        {
+          "id": "combinatorics.extremal.probabilistic-method",
+          "name": "Probabilistic Method",
+          "description": "Proving existence by showing positive probability. Erdos's revolutionary technique.",
+          "keywords": ["probabilistic method", "Erdos", "Lovasz Local Lemma", "random graph", "existence"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "If something has a positive chance of existing, it must exist. Erdos's magic trick."
+        },
+        {
+          "id": "combinatorics.extremal.szemerédi",
+          "name": "Szemeredi's Theorem",
+          "description": "Any dense set of integers contains arbitrarily long arithmetic progressions. A monumental result.",
+          "keywords": ["Szemeredi", "arithmetic progression", "regularity lemma", "density", "additive"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "Hide among the integers all you want — patterns will find you."
+        },
+        {
+          "id": "combinatorics.extremal.additive",
+          "name": "Additive Combinatorics",
+          "description": "The combinatorics of addition. Sumsets, Freiman's theorem, and the structure of sum-free sets.",
+          "keywords": ["sumset", "Freiman", "sum-free", "Plunnecke", "additive energy"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "What happens when you add sets of numbers together? Surprisingly structured chaos."
+        }
+      ]
+    },
+    {
+      "id": "combinatorics.design",
+      "name": "Combinatorial Design",
+      "description": "Balanced arrangements and structured configurations. Latin squares, block designs, and finite geometry.",
+      "importance": 7,
+      "difficulty": 3,
+      "flavor": "The Architect's Workshop — where perfect balance is built from mathematical blueprints.",
+      "topics": [
+        {
+          "id": "combinatorics.design.latin-squares",
+          "name": "Latin Squares",
+          "description": "n×n arrays where each symbol appears once per row and column. Sudoku generalized.",
+          "keywords": ["Latin square", "orthogonal", "Sudoku", "quasigroup", "transversal"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Every row, every column, every symbol exactly once — perfect balance."
+        },
+        {
+          "id": "combinatorics.design.block-designs",
+          "name": "Block Designs",
+          "description": "Collections of subsets with prescribed intersection properties. Steiner systems and BIBDs.",
+          "keywords": ["block design", "BIBD", "Steiner system", "balanced", "resolvable"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Arranging elements into blocks with perfect symmetry."
+        },
+        {
+          "id": "combinatorics.design.finite-geometry",
+          "name": "Finite Geometry",
+          "description": "Geometry with finitely many points. Projective and affine planes over finite fields.",
+          "keywords": ["finite geometry", "projective plane", "affine plane", "Fano plane", "order"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "A universe with only a handful of points — yet all of geometry still works."
+        },
+        {
+          "id": "combinatorics.design.codes",
+          "name": "Error-Correcting Codes",
+          "description": "Encoding information to detect and correct errors. Hamming codes, Reed-Solomon, and bounds.",
+          "keywords": ["error-correcting", "Hamming", "Reed-Solomon", "minimum distance", "parity"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Every message you send is protected by the mathematics of combinatorial design."
+        },
+        {
+          "id": "combinatorics.design.matroids",
+          "name": "Matroids",
+          "description": "Abstract independence structures generalizing linear independence and forests in graphs.",
+          "keywords": ["matroid", "independent set", "rank", "circuit", "greedy algorithm"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "The common essence of independence — in graphs, vectors, and beyond."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "combinatorics.enumerative.permutations", "to": "combinatorics.enumerative.pigeonhole", "type": "prerequisite" },
+    { "from": "combinatorics.enumerative.permutations", "to": "combinatorics.enumerative.inclusion-exclusion", "type": "prerequisite" },
+    { "from": "combinatorics.enumerative.inclusion-exclusion", "to": "combinatorics.enumerative.generating-functions", "type": "prerequisite" },
+    { "from": "combinatorics.enumerative.generating-functions", "to": "combinatorics.enumerative.catalan-numbers", "type": "prerequisite" },
+    { "from": "combinatorics.enumerative.permutations", "to": "combinatorics.graph-theory.basics", "type": "prerequisite" },
+    { "from": "combinatorics.graph-theory.basics", "to": "combinatorics.graph-theory.trees", "type": "prerequisite" },
+    { "from": "combinatorics.graph-theory.basics", "to": "combinatorics.graph-theory.coloring", "type": "prerequisite" },
+    { "from": "combinatorics.graph-theory.basics", "to": "combinatorics.graph-theory.matchings", "type": "prerequisite" },
+    { "from": "combinatorics.graph-theory.basics", "to": "combinatorics.graph-theory.planarity", "type": "prerequisite" },
+    { "from": "combinatorics.enumerative.pigeonhole", "to": "combinatorics.extremal.ramsey", "type": "prerequisite" },
+    { "from": "combinatorics.graph-theory.basics", "to": "combinatorics.extremal.turan", "type": "prerequisite" },
+    { "from": "combinatorics.extremal.ramsey", "to": "combinatorics.extremal.probabilistic-method", "type": "prepares" },
+    { "from": "combinatorics.extremal.turan", "to": "combinatorics.extremal.szemerédi", "type": "prepares" },
+    { "from": "combinatorics.enumerative.generating-functions", "to": "combinatorics.extremal.additive", "type": "prepares" },
+    { "from": "combinatorics.enumerative.permutations", "to": "combinatorics.design.latin-squares", "type": "prerequisite" },
+    { "from": "combinatorics.design.latin-squares", "to": "combinatorics.design.block-designs", "type": "prerequisite" },
+    { "from": "combinatorics.design.block-designs", "to": "combinatorics.design.finite-geometry", "type": "prerequisite" },
+    { "from": "combinatorics.design.block-designs", "to": "combinatorics.design.codes", "type": "prerequisite" },
+    { "from": "combinatorics.graph-theory.trees", "to": "combinatorics.design.matroids", "type": "prepares" }
+  ]
+}

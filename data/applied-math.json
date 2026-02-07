@@ -1,0 +1,307 @@
+{
+  "domain": "applied-math",
+  "subdomains": [
+    {
+      "id": "applied-math.numerical",
+      "name": "Numerical Analysis",
+      "description": "Algorithms for approximating solutions to continuous mathematical problems. The bridge between abstract mathematics and computable answers.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Approximation Engine — where infinite precision meets finite machines.",
+      "topics": [
+        {
+          "id": "applied-math.numerical.floating-point",
+          "name": "Floating Point Arithmetic",
+          "description": "Representing real numbers in finite binary formats. Understanding rounding errors, machine epsilon, and the IEEE 754 standard.",
+          "keywords": ["floating point", "rounding error", "machine epsilon", "IEEE 754", "precision"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "The first lie a computer tells — that it knows a real number."
+        },
+        {
+          "id": "applied-math.numerical.root-finding",
+          "name": "Root Finding",
+          "description": "Locating zeros of functions using iterative methods. Bisection, Newton-Raphson, and secant methods.",
+          "keywords": ["bisection", "Newton-Raphson", "secant method", "convergence", "iteration"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Hunting the invisible crossing point where a function touches zero."
+        },
+        {
+          "id": "applied-math.numerical.interpolation",
+          "name": "Interpolation",
+          "description": "Constructing new data points within a range of known values. Lagrange, Newton, and spline interpolation.",
+          "keywords": ["interpolation", "Lagrange", "spline", "polynomial fitting", "Newton form"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Filling the gaps between the stars with curves of educated guessing."
+        },
+        {
+          "id": "applied-math.numerical.integration",
+          "name": "Numerical Integration",
+          "description": "Approximating definite integrals using discrete sums. Trapezoidal rule, Simpson's rule, and Gaussian quadrature.",
+          "keywords": ["quadrature", "trapezoidal rule", "Simpson's rule", "Gaussian quadrature", "error bound"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Slicing the infinite into tiny trapezoids — and somehow getting the right answer."
+        },
+        {
+          "id": "applied-math.numerical.linear-solvers",
+          "name": "Linear Solvers",
+          "description": "Algorithms for solving large systems of linear equations. Gaussian elimination, LU decomposition, and iterative methods.",
+          "keywords": ["Gaussian elimination", "LU decomposition", "Jacobi method", "conjugate gradient", "pivoting"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "A million equations, a million unknowns — and a machine that never tires of solving them."
+        }
+      ]
+    },
+    {
+      "id": "applied-math.modeling",
+      "name": "Mathematical Modeling",
+      "description": "Translating real-world phenomena into mathematical frameworks. The art of capturing complexity in equations.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Cartographer's Workshop — mapping the messy real world onto clean equations.",
+      "topics": [
+        {
+          "id": "applied-math.modeling.dimensional",
+          "name": "Dimensional Analysis",
+          "description": "Using physical dimensions to check equations and derive relationships. The Buckingham Pi theorem and scaling laws.",
+          "keywords": ["dimension", "Buckingham Pi", "scaling", "units", "nondimensionalization"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "When the units don't match, the universe is telling you something went wrong."
+        },
+        {
+          "id": "applied-math.modeling.population",
+          "name": "Population Models",
+          "description": "Modeling growth, decay, and competition in biological populations. Exponential, logistic, and Lotka-Volterra models.",
+          "keywords": ["logistic growth", "carrying capacity", "Lotka-Volterra", "exponential growth", "predator-prey"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Rabbits multiply, foxes follow — the eternal dance written in differential equations."
+        },
+        {
+          "id": "applied-math.modeling.epidemiological",
+          "name": "Epidemiological Models (SIR)",
+          "description": "Compartmental models for disease spread. Susceptible-Infected-Recovered dynamics, basic reproduction number R0, and herd immunity.",
+          "keywords": ["SIR model", "R0", "herd immunity", "compartmental model", "epidemic curve"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Three letters — S, I, R — and the fate of civilizations hangs in their balance."
+        },
+        {
+          "id": "applied-math.modeling.game-theory",
+          "name": "Game Theory",
+          "description": "Mathematical study of strategic interaction. Nash equilibria, zero-sum games, and the prisoner's dilemma.",
+          "keywords": ["Nash equilibrium", "zero-sum", "prisoner's dilemma", "payoff matrix", "dominant strategy"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Every choice echoes through every other player's choices — strategy is mathematics made personal."
+        },
+        {
+          "id": "applied-math.modeling.decision",
+          "name": "Decision Theory",
+          "description": "Formal frameworks for rational choice under uncertainty. Expected utility, Bayesian decision-making, and risk analysis.",
+          "keywords": ["expected utility", "Bayesian", "risk", "rational choice", "loss function"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "When the future is uncertain, mathematics whispers which gamble to take."
+        }
+      ]
+    },
+    {
+      "id": "applied-math.signals",
+      "name": "Signal Processing",
+      "description": "Analyzing, modifying, and synthesizing signals. Transforming raw data into meaningful information through mathematical operations.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Frequency Forge — where time-domain chaos becomes frequency-domain clarity.",
+      "topics": [
+        {
+          "id": "applied-math.signals.fourier",
+          "name": "Fourier Transform",
+          "description": "Decomposing functions into constituent frequencies. The continuous Fourier transform and its inverse.",
+          "keywords": ["Fourier transform", "frequency domain", "spectrum", "inverse transform", "sinusoid"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Every signal is a secret symphony — Fourier taught us to hear each instrument."
+        },
+        {
+          "id": "applied-math.signals.dft",
+          "name": "Discrete Fourier Transform",
+          "description": "The Fourier transform for sampled data. The FFT algorithm and its O(n log n) revolution in computation.",
+          "keywords": ["DFT", "FFT", "frequency bin", "spectral leakage", "windowing"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Cooley and Tukey's trick — turning an ocean of multiplications into a gentle stream."
+        },
+        {
+          "id": "applied-math.signals.wavelets",
+          "name": "Wavelets",
+          "description": "Localized wave-like functions for multi-resolution analysis. Haar, Daubechies, and the wavelet transform.",
+          "keywords": ["wavelet", "multi-resolution", "Haar", "Daubechies", "scaling function"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Where Fourier sees forever, wavelets zoom in — time and frequency, captured together."
+        },
+        {
+          "id": "applied-math.signals.sampling",
+          "name": "Sampling Theory",
+          "description": "Converting continuous signals to discrete sequences without information loss. The Nyquist-Shannon sampling theorem and aliasing.",
+          "keywords": ["Nyquist", "sampling rate", "aliasing", "Shannon theorem", "reconstruction"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Sample fast enough and you lose nothing — sample too slowly and ghosts appear."
+        },
+        {
+          "id": "applied-math.signals.filtering",
+          "name": "Filtering",
+          "description": "Selectively modifying signal components. Low-pass, high-pass, band-pass filters and their frequency responses.",
+          "keywords": ["low-pass", "high-pass", "band-pass", "impulse response", "transfer function"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Carving away noise to reveal the signal hiding underneath."
+        }
+      ]
+    },
+    {
+      "id": "applied-math.ml",
+      "name": "Machine Learning",
+      "description": "Algorithms that learn patterns from data to make predictions and decisions. Statistics and optimization meeting computation.",
+      "importance": 10,
+      "difficulty": 4,
+      "flavor": "The Learning Nebula — where data becomes knowledge and patterns emerge from chaos.",
+      "topics": [
+        {
+          "id": "applied-math.ml.regression",
+          "name": "Linear Regression & Classification",
+          "description": "Fitting linear models to data for prediction and categorization. Least squares, logistic regression, and the bias-variance tradeoff.",
+          "keywords": ["regression", "least squares", "logistic regression", "bias-variance", "classification"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Draw the best straight line through scattered stars — the simplest prediction there is."
+        },
+        {
+          "id": "applied-math.ml.neural-networks",
+          "name": "Neural Networks",
+          "description": "Layered networks of nonlinear transformations trained by backpropagation. Universal function approximators.",
+          "keywords": ["neural network", "backpropagation", "activation function", "gradient descent", "deep learning"],
+          "importance": 10,
+          "difficulty": 4,
+          "flavor": "Layers upon layers of simple math — and somehow, understanding emerges."
+        },
+        {
+          "id": "applied-math.ml.svm",
+          "name": "Support Vector Machines",
+          "description": "Finding optimal hyperplanes to separate classes. Margin maximization, kernel trick, and soft margins.",
+          "keywords": ["SVM", "hyperplane", "margin", "kernel trick", "support vector"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "The widest gap between two armies — geometry as the art of separation."
+        },
+        {
+          "id": "applied-math.ml.clustering",
+          "name": "Clustering",
+          "description": "Discovering natural groupings in unlabeled data. K-means, hierarchical clustering, and density-based methods.",
+          "keywords": ["k-means", "hierarchical clustering", "DBSCAN", "centroid", "unsupervised learning"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "No labels, no teacher — just data whispering its own secret categories."
+        },
+        {
+          "id": "applied-math.ml.dimensionality",
+          "name": "Dimensionality Reduction",
+          "description": "Compressing high-dimensional data while preserving structure. PCA, t-SNE, and the curse of dimensionality.",
+          "keywords": ["PCA", "t-SNE", "curse of dimensionality", "variance", "embedding"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "A thousand dimensions collapse into two — and the hidden shape of data is revealed."
+        }
+      ]
+    },
+    {
+      "id": "applied-math.information",
+      "name": "Information Theory",
+      "description": "The mathematical study of quantifying, storing, and communicating information. Shannon's framework for the limits of data transmission.",
+      "importance": 9,
+      "difficulty": 4,
+      "flavor": "The Codex Vault — where bits and entropy define the very meaning of information.",
+      "topics": [
+        {
+          "id": "applied-math.information.entropy",
+          "name": "Entropy",
+          "description": "Measuring uncertainty and information content. Shannon entropy, cross-entropy, and the connection to thermodynamics.",
+          "keywords": ["Shannon entropy", "uncertainty", "information content", "cross-entropy", "surprise"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "The measure of what you don't know — and what it costs to find out."
+        },
+        {
+          "id": "applied-math.information.mutual",
+          "name": "Mutual Information",
+          "description": "Quantifying shared information between two random variables. Conditional entropy and the data processing inequality.",
+          "keywords": ["mutual information", "conditional entropy", "joint distribution", "data processing inequality", "dependence"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "How much does knowing one thing tell you about another? This number answers exactly."
+        },
+        {
+          "id": "applied-math.information.channel",
+          "name": "Channel Capacity",
+          "description": "The maximum rate of reliable communication over a noisy channel. Shannon's channel coding theorem and its profound implications.",
+          "keywords": ["channel capacity", "Shannon limit", "noisy channel", "error correction", "coding theorem"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Even through noise, there is a speed limit for truth — Shannon found it."
+        },
+        {
+          "id": "applied-math.information.source-coding",
+          "name": "Source Coding",
+          "description": "Efficient representation of information sources. Huffman coding, arithmetic coding, and the source coding theorem.",
+          "keywords": ["Huffman coding", "arithmetic coding", "source coding theorem", "prefix code", "code length"],
+          "importance": 8,
+          "difficulty": 4,
+          "flavor": "Speak more with fewer bits — the elegant mathematics of saying just enough."
+        },
+        {
+          "id": "applied-math.information.compression",
+          "name": "Data Compression",
+          "description": "Reducing data size while preserving essential content. Lossless and lossy compression, rate-distortion theory.",
+          "keywords": ["lossless", "lossy", "rate-distortion", "compression ratio", "redundancy"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "Squeezing the universe into a smaller box — and deciding what can be lost."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "applied-math.numerical.floating-point", "to": "applied-math.numerical.root-finding", "type": "prerequisite" },
+    { "from": "applied-math.numerical.floating-point", "to": "applied-math.numerical.interpolation", "type": "prerequisite" },
+    { "from": "applied-math.numerical.interpolation", "to": "applied-math.numerical.integration", "type": "prerequisite" },
+    { "from": "applied-math.numerical.floating-point", "to": "applied-math.numerical.linear-solvers", "type": "prerequisite" },
+    { "from": "applied-math.numerical.root-finding", "to": "applied-math.numerical.integration", "type": "prepares" },
+    { "from": "applied-math.modeling.dimensional", "to": "applied-math.modeling.population", "type": "prerequisite" },
+    { "from": "applied-math.modeling.population", "to": "applied-math.modeling.epidemiological", "type": "prerequisite" },
+    { "from": "applied-math.modeling.game-theory", "to": "applied-math.modeling.decision", "type": "prerequisite" },
+    { "from": "applied-math.modeling.dimensional", "to": "applied-math.modeling.game-theory", "type": "prepares" },
+    { "from": "applied-math.signals.fourier", "to": "applied-math.signals.dft", "type": "prerequisite" },
+    { "from": "applied-math.signals.fourier", "to": "applied-math.signals.wavelets", "type": "prerequisite" },
+    { "from": "applied-math.signals.fourier", "to": "applied-math.signals.sampling", "type": "prerequisite" },
+    { "from": "applied-math.signals.sampling", "to": "applied-math.signals.filtering", "type": "prerequisite" },
+    { "from": "applied-math.signals.dft", "to": "applied-math.signals.filtering", "type": "prepares" },
+    { "from": "applied-math.ml.regression", "to": "applied-math.ml.neural-networks", "type": "prerequisite" },
+    { "from": "applied-math.ml.regression", "to": "applied-math.ml.svm", "type": "prerequisite" },
+    { "from": "applied-math.ml.regression", "to": "applied-math.ml.clustering", "type": "prepares" },
+    { "from": "applied-math.ml.neural-networks", "to": "applied-math.ml.dimensionality", "type": "prepares" },
+    { "from": "applied-math.ml.clustering", "to": "applied-math.ml.dimensionality", "type": "prerequisite" },
+    { "from": "applied-math.information.entropy", "to": "applied-math.information.mutual", "type": "prerequisite" },
+    { "from": "applied-math.information.entropy", "to": "applied-math.information.source-coding", "type": "prerequisite" },
+    { "from": "applied-math.information.mutual", "to": "applied-math.information.channel", "type": "prerequisite" },
+    { "from": "applied-math.information.source-coding", "to": "applied-math.information.compression", "type": "prerequisite" },
+    { "from": "applied-math.numerical.linear-solvers", "to": "applied-math.ml.regression", "type": "prepares" },
+    { "from": "applied-math.signals.fourier", "to": "applied-math.information.entropy", "type": "prepares" }
+  ]
+}
