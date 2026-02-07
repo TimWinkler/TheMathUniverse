@@ -1,0 +1,179 @@
+{
+  "domain": "analysis",
+  "subdomains": [
+    {
+      "id": "analysis.foundations",
+      "name": "Foundations of Analysis",
+      "description": "Real numbers, limits, and continuity — the bedrock upon which all of analysis is built.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Bedrock — where infinity first reveals its paradoxes.",
+      "topics": [
+        {
+          "id": "analysis.foundations.real-numbers",
+          "name": "Real Number System",
+          "description": "The complete ordered field. Completeness axiom, supremum, infimum, density of rationals and irrationals.",
+          "keywords": ["real numbers", "completeness", "supremum", "infimum", "Archimedean"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The number line — deceptively simple, infinitely deep."
+        },
+        {
+          "id": "analysis.foundations.limits",
+          "name": "Limits",
+          "description": "The epsilon-delta definition. Limit laws, squeeze theorem, limits at infinity.",
+          "keywords": ["limit", "epsilon-delta", "convergence", "squeeze theorem", "indeterminate"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Getting infinitely close without ever arriving — the heartbeat of analysis."
+        },
+        {
+          "id": "analysis.foundations.continuity",
+          "name": "Continuity",
+          "description": "Functions without breaks. Intermediate value theorem, extreme value theorem, uniform continuity.",
+          "keywords": ["continuous", "IVT", "EVT", "uniform continuity", "discontinuity"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "An unbroken thread through space — no jumps, no gaps."
+        }
+      ]
+    },
+    {
+      "id": "analysis.calculus",
+      "name": "Calculus",
+      "description": "Differentiation and integration — the twin pillars of mathematical analysis.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Twin Stars — differentiation and integration, forever linked by the Fundamental Theorem.",
+      "topics": [
+        {
+          "id": "analysis.calculus.derivatives",
+          "name": "Derivatives",
+          "description": "Rate of change. Power rule, chain rule, product rule, quotient rule. Tangent lines and instantaneous velocity.",
+          "keywords": ["derivative", "rate of change", "chain rule", "tangent", "differentiable"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "The slope of the universe at a single point in time."
+        },
+        {
+          "id": "analysis.calculus.applications-derivatives",
+          "name": "Applications of Derivatives",
+          "description": "Optimization, related rates, L'Hôpital's rule, curve sketching, mean value theorem.",
+          "keywords": ["optimization", "related rates", "L'Hôpital", "mean value theorem", "critical point"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Finding the peaks and valleys — where do things reach their extremes?"
+        },
+        {
+          "id": "analysis.calculus.integrals",
+          "name": "Integrals",
+          "description": "Antiderivatives and definite integrals. Riemann sums, fundamental theorem of calculus, substitution.",
+          "keywords": ["integral", "antiderivative", "Riemann sum", "FTC", "substitution"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Adding up infinitely many infinitely small pieces — and getting a finite answer."
+        },
+        {
+          "id": "analysis.calculus.integration-techniques",
+          "name": "Integration Techniques",
+          "description": "Integration by parts, partial fractions, trigonometric substitution, improper integrals.",
+          "keywords": ["by parts", "partial fractions", "trig substitution", "improper integral"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "An art as much as a science — each integral is a puzzle."
+        }
+      ]
+    },
+    {
+      "id": "analysis.sequences-series",
+      "name": "Sequences & Series",
+      "description": "Infinite sequences and their sums. Convergence tests, power series, Taylor series.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Infinite Staircase — each step smaller than the last, but does it reach the top?",
+      "topics": [
+        {
+          "id": "analysis.sequences-series.sequences",
+          "name": "Sequences",
+          "description": "Ordered lists of numbers approaching a limit. Monotone convergence, Cauchy sequences, Bolzano-Weierstrass.",
+          "keywords": ["sequence", "convergent", "divergent", "monotone", "Cauchy"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "A journey through numbers — where does it end?"
+        },
+        {
+          "id": "analysis.sequences-series.series",
+          "name": "Infinite Series",
+          "description": "Summing infinitely many terms. Geometric series, comparison test, ratio test, root test.",
+          "keywords": ["series", "convergence", "geometric", "ratio test", "harmonic"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "1 + 1/2 + 1/4 + 1/8 + ... = 2. Infinity tamed."
+        },
+        {
+          "id": "analysis.sequences-series.power-series",
+          "name": "Power Series & Taylor Series",
+          "description": "Representing functions as infinite polynomials. Radius of convergence, Taylor's theorem, Maclaurin series.",
+          "keywords": ["power series", "Taylor", "Maclaurin", "radius of convergence", "analytic"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Every smooth function has an infinite polynomial twin — you just have to find it."
+        }
+      ]
+    },
+    {
+      "id": "analysis.multivariable-calculus",
+      "name": "Multivariable Calculus",
+      "description": "Calculus in multiple dimensions. Partial derivatives, multiple integrals, vector calculus.",
+      "importance": 9,
+      "difficulty": 3,
+      "flavor": "The Dimension Gate — calculus breaks free from the line into planes, volumes, and beyond.",
+      "topics": [
+        {
+          "id": "analysis.multivariable-calculus.partial-derivatives",
+          "name": "Partial Derivatives",
+          "description": "Derivatives of functions of several variables. Gradient, directional derivatives, the Jacobian.",
+          "keywords": ["partial derivative", "gradient", "directional derivative", "Jacobian", "chain rule"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "Change in many directions at once — which way is steepest?"
+        },
+        {
+          "id": "analysis.multivariable-calculus.multiple-integrals",
+          "name": "Multiple Integrals",
+          "description": "Double and triple integrals. Change of variables, polar/cylindrical/spherical coordinates.",
+          "keywords": ["double integral", "triple integral", "Fubini", "polar coordinates", "Jacobian"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "Summing over surfaces and volumes — measuring higher-dimensional worlds."
+        },
+        {
+          "id": "analysis.multivariable-calculus.vector-calculus",
+          "name": "Vector Calculus",
+          "description": "Line integrals, surface integrals, divergence, curl. Green's, Stokes', and the divergence theorem.",
+          "keywords": ["divergence", "curl", "Stokes theorem", "Green theorem", "flux"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "The great unifying theorems — connecting boundaries to interiors across dimensions."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "analysis.foundations.real-numbers", "to": "analysis.foundations.limits", "type": "prerequisite" },
+    { "from": "analysis.foundations.limits", "to": "analysis.foundations.continuity", "type": "prerequisite" },
+    { "from": "analysis.foundations.limits", "to": "analysis.calculus.derivatives", "type": "prerequisite" },
+    { "from": "analysis.foundations.continuity", "to": "analysis.calculus.derivatives", "type": "prerequisite" },
+    { "from": "analysis.calculus.derivatives", "to": "analysis.calculus.applications-derivatives", "type": "prerequisite" },
+    { "from": "analysis.calculus.derivatives", "to": "analysis.calculus.integrals", "type": "prerequisite" },
+    { "from": "analysis.calculus.integrals", "to": "analysis.calculus.integration-techniques", "type": "prerequisite" },
+    { "from": "analysis.foundations.limits", "to": "analysis.sequences-series.sequences", "type": "prerequisite" },
+    { "from": "analysis.sequences-series.sequences", "to": "analysis.sequences-series.series", "type": "prerequisite" },
+    { "from": "analysis.sequences-series.series", "to": "analysis.sequences-series.power-series", "type": "prerequisite" },
+    { "from": "analysis.calculus.integration-techniques", "to": "analysis.sequences-series.power-series", "type": "prepares" },
+    { "from": "analysis.calculus.derivatives", "to": "analysis.multivariable-calculus.partial-derivatives", "type": "prerequisite" },
+    { "from": "analysis.calculus.integrals", "to": "analysis.multivariable-calculus.multiple-integrals", "type": "prerequisite" },
+    { "from": "analysis.multivariable-calculus.partial-derivatives", "to": "analysis.multivariable-calculus.multiple-integrals", "type": "prerequisite" },
+    { "from": "analysis.multivariable-calculus.multiple-integrals", "to": "analysis.multivariable-calculus.vector-calculus", "type": "prerequisite" }
+  ]
+}

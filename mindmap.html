@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathematik Lehrplan – Gymnasium Bayern – Klasse 5–7</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f1117;
+    --card-bg: #1a1d27;
+    --border: #2a2d3a;
+    --text: #e8e6e3;
+    --text-muted: #8b8d97;
+    --klasse5: #f59e0b;
+    --klasse5-bg: rgba(245,158,11,0.08);
+    --klasse5-border: rgba(245,158,11,0.25);
+    --klasse6: #3b82f6;
+    --klasse6-bg: rgba(59,130,246,0.08);
+    --klasse6-border: rgba(59,130,246,0.25);
+    --klasse7: #10b981;
+    --klasse7-bg: rgba(16,185,129,0.08);
+    --klasse7-border: rgba(16,185,129,0.25);
+    --accent: #a78bfa;
+    --accent-bg: rgba(167,139,250,0.08);
+    --accent-border: rgba(167,139,250,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(245,158,11,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 80% 60%, rgba(59,130,246,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 50% 90%, rgba(16,185,129,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+    animation: fadeUp 0.8s ease-out;
+  }
+
+  header .badge {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--accent-border);
+    background: var(--accent-bg);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, #f59e0b, #3b82f6, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  header p {
+    color: var(--text-muted);
+    font-size: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease-out 0.1s both;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .legend-item:hover {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .legend-item.active {
+    border-color: var(--border);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  /* Didactic flow arrows between grades */
+  .flow-connector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 32px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-style: italic;
+    opacity: 0.6;
+    animation: fadeUp 0.6s ease-out both;
+  }
+
+  .flow-connector svg {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  /* Grade sections */
+  .grade-section {
+    margin-bottom: 16px;
+    animation: fadeUp 0.7s ease-out both;
+  }
+
+  .grade-section:nth-child(1) { animation-delay: 0.15s; }
+  .grade-section:nth-child(2) { animation-delay: 0.25s; }
+  .grade-section:nth-child(3) { animation-delay: 0.35s; }
+
+  .grade-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 0 4px;
+  }
+
+  .grade-number {
+    font-family: 'DM Serif Display', serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1;
+    opacity: 0.15;
+  }
+
+  .grade-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .grade-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* Topic grid */
+  .topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  /* Topic cards */
+  .topic-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .topic-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    border-radius: 14px 14px 0 0;
+    opacity: 0;
+    transition: opacity 0.35s;
+  }
+
+  .topic-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,255,255,0.12);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  }
+
+  .topic-card:hover::before { opacity: 1; }
+
+  .topic-card.expanded {
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  }
+
+  /* Grade-specific colors */
+  .grade-5 .grade-number, .grade-5 .grade-title { color: var(--klasse5); }
+  .grade-5 .topic-card::before { background: var(--klasse5); }
+  .grade-5 .topic-card.expanded { border-color: var(--klasse5-border); background: var(--klasse5-bg); }
+  .grade-5 .topic-icon { color: var(--klasse5); }
+  .grade-5 .topic-tag { color: var(--klasse5); border-color: var(--klasse5-border); background: var(--klasse5-bg); }
+  .grade-5 .detail-item::before { background: var(--klasse5); }
+
+  .grade-6 .grade-number, .grade-6 .grade-title { color: var(--klasse6); }
+  .grade-6 .topic-card::before { background: var(--klasse6); }
+  .grade-6 .topic-card.expanded { border-color: var(--klasse6-border); background: var(--klasse6-bg); }
+  .grade-6 .topic-icon { color: var(--klasse6); }
+  .grade-6 .topic-tag { color: var(--klasse6); border-color: var(--klasse6-border); background: var(--klasse6-bg); }
+  .grade-6 .detail-item::before { background: var(--klasse6); }
+
+  .grade-7 .grade-number, .grade-7 .grade-title { color: var(--klasse7); }
+  .grade-7 .topic-card::before { background: var(--klasse7); }
+  .grade-7 .topic-card.expanded { border-color: var(--klasse7-border); background: var(--klasse7-bg); }
+  .grade-7 .topic-icon { color: var(--klasse7); }
+  .grade-7 .topic-tag { color: var(--klasse7); border-color: var(--klasse7-border); background: var(--klasse7-bg); }
+  .grade-7 .detail-item::before { background: var(--klasse7); }
+
+  .topic-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .topic-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+  }
+
+  .topic-info { flex: 1; }
+
+  .topic-name {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+
+  .topic-hours {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .topic-tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  .topic-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), margin-top 0.3s;
+    margin-top: 0;
+  }
+
+  .topic-card.expanded .topic-details {
+    max-height: 600px;
+    margin-top: 16px;
+  }
+
+  .detail-section-title {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .detail-item {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text);
+    padding: 4px 0 4px 14px;
+    position: relative;
+    opacity: 0.85;
+  }
+
+  .detail-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  /* Didactic connections */
+  .connections-section {
+    margin-top: 20px;
+    padding: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    animation: fadeUp 0.7s ease-out 0.45s both;
+  }
+
+  .connections-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    margin-bottom: 16px;
+    color: var(--accent);
+  }
+
+  .connection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 12px;
+  }
+
+  .connection-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    opacity: 0.85;
+  }
+
+  .connection-arrow {
+    color: var(--accent);
+    font-size: 16px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .connection-grades {
+    display: inline-flex;
+    gap: 4px;
+    margin-left: 4px;
+  }
+
+  .connection-grades span {
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: 600;
+  }
+
+  .cg-5 { background: var(--klasse5-bg); color: var(--klasse5); border: 1px solid var(--klasse5-border); }
+  .cg-6 { background: var(--klasse6-bg); color: var(--klasse6); border: 1px solid var(--klasse6-border); }
+  .cg-7 { background: var(--klasse7-bg); color: var(--klasse7); border: 1px solid var(--klasse7-border); }
+
+  /* Source link */
+  .source {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    color: var(--text-muted);
+    animation: fadeUp 0.7s ease-out 0.55s both;
+  }
+
+  .source a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent-border);
+    transition: border-color 0.3s;
+  }
+
+  .source a:hover { border-color: var(--accent); }
+
+  /* Expand toggle indicator */
+  .expand-hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.3s;
+  }
+
+  .topic-card:hover .expand-hint { color: var(--text); }
+
+  .expand-icon {
+    transition: transform 0.35s;
+    display: inline-block;
+  }
+
+  .topic-card.expanded .expand-icon { transform: rotate(180deg); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .topics-grid { grid-template-columns: 1fr; }
+    .connection-grid { grid-template-columns: 1fr; }
+    .legend { gap: 12px; }
+    h1 { font-size: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="badge">LehrplanPLUS Bayern · G9</div>
+    <h1>Mathematik Mindmap<br>Klasse 5 – 7</h1>
+    <p>Didaktische Übersicht aller Lernbereiche des bayerischen Gymnasiums. Klicke auf ein Thema, um Details zu sehen.</p>
+  </header>
+
+  <div class="legend">
+    <div class="legend-item active" onclick="filterGrade('all')">
+      <div class="legend-dot" style="background:linear-gradient(135deg,var(--klasse5),var(--klasse6),var(--klasse7))"></div>
+      Alle Klassen
+    </div>
+    <div class="legend-item" onclick="filterGrade('5')">
+      <div class="legend-dot" style="background:var(--klasse5)"></div>
+      5. Klasse
+    </div>
+    <div class="legend-item" onclick="filterGrade('6')">
+      <div class="legend-dot" style="background:var(--klasse6)"></div>
+      6. Klasse
+    </div>
+    <div class="legend-item" onclick="filterGrade('7')">
+      <div class="legend-dot" style="background:var(--klasse7)"></div>
+      7. Klasse
+    </div>
+  </div>
+
+  <!-- KLASSE 5 -->
+  <div class="grade-section grade-5" data-grade="5">
+    <div class="grade-header">
+      <div class="grade-number">5</div>
+      <div>
+        <div class="grade-title">Jahrgangsstufe 5</div>
+        <div class="grade-subtitle">Natürliche Zahlen · Grundrechenarten · Geometrische Grundbegriffe · Größen · Flächeninhalt</div>
+      </div>
+    </div>
+    <div class="topics-grid">
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">🔢</div>
+          <div class="topic-info">
+            <div class="topic-name">Natürliche & ganze Zahlen</div>
+            <div class="topic-hours">ca. 30 Std. (gesamt mit Operationen)</div>
+          </div>
+        </div>
+        <div class="topic-tag">Zahlen & Operationen</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Stellenwertsystem (Zehnersystem vs. römisch)</div>
+          <div class="detail-item">Zahlenstrahl & Zahlengerade</div>
+          <div class="detail-item">Runden natürlicher Zahlen</div>
+          <div class="detail-item">Erweiterung: ℕ → ℤ (ganze Zahlen)</div>
+          <div class="detail-item">Ordnen, Betrag, negative Zahlen</div>
+          <div class="detail-item">Gegenbeispiele zum Widerlegen</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Anknüpfung an Grundschule (Stellenwert)</div>
+          <div class="detail-item">Erste Begegnung mit Beweisideen</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">➕</div>
+          <div class="topic-info">
+            <div class="topic-name">Addition & Subtraktion</div>
+            <div class="topic-hours">inkl. in 30 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Zahlen & Operationen</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Addieren & Subtrahieren natürlicher Zahlen</div>
+          <div class="detail-item">Kommutativ- & Assoziativgesetz</div>
+          <div class="detail-item">Rechenvorteile nutzen</div>
+          <div class="detail-item">Addition & Subtraktion ganzer Zahlen</div>
+          <div class="detail-item">Sachaufgaben im Kontext (Temperatur, Kontostand)</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">✖️</div>
+          <div class="topic-info">
+            <div class="topic-name">Multiplikation, Division & Potenzen</div>
+            <div class="topic-hours">ca. 30 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Zahlen & Operationen</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Multiplikation & Division natürlicher Zahlen</div>
+          <div class="detail-item">Potenzschreibweise als Abkürzung</div>
+          <div class="detail-item">Teilbarkeit, Primzahlen, Primfaktorzerlegung</div>
+          <div class="detail-item">Terme & Rechenregeln (Punkt vor Strich, Klammern)</div>
+          <div class="detail-item">Zählprinzip & Baumdiagramme</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Grundlage für Bruchrechnung in Kl. 6</div>
+          <div class="detail-item">Kombinatorik als erste Stochastik-Erfahrung</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">📐</div>
+          <div class="topic-info">
+            <div class="topic-name">Geometrische Grundbegriffe</div>
+            <div class="topic-hours">ca. 22 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Geometrie</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Punkt, Gerade, Strecke, Strahl</div>
+          <div class="detail-item">Winkel: Messen & Zeichnen</div>
+          <div class="detail-item">Senkrecht & parallel</div>
+          <div class="detail-item">Koordinatensystem (alle 4 Quadranten)</div>
+          <div class="detail-item">Achsensymmetrie</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Exaktes Konstruieren mit Geodreieck & Zirkel</div>
+          <div class="detail-item">Koordinatensystem als Brücke zur Algebra</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">📏</div>
+          <div class="topic-info">
+            <div class="topic-name">Größen & Schlussrechnung</div>
+            <div class="topic-hours">ca. 26 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Modellieren</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Länge, Masse, Zeit, Geld umrechnen</div>
+          <div class="detail-item">Maßstab & Diagramme</div>
+          <div class="detail-item">Dreisatz (Schlussrechnung)</div>
+          <div class="detail-item">Sachaufgaben zu Proportionalität</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Alltagsbezug & Modellierung</div>
+          <div class="detail-item">Grundlage für Prozentrechnung in Kl. 6</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">▭</div>
+          <div class="topic-info">
+            <div class="topic-name">Flächeninhalt</div>
+            <div class="topic-hours">ca. 12 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Geometrie</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Flächeneinheiten (mm², cm², m², …)</div>
+          <div class="detail-item">Flächeninhalt von Rechteck & Quadrat</div>
+          <div class="detail-item">Zusammengesetzte Flächen</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Grundlage für Dreieck, Parallelogramm in Kl. 6</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Connector -->
+  <div class="flow-connector" style="animation-delay:0.3s">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Aufbauend: Zahlenraum erweitert sich · Geometrie wird vertieft
+  </div>
+
+  <!-- KLASSE 6 -->
+  <div class="grade-section grade-6" data-grade="6">
+    <div class="grade-header">
+      <div class="grade-number">6</div>
+      <div>
+        <div class="grade-title">Jahrgangsstufe 6</div>
+        <div class="grade-subtitle">Rationale Zahlen · Bruchrechnung · Prozente · Daten & Diagramme · Flächen & Volumen</div>
+      </div>
+    </div>
+    <div class="topics-grid">
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">½</div>
+          <div class="topic-info">
+            <div class="topic-name">Bruchteile & Bruchzahlen</div>
+            <div class="topic-hours">ca. 13 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Zahlen & Operationen</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Anteile, Bruchteile, das Ganze</div>
+          <div class="detail-item">Erweitern & Kürzen</div>
+          <div class="detail-item">Hauptnenner & Größenvergleich</div>
+          <div class="detail-item">Flächendiagramme (Kreis- & Rechteck)</div>
+          <div class="detail-item">Prozent als Bruchschreibweise</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Baut auf Teilbarkeit/Primfaktorzerlegung (Kl. 5)</div>
+          <div class="detail-item">Anschauliche Einführung über Flächenmodelle</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">⅓</div>
+          <div class="topic-info">
+            <div class="topic-name">Rechnen mit Brüchen</div>
+            <div class="topic-hours">ca. 30 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Zahlen & Operationen</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Addition & Subtraktion von Brüchen</div>
+          <div class="detail-item">Multiplikation & Division von Brüchen</div>
+          <div class="detail-item">Gemischte Zahlen</div>
+          <div class="detail-item">Doppelbrüche, Potenzen von Brüchen</div>
+          <div class="detail-item">Dezimalbrüche & Umwandlung</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Kernkompetenz für alle höheren Klassen</div>
+          <div class="detail-item">Übergang zu Dezimalschreibweise</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">±</div>
+          <div class="topic-info">
+            <div class="topic-name">Rationale Zahlen</div>
+            <div class="topic-hours">ca. 25 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Zahlen & Operationen</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Erweiterung: ℤ → ℚ (negative Brüche)</div>
+          <div class="detail-item">Rechnen mit rationalen Zahlen</div>
+          <div class="detail-item">Zahlenstrahl: Verortung rationaler Zahlen</div>
+          <div class="detail-item">Betrag rationaler Zahlen</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Zusammenführung: ganze Zahlen (Kl. 5) + Brüche</div>
+          <div class="detail-item">Vollständiger Zahlbereich für Terme in Kl. 7</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">%</div>
+          <div class="topic-info">
+            <div class="topic-name">Prozentrechnung</div>
+            <div class="topic-hours">ca. 14 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Modellieren</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Prozent als Bruch mit Nenner 100</div>
+          <div class="detail-item">Grundwert, Prozentwert, Prozentsatz</div>
+          <div class="detail-item">Einfache alltagsbezogene Aufgaben</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Baut auf Dreisatz (Kl. 5) und Bruchrechnung auf</div>
+          <div class="detail-item">Wird in Kl. 7 deutlich vertieft</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">📊</div>
+          <div class="topic-info">
+            <div class="topic-name">Daten & Diagramme</div>
+            <div class="topic-hours">ca. 8 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Daten & Zufall</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Daten erheben, darstellen, interpretieren</div>
+          <div class="detail-item">Absolute & relative Häufigkeit</div>
+          <div class="detail-item">Arithmetisches Mittel</div>
+          <div class="detail-item">Diagramme kritisch lesen & erstellen</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Medienkompetenz: Diagramme hinterfragen</div>
+          <div class="detail-item">Grundlage für Statistik-Vertiefung in Kl. 7</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">📦</div>
+          <div class="topic-info">
+            <div class="topic-name">Flächeninhalt & Volumen</div>
+            <div class="topic-hours">ca. 30 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Geometrie</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Dreiecke, Parallelogramme, Trapeze</div>
+          <div class="detail-item">Umfang & Flächeninhalt</div>
+          <div class="detail-item">Schrägbilder & Netze von Quadern</div>
+          <div class="detail-item">Oberfläche & Volumen von Quadern</div>
+          <div class="detail-item">Volumeneinheiten (ml, l, cm³, m³)</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Vertieft Flächeninhalt aus Kl. 5 (Rechteck → Dreieck)</div>
+          <div class="detail-item">Erster Schritt in die Raumgeometrie</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Connector -->
+  <div class="flow-connector" style="animation-delay:0.4s">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Aufbauend: Einführung der Algebra · Statistik wird vertieft · Figurengeometrie
+  </div>
+
+  <!-- KLASSE 7 -->
+  <div class="grade-section grade-7" data-grade="7">
+    <div class="grade-header">
+      <div class="grade-number">7</div>
+      <div>
+        <div class="grade-title">Jahrgangsstufe 7</div>
+        <div class="grade-subtitle">Terme & Variablen · Lineare Gleichungen · Prozentrechnung vertieft · Statistik · Figurengeometrie</div>
+      </div>
+    </div>
+    <div class="topics-grid">
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">𝑥</div>
+          <div class="topic-info">
+            <div class="topic-name">Terme mit Variablen</div>
+            <div class="topic-hours">ca. 28 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Algebra</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Variable als Platzhalter & Veränderliche</div>
+          <div class="detail-item">Aufstellen & Vereinfachen von Termen</div>
+          <div class="detail-item">Zusammenfassen gleichartiger Terme</div>
+          <div class="detail-item">Distributivgesetz, Ausmultiplizieren</div>
+          <div class="detail-item">Faktorisieren (Ausklammern)</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Übergang: Arithmetik → Algebra</div>
+          <div class="detail-item">Baut auf Rechengesetzen aus Kl. 5/6 auf</div>
+          <div class="detail-item">Grundlage für Gleichungen & Funktionen</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">⚖️</div>
+          <div class="topic-info">
+            <div class="topic-name">Lineare Gleichungen</div>
+            <div class="topic-hours">ca. 22 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Algebra</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Äquivalenzumformungen</div>
+          <div class="detail-item">Lösen linearer Gleichungen</div>
+          <div class="detail-item">Sachaufgaben mit Gleichungsansatz</div>
+          <div class="detail-item">Ungleichungen (Einführung)</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Waagemodell als Veranschaulichung</div>
+          <div class="detail-item">Formale Lösungsstrategien entwickeln</div>
+          <div class="detail-item">Grundlage für Gleichungssysteme (Kl. 8)</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">%</div>
+          <div class="topic-info">
+            <div class="topic-name">Prozentrechnung vertieft</div>
+            <div class="topic-hours">ca. 16 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Modellieren</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Komplexere Aufgaben (Rabatt, Zins, Steuern)</div>
+          <div class="detail-item">Prozentuale Veränderung</div>
+          <div class="detail-item">Verknüpfung mit linearen Gleichungen</div>
+          <div class="detail-item">Kritische Bewertung von Statistiken</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Vertiefung der Grundlagen aus Kl. 6</div>
+          <div class="detail-item">Gesellschaftliche Kontexte (Globalisierung, Politik)</div>
+          <div class="detail-item">Unterscheidung: mathematisch vs. außerfachlich</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">📈</div>
+          <div class="topic-info">
+            <div class="topic-name">Kenngrößen von Daten</div>
+            <div class="topic-hours">ca. 14 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Daten & Zufall</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Median als weiterer Mittelwert</div>
+          <div class="detail-item">Spannweite & Quartile</div>
+          <div class="detail-item">Boxplots erstellen & interpretieren</div>
+          <div class="detail-item">Vergleich: Mittelwert vs. Median</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Vertieft arithmetisches Mittel aus Kl. 6</div>
+          <div class="detail-item">Kritisches Denken bei Dateninterpretation</div>
+          <div class="detail-item">Grundlage für Wahrscheinlichkeit in Kl. 8</div>
+        </div>
+      </div>
+
+      <div class="topic-card" onclick="toggleCard(this)">
+        <div class="topic-head">
+          <div class="topic-icon">△</div>
+          <div class="topic-info">
+            <div class="topic-name">Figurengeometrie</div>
+            <div class="topic-hours">ca. 40 Std.</div>
+          </div>
+        </div>
+        <div class="topic-tag">Geometrie</div>
+        <div class="expand-hint"><span class="expand-icon">▾</span> Details anzeigen</div>
+        <div class="topic-details">
+          <div class="detail-section-title">Inhalte</div>
+          <div class="detail-item">Winkel an Geradenkreuzungen (Neben-, Scheitel-, Stufen-, Wechselwinkel)</div>
+          <div class="detail-item">Winkelsumme im Dreieck & Viereck</div>
+          <div class="detail-item">Kongruenz & Kongruenzsätze (SSS, SWS, WSW, SsW)</div>
+          <div class="detail-item">Konstruktion von Dreiecken</div>
+          <div class="detail-item">Besondere Linien im Dreieck (Mittelsenkrechte, Seitenhalbierende, Höhe, Winkelhalbierende)</div>
+          <div class="detail-item">Punktsymmetrie</div>
+          <div class="detail-section-title">Didaktischer Fokus</div>
+          <div class="detail-item">Erste formale Beweise (Winkel, Kongruenz)</div>
+          <div class="detail-item">Vertieft Symmetrie aus Kl. 5 (Achsen→Punkt)</div>
+          <div class="detail-item">Grundlage für Ähnlichkeit & Pythagoras (Kl. 9)</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Didactic Connections -->
+  <div class="connections-section">
+    <div class="connections-title">🔗 Didaktische Längsschnitte</div>
+    <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">Themen, die sich spiralförmig durch mehrere Klassen aufbauen:</p>
+    <div class="connection-grid">
+      <div class="connection-item">
+        <span class="connection-arrow">→</span>
+        <span><strong>Zahlbereichserweiterung:</strong> ℕ <span class="connection-grades"><span class="cg-5">5</span></span> → ℤ <span class="connection-grades"><span class="cg-5">5</span></span> → ℚ <span class="connection-grades"><span class="cg-6">6</span></span> — systematischer Aufbau des Zahlensystems</span>
+      </div>
+      <div class="connection-item">
+        <span class="connection-arrow">→</span>
+        <span><strong>Prozentrechnung:</strong> Dreisatz <span class="connection-grades"><span class="cg-5">5</span></span> → Bruch als Prozent <span class="connection-grades"><span class="cg-6">6</span></span> → komplexe Anwendungen <span class="connection-grades"><span class="cg-7">7</span></span></span>
+      </div>
+      <div class="connection-item">
+        <span class="connection-arrow">→</span>
+        <span><strong>Fläche & Raum:</strong> Rechteck <span class="connection-grades"><span class="cg-5">5</span></span> → Dreieck, Trapez, Quader <span class="connection-grades"><span class="cg-6">6</span></span> → Kongruenz & Konstruktion <span class="connection-grades"><span class="cg-7">7</span></span></span>
+      </div>
+      <div class="connection-item">
+        <span class="connection-arrow">→</span>
+        <span><strong>Arithmetik → Algebra:</strong> Rechengesetze <span class="connection-grades"><span class="cg-5">5</span></span> → Bruchrechnung <span class="connection-grades"><span class="cg-6">6</span></span> → Terme & Gleichungen <span class="connection-grades"><span class="cg-7">7</span></span></span>
+      </div>
+      <div class="connection-item">
+        <span class="connection-arrow">→</span>
+        <span><strong>Daten & Statistik:</strong> Baumdiagramme <span class="connection-grades"><span class="cg-5">5</span></span> → Häufigkeit & Mittelwert <span class="connection-grades"><span class="cg-6">6</span></span> → Median, Boxplots <span class="connection-grades"><span class="cg-7">7</span></span></span>
+      </div>
+      <div class="connection-item">
+        <span class="connection-arrow">→</span>
+        <span><strong>Symmetrie & Beweise:</strong> Achsensymmetrie <span class="connection-grades"><span class="cg-5">5</span></span> → Punktsymmetrie <span class="connection-grades"><span class="cg-7">7</span></span> — zunehmende Formalisierung</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="source">
+    Quelle: <a href="https://www.lehrplanplus.bayern.de/fachprofil/gymnasium/mathematik" target="_blank">LehrplanPLUS Bayern – Gymnasium Mathematik</a> · ISB München
+  </div>
+</div>
+
+<script>
+  function toggleCard(card) {
+    const wasExpanded = card.classList.contains('expanded');
+    // Close all cards in same grid
+    card.closest('.topics-grid').querySelectorAll('.topic-card').forEach(c => c.classList.remove('expanded'));
+    if (!wasExpanded) card.classList.add('expanded');
+  }
+
+  function filterGrade(grade) {
+    document.querySelectorAll('.legend-item').forEach(item => item.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    document.querySelectorAll('.grade-section').forEach(section => {
+      if (grade === 'all' || section.dataset.grade === grade) {
+        section.style.display = '';
+      } else {
+        section.style.display = 'none';
+      }
+    });
+
+    document.querySelectorAll('.flow-connector').forEach(conn => {
+      conn.style.display = grade === 'all' ? '' : 'none';
+    });
+
+    document.querySelector('.connections-section').style.display = grade === 'all' ? '' : 'none';
+  }
+</script>
+
+</body>
+</html>

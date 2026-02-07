@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://main"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://universe" path="res://scenes/universe.tscn" id="2_universe"]
+[ext_resource type="PackedScene" uid="uid://info_panel" path="res://scenes/ui/info_panel.tscn" id="3_info_panel"]
+[ext_resource type="PackedScene" uid="uid://hud" path="res://scenes/ui/hud.tscn" id="4_hud"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_main")
+
+[node name="Universe" parent="." instance=ExtResource("2_universe")]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="InfoPanel" parent="UI" instance=ExtResource("3_info_panel")]
+
+[node name="HUD" parent="UI" instance=ExtResource("4_hud")]

@@ -1,0 +1,178 @@
+{
+  "domain": "geometry",
+  "subdomains": [
+    {
+      "id": "geometry.euclidean",
+      "name": "Euclidean Geometry",
+      "description": "Classical geometry of flat space. Points, lines, angles, triangles, circles, and the axioms that govern them.",
+      "importance": 10,
+      "difficulty": 1,
+      "flavor": "The Ancient Realm — Euclid's world, where compass and straightedge rule supreme.",
+      "topics": [
+        {
+          "id": "geometry.euclidean.basics",
+          "name": "Points, Lines & Angles",
+          "description": "Fundamental building blocks. Parallel lines, perpendicular lines, angle relationships, transversals.",
+          "keywords": ["point", "line", "angle", "parallel", "perpendicular", "transversal"],
+          "importance": 10,
+          "difficulty": 1,
+          "flavor": "The simplest objects — yet all of geometry springs from them."
+        },
+        {
+          "id": "geometry.euclidean.triangles",
+          "name": "Triangles",
+          "description": "Three-sided polygons. Congruence (SSS, SAS, ASA), similarity, area, special triangles.",
+          "keywords": ["triangle", "congruence", "similarity", "Pythagorean theorem", "area"],
+          "importance": 10,
+          "difficulty": 1,
+          "flavor": "The strongest shape in nature — and the most studied in mathematics."
+        },
+        {
+          "id": "geometry.euclidean.circles",
+          "name": "Circles",
+          "description": "Perfect curves of constant radius. Arcs, chords, tangent lines, inscribed angles, π.",
+          "keywords": ["circle", "radius", "tangent", "chord", "arc", "pi"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "The perfect form — a single curve that captivated mathematicians for millennia."
+        },
+        {
+          "id": "geometry.euclidean.constructions",
+          "name": "Geometric Constructions",
+          "description": "Building geometric figures with only compass and straightedge. Classical problems and impossibilities.",
+          "keywords": ["compass", "straightedge", "bisect", "construct", "trisection"],
+          "importance": 6,
+          "difficulty": 2,
+          "flavor": "Can you square the circle? The ancients tried — and discovered the limits of their tools."
+        }
+      ]
+    },
+    {
+      "id": "geometry.trigonometry",
+      "name": "Trigonometry",
+      "description": "The mathematics of triangles and periodic functions. Sine, cosine, tangent, and their applications.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Bridge of Waves — connecting geometry to the rhythms of the universe.",
+      "topics": [
+        {
+          "id": "geometry.trigonometry.ratios",
+          "name": "Trigonometric Ratios",
+          "description": "Sin, cos, tan as ratios in right triangles. SOH-CAH-TOA. Inverse trig functions.",
+          "keywords": ["sine", "cosine", "tangent", "SOH-CAH-TOA", "inverse trig"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Three ratios that unlock the secrets of every triangle."
+        },
+        {
+          "id": "geometry.trigonometry.unit-circle",
+          "name": "Unit Circle",
+          "description": "Trig functions defined on the unit circle. Radians, reference angles, periodicity.",
+          "keywords": ["unit circle", "radian", "reference angle", "periodic", "quadrant"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "A single circle that contains all of trigonometry."
+        },
+        {
+          "id": "geometry.trigonometry.identities",
+          "name": "Trigonometric Identities",
+          "description": "Pythagorean identities, sum/difference formulas, double-angle, half-angle formulas.",
+          "keywords": ["identity", "Pythagorean", "double angle", "sum formula", "half angle"],
+          "importance": 8,
+          "difficulty": 3,
+          "flavor": "The hidden equations connecting trig functions — a puzzle of algebraic beauty."
+        },
+        {
+          "id": "geometry.trigonometry.applications",
+          "name": "Applications of Trigonometry",
+          "description": "Law of sines, law of cosines, solving oblique triangles, navigation, wave modeling.",
+          "keywords": ["law of sines", "law of cosines", "oblique triangle", "bearing", "wave"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "From GPS to music — trig is everywhere in the real world."
+        }
+      ]
+    },
+    {
+      "id": "geometry.analytic-geometry",
+      "name": "Analytic Geometry",
+      "description": "Geometry through coordinates and equations. The fusion of algebra and geometry by Descartes.",
+      "importance": 9,
+      "difficulty": 2,
+      "flavor": "The Cartesian Grid — where algebra and geometry became one.",
+      "topics": [
+        {
+          "id": "geometry.analytic-geometry.coordinate-systems",
+          "name": "Coordinate Systems",
+          "description": "Cartesian, polar, parametric coordinates. Plotting points and curves in different systems.",
+          "keywords": ["Cartesian", "polar", "parametric", "coordinate", "plot"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Different lenses to view the same geometric truth."
+        },
+        {
+          "id": "geometry.analytic-geometry.conic-sections",
+          "name": "Conic Sections",
+          "description": "Circles, ellipses, parabolas, hyperbolas — the curves from slicing a cone.",
+          "keywords": ["ellipse", "parabola", "hyperbola", "focus", "eccentricity"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Slice a cone and discover the orbits of planets."
+        },
+        {
+          "id": "geometry.analytic-geometry.vectors-in-space",
+          "name": "Vectors in 2D & 3D",
+          "description": "Geometric vectors, operations, equations of lines and planes in space.",
+          "keywords": ["vector", "line equation", "plane equation", "normal vector", "parametric"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Arrows that point through dimensions."
+        }
+      ]
+    },
+    {
+      "id": "geometry.differential-geometry",
+      "name": "Differential Geometry",
+      "description": "Geometry using calculus. Curvature of curves and surfaces, manifolds, Riemannian geometry.",
+      "importance": 8,
+      "difficulty": 4,
+      "flavor": "The Curved Cosmos — where spacetime bends and straight lines are just an approximation.",
+      "topics": [
+        {
+          "id": "geometry.differential-geometry.curves",
+          "name": "Curves in Space",
+          "description": "Parametric curves, arc length, curvature, torsion, Frenet-Serret formulas.",
+          "keywords": ["curvature", "torsion", "arc length", "Frenet", "parametric curve"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "How much does a curve curve? And in which direction?"
+        },
+        {
+          "id": "geometry.differential-geometry.surfaces",
+          "name": "Surfaces",
+          "description": "Parametric surfaces, first and second fundamental forms, Gaussian curvature, geodesics.",
+          "keywords": ["surface", "Gaussian curvature", "geodesic", "fundamental form", "manifold"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "The fabric of space itself — curved, stretched, and full of hidden geometry."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "geometry.euclidean.basics", "to": "geometry.euclidean.triangles", "type": "prerequisite" },
+    { "from": "geometry.euclidean.basics", "to": "geometry.euclidean.circles", "type": "prerequisite" },
+    { "from": "geometry.euclidean.basics", "to": "geometry.euclidean.constructions", "type": "prerequisite" },
+    { "from": "geometry.euclidean.triangles", "to": "geometry.trigonometry.ratios", "type": "prerequisite" },
+    { "from": "geometry.trigonometry.ratios", "to": "geometry.trigonometry.unit-circle", "type": "prerequisite" },
+    { "from": "geometry.trigonometry.unit-circle", "to": "geometry.trigonometry.identities", "type": "prerequisite" },
+    { "from": "geometry.trigonometry.ratios", "to": "geometry.trigonometry.applications", "type": "prerequisite" },
+    { "from": "geometry.euclidean.basics", "to": "geometry.analytic-geometry.coordinate-systems", "type": "prerequisite" },
+    { "from": "geometry.euclidean.circles", "to": "geometry.analytic-geometry.conic-sections", "type": "prerequisite" },
+    { "from": "geometry.analytic-geometry.coordinate-systems", "to": "geometry.analytic-geometry.conic-sections", "type": "prerequisite" },
+    { "from": "geometry.analytic-geometry.coordinate-systems", "to": "geometry.analytic-geometry.vectors-in-space", "type": "prerequisite" },
+    { "from": "geometry.analytic-geometry.vectors-in-space", "to": "geometry.differential-geometry.curves", "type": "prerequisite" },
+    { "from": "geometry.differential-geometry.curves", "to": "geometry.differential-geometry.surfaces", "type": "prerequisite" },
+    { "from": "geometry.trigonometry.identities", "to": "geometry.differential-geometry.curves", "type": "prepares" }
+  ]
+}

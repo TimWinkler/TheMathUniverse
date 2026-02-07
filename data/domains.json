@@ -1,0 +1,45 @@
+{
+  "domains": [
+    {
+      "id": "algebra",
+      "name": "Algebra",
+      "description": "The study of mathematical symbols and the rules for manipulating them. From simple equations to abstract structures like groups and rings.",
+      "color": "#f7b731",
+      "importance": 10,
+      "flavor": "The Golden Galaxy — where symbols dance and equations sing. Every mathematician's journey begins here."
+    },
+    {
+      "id": "analysis",
+      "name": "Analysis",
+      "description": "The rigorous study of limits, continuity, derivatives, integrals, and infinite series. The mathematics of change and approximation.",
+      "color": "#4f8cff",
+      "importance": 10,
+      "flavor": "The Blue Nebula — an infinite ocean of curves, converging and diverging in beautiful patterns."
+    },
+    {
+      "id": "geometry",
+      "name": "Geometry",
+      "description": "The study of shapes, sizes, positions, and properties of space. From Euclidean planes to curved manifolds.",
+      "color": "#2dd4a8",
+      "importance": 10,
+      "flavor": "The Emerald Cluster — a crystalline realm where shapes and spaces reveal their hidden symmetries."
+    },
+    {
+      "id": "number-theory",
+      "name": "Number Theory",
+      "description": "The queen of mathematics. The study of integers, primes, divisibility, and the deep patterns hidden in numbers.",
+      "color": "#ff6b9d",
+      "importance": 9,
+      "flavor": "The Rose Spiral — ancient and mysterious, its prime stars are scattered in patterns no one fully understands."
+    }
+  ],
+  "cross_domain_edges": [
+    { "from": "algebra.linear-algebra", "to": "geometry.analytic-geometry", "type": "bridges", "label": "Vectors connect algebra and geometry" },
+    { "from": "algebra.linear-algebra", "to": "analysis.multivariable-calculus", "type": "bridges", "label": "Linear algebra underpins multivariable calculus" },
+    { "from": "analysis.sequences-series", "to": "number-theory.analytic-number-theory", "type": "bridges", "label": "Analytic methods applied to number theory" },
+    { "from": "algebra.polynomials", "to": "number-theory.algebraic-number-theory", "type": "bridges", "label": "Polynomial roots connect to algebraic integers" },
+    { "from": "geometry.trigonometry", "to": "analysis.calculus", "type": "bridges", "label": "Trig functions are fundamental in calculus" },
+    { "from": "algebra.abstract-algebra", "to": "number-theory.algebraic-number-theory", "type": "bridges", "label": "Group/ring theory applied to number theory" },
+    { "from": "geometry.differential-geometry", "to": "analysis.multivariable-calculus", "type": "bridges", "label": "Calculus on curves and surfaces" }
+  ]
+}

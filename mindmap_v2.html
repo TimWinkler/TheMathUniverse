@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathe Lehrplan Mindmap – Gymnasium Bayern 5–7</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #08090d;
+  --surface: #12141c;
+  --border: #1e2130;
+  --text: #eae9e6;
+  --muted: #6b6e7f;
+  --k5: #f7b731;
+  --k5g: #fcd34d;
+  --k5d: rgba(247,183,49,0.12);
+  --k6: #4f8cff;
+  --k6g: #7baeff;
+  --k6d: rgba(79,140,255,0.12);
+  --k7: #2dd4a8;
+  --k7g: #6ee7c0;
+  --k7d: rgba(45,212,168,0.12);
+  --accent: #a78bfa;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--bg);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text);
+  overflow: hidden;
+  height: 100vh;
+  width: 100vw;
+  cursor: grab;
+}
+
+body.grabbing { cursor: grabbing; }
+
+/* Canvas */
+#canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+#world {
+  position: absolute;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+/* SVG connections */
+#connections {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#connections path {
+  fill: none;
+  stroke-width: 2;
+  opacity: 0;
+  animation: pathIn 1s ease-out forwards;
+}
+
+@keyframes pathIn {
+  to { opacity: 1; }
+}
+
+/* Nodes */
+.node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1), filter 0.3s;
+}
+
+.node:hover {
+  z-index: 10;
+  transform: translate(-50%, -50%) scale(1.06);
+  filter: brightness(1.15);
+}
+
+/* Central hub */
+.node-center {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #2a2d45, #12141c);
+  border: 2px solid #2e3150;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow:
+    0 0 60px rgba(167,139,250,0.08),
+    0 0 120px rgba(167,139,250,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+  animation: pulseCenter 4s ease-in-out infinite alternate;
+  z-index: 5;
+}
+
+@keyframes pulseCenter {
+  0% { box-shadow: 0 0 60px rgba(167,139,250,0.08), 0 0 120px rgba(167,139,250,0.04), inset 0 1px 0 rgba(255,255,255,0.06); }
+  100% { box-shadow: 0 0 80px rgba(167,139,250,0.14), 0 0 160px rgba(167,139,250,0.06), inset 0 1px 0 rgba(255,255,255,0.08); }
+}
+
+.node-center .title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 6px;
+}
+
+.node-center .sub {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Grade orbit nodes */
+.node-grade {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 2px solid;
+  transition: all 0.35s;
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+
+.node-grade .num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.node-grade .label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 4px;
+  opacity: 0.7;
+}
+
+.node-grade.k5 {
+  background: radial-gradient(circle at 35% 35%, rgba(247,183,49,0.18), rgba(247,183,49,0.04));
+  border-color: rgba(247,183,49,0.4);
+  color: var(--k5);
+}
+.node-grade.k6 {
+  background: radial-gradient(circle at 35% 35%, rgba(79,140,255,0.18), rgba(79,140,255,0.04));
+  border-color: rgba(79,140,255,0.4);
+  color: var(--k6);
+}
+.node-grade.k7 {
+  background: radial-gradient(circle at 35% 35%, rgba(45,212,168,0.18), rgba(45,212,168,0.04));
+  border-color: rgba(45,212,168,0.4);
+  color: var(--k7);
+}
+
+/* Topic nodes */
+.node-topic {
+  min-width: 140px;
+  max-width: 180px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: all 0.35s cubic-bezier(.4,0,.2,1);
+}
+
+.node-topic .icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.node-topic .name {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+
+.node-topic .hours {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.node-topic.k5 { border-color: rgba(247,183,49,0.2); }
+.node-topic.k5:hover, .node-topic.k5.active { border-color: rgba(247,183,49,0.5); background: var(--k5d); box-shadow: 0 4px 30px rgba(247,183,49,0.1); }
+.node-topic.k6 { border-color: rgba(79,140,255,0.2); }
+.node-topic.k6:hover, .node-topic.k6.active { border-color: rgba(79,140,255,0.5); background: var(--k6d); box-shadow: 0 4px 30px rgba(79,140,255,0.1); }
+.node-topic.k7 { border-color: rgba(45,212,168,0.2); }
+.node-topic.k7:hover, .node-topic.k7.active { border-color: rgba(45,212,168,0.5); background: var(--k7d); box-shadow: 0 4px 30px rgba(45,212,168,0.1); }
+
+/* Detail nodes (leaf) */
+.node-detail {
+  max-width: 155px;
+  padding: 10px 13px;
+  border-radius: 10px;
+  background: rgba(18,20,28,0.92);
+  border: 1px solid var(--border);
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #c4c5cd;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s, transform 0.35s;
+}
+
+.node-detail.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.node-detail .dtag {
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.node-detail.k5 .dtag { color: var(--k5); }
+.node-detail.k6 .dtag { color: var(--k6); }
+.node-detail.k7 .dtag { color: var(--k7); }
+
+/* Detail connection paths */
+.detail-path {
+  opacity: 0 !important;
+  transition: opacity 0.35s;
+}
+.detail-path.visible {
+  opacity: 0.5 !important;
+}
+
+/* Info panel */
+#infoPanel {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: rgba(18,20,28,0.95);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 20px 28px;
+  max-width: 520px;
+  width: calc(100% - 48px);
+  z-index: 100;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  transition: transform 0.45s cubic-bezier(.4,0,.2,1);
+}
+
+#infoPanel.show {
+  transform: translateX(-50%) translateY(0);
+}
+
+#infoPanel .panel-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+#infoPanel .panel-icon {
+  font-size: 28px;
+}
+
+#infoPanel .panel-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 20px;
+}
+
+#infoPanel .panel-grade {
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-weight: 600;
+  margin-left: auto;
+}
+
+#infoPanel .panel-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 16px;
+}
+
+#infoPanel .panel-item {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #b0b2be;
+  padding-left: 12px;
+  position: relative;
+}
+
+#infoPanel .panel-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+#infoPanel .panel-didaktik {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+#closePanel {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+#closePanel:hover { color: var(--text); }
+
+/* Toolbar */
+#toolbar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 50;
+}
+
+.tool-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(18,20,28,0.9);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.tool-btn:hover { color: var(--text); background: rgba(30,33,48,0.95); }
+
+/* Header */
+#header {
+  position: fixed;
+  top: 20px;
+  left: 24px;
+  z-index: 50;
+  animation: fadeIn 1s ease-out;
+}
+
+#header .badge {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(167,139,250,0.2);
+  background: rgba(167,139,250,0.06);
+  padding: 4px 12px;
+  border-radius: 14px;
+  margin-bottom: 8px;
+}
+
+#header h1 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+#header .hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Legend fixed */
+#legend {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 50;
+  display: flex;
+  gap: 14px;
+  animation: fadeIn 1s ease-out 0.3s both;
+}
+
+.leg-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.leg-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+/* Background effects */
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.3;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Node entry animations */
+.node {
+  opacity: 0;
+  animation: nodeIn 0.6s cubic-bezier(.4,0,.2,1) forwards;
+}
+
+@keyframes nodeIn {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Longitudinal connection dashed paths */
+.long-path {
+  stroke-dasharray: 6 4;
+  opacity: 0.2 !important;
+  animation: none !important;
+}
+
+/* Mini-map */
+#minimap {
+  position: fixed;
+  bottom: 24px;
+  right: 20px;
+  width: 140px;
+  height: 100px;
+  background: rgba(18,20,28,0.85);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  z-index: 50;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #minimap { display: block; }
+}
+
+#minimap canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#miniViewport {
+  position: absolute;
+  border: 1px solid rgba(167,139,250,0.5);
+  background: rgba(167,139,250,0.06);
+  border-radius: 2px;
+  pointer-events: none;
+}
+</style>
+</head>
+<body>
+
+<!-- Background glows -->
+<div class="bg-glow" style="width:500px;height:500px;top:-100px;left:-100px;background:rgba(247,183,49,0.06)"></div>
+<div class="bg-glow" style="width:600px;height:600px;bottom:-200px;left:30%;background:rgba(79,140,255,0.05)"></div>
+<div class="bg-glow" style="width:500px;height:500px;top:20%;right:-100px;background:rgba(45,212,168,0.05)"></div>
+
+<div id="header">
+  <div class="badge">LehrplanPLUS Bayern · G9</div>
+  <h1>Mathematik Mindmap · Klasse 5–7</h1>
+  <div class="hint">Ziehen zum Bewegen · Scrollen zum Zoomen · Knoten klicken für Details</div>
+</div>
+
+<div id="toolbar">
+  <button class="tool-btn" onclick="zoomIn()" title="Vergrößern">+</button>
+  <button class="tool-btn" onclick="zoomOut()" title="Verkleinern">−</button>
+  <button class="tool-btn" onclick="resetView()" title="Ansicht zurücksetzen">⌂</button>
+</div>
+
+<div id="legend">
+  <div class="leg-item"><div class="leg-dot" style="background:var(--k5)"></div>Klasse 5</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--k6)"></div>Klasse 6</div>
+  <div class="leg-item"><div class="leg-dot" style="background:var(--k7)"></div>Klasse 7</div>
+</div>
+
+<div id="canvas">
+  <div id="world">
+    <svg id="connections" width="5000" height="5000"></svg>
+  </div>
+</div>
+
+<div id="infoPanel">
+  <button id="closePanel" onclick="closePanel()">✕</button>
+  <div class="panel-header">
+    <span class="panel-icon" id="panelIcon"></span>
+    <span class="panel-title" id="panelTitle"></span>
+    <span class="panel-grade" id="panelGrade"></span>
+  </div>
+  <div class="panel-items" id="panelItems"></div>
+  <div class="panel-didaktik" id="panelDidaktik"></div>
+</div>
+
+<div id="minimap">
+  <canvas id="minimapCanvas"></canvas>
+  <div id="miniViewport"></div>
+</div>
+
+<script>
+// ───── DATA ─────
+const CX = 2500, CY = 2500;
+
+const grades = [
+  { id: 'k5', label: 'Klasse 5', num: '5', color: '#f7b731', angle: 210 },
+  { id: 'k6', label: 'Klasse 6', num: '6', color: '#4f8cff', angle: 330 },
+  { id: 'k7', label: 'Klasse 7', num: '7', color: '#2dd4a8', angle: 90 },
+];
+
+const topics = [
+  // K5
+  { id:'t5_1', grade:'k5', icon:'🔢', name:'Natürliche &\nganze Zahlen', hours:'~30 Std.', angle:-40,
+    items:['Stellenwertsystem (Zehnersystem)','Zahlenstrahl & Zahlengerade','Runden natürlicher Zahlen','Erweiterung ℕ → ℤ','Ordnen, Betrag, negative Zahlen','Gegenbeispiele zum Widerlegen'],
+    didaktik:'Anknüpfung an Grundschule · Erste Beweisideen durch Gegenbeispiele' },
+  { id:'t5_2', grade:'k5', icon:'➕', name:'Addition &\nSubtraktion', hours:'in 30 Std.', angle:-10,
+    items:['Addieren & Subtrahieren in ℕ','Kommutativ- & Assoziativgesetz','Rechenvorteile nutzen','Addition & Subtraktion in ℤ','Sachaufgaben (Temperatur, Konto)'],
+    didaktik:'Rechengesetze als Fundament für Termumformungen in Klasse 7' },
+  { id:'t5_3', grade:'k5', icon:'✖️', name:'Multiplikation,\nDivision & Potenzen', hours:'~30 Std.', angle:18,
+    items:['Multiplikation & Division in ℕ','Potenzschreibweise','Teilbarkeit & Primzahlen','Primfaktorzerlegung','Terme & Rechenregeln','Zählprinzip & Baumdiagramme'],
+    didaktik:'Primfaktorzerlegung → Grundlage für kgV/ggT bei Brüchen (Kl. 6) · Baumdiagramme als erster Stochastik-Kontakt' },
+  { id:'t5_4', grade:'k5', icon:'📐', name:'Geometrische\nGrundbegriffe', hours:'~22 Std.', angle:45,
+    items:['Punkt, Gerade, Strecke, Strahl','Winkel: Messen & Zeichnen','Senkrecht & parallel','Koordinatensystem (4 Quadranten)','Achsensymmetrie'],
+    didaktik:'Exaktes Konstruieren mit Geodreieck & Zirkel · Koordinatensystem als Brücke zur Algebra' },
+  { id:'t5_5', grade:'k5', icon:'📏', name:'Größen &\nSchlussrechnung', hours:'~26 Std.', angle:72,
+    items:['Länge, Masse, Zeit, Geld','Einheiten umrechnen','Maßstab & Diagramme','Dreisatz (Schlussrechnung)','Proportionalität in Sachaufgaben'],
+    didaktik:'Alltagsbezug & Modellierung · Dreisatz als Grundlage für Prozentrechnung (Kl. 6)' },
+  { id:'t5_6', grade:'k5', icon:'▭', name:'Flächeninhalt', hours:'~12 Std.', angle:100,
+    items:['Flächeneinheiten (mm²–km²)','Rechteck & Quadrat','Zusammengesetzte Flächen'],
+    didaktik:'Grundlage für Dreieck, Parallelogramm, Trapez in Klasse 6' },
+  
+  // K6
+  { id:'t6_1', grade:'k6', icon:'½', name:'Bruchteile &\nBruchzahlen', hours:'~13 Std.', angle:-40,
+    items:['Anteile & Bruchteile','Erweitern & Kürzen','Hauptnenner & Größenvergleich','Kreis- & Rechteckdiagramme','Prozent als Bruchschreibweise'],
+    didaktik:'Baut auf Teilbarkeit (Kl. 5) auf · Anschauliche Einführung über Flächenmodelle' },
+  { id:'t6_2', grade:'k6', icon:'⅓', name:'Rechnen mit\nBrüchen', hours:'~30 Std.', angle:-12,
+    items:['Addition & Subtraktion','Multiplikation & Division','Gemischte Zahlen','Doppelbrüche & Potenzen','Dezimalbrüche & Umwandlung'],
+    didaktik:'Kernkompetenz für alle höheren Klassen · Übergang zu Dezimalschreibweise' },
+  { id:'t6_3', grade:'k6', icon:'±', name:'Rationale\nZahlen', hours:'~25 Std.', angle:16,
+    items:['Erweiterung ℤ → ℚ','Negative Brüche','Rechnen in ℚ','Zahlenstrahl für ℚ','Betrag rationaler Zahlen'],
+    didaktik:'Zusammenführung: ganze Zahlen (Kl. 5) + Brüche → vollständiger Zahlbereich für Terme (Kl. 7)' },
+  { id:'t6_4', grade:'k6', icon:'%', name:'Prozent-\nrechnung', hours:'~14 Std.', angle:42,
+    items:['Prozent = Bruch mit Nenner 100','Grundwert, Prozentwert, Prozentsatz','Einfache Alltagsaufgaben'],
+    didaktik:'Baut auf Dreisatz (Kl. 5) und Bruchrechnung auf · Wird in Kl. 7 deutlich vertieft' },
+  { id:'t6_5', grade:'k6', icon:'📊', name:'Daten &\nDiagramme', hours:'~8 Std.', angle:68,
+    items:['Daten erheben & darstellen','Absolute & relative Häufigkeit','Arithmetisches Mittel','Diagramme kritisch lesen'],
+    didaktik:'Medienkompetenz: Diagramme hinterfragen · Grundlage für Boxplots (Kl. 7)' },
+  { id:'t6_6', grade:'k6', icon:'📦', name:'Flächeninhalt\n& Volumen', hours:'~30 Std.', angle:95,
+    items:['Dreieck, Parallelogramm, Trapez','Umfang & Flächeninhalt','Schrägbilder & Netze','Oberfläche & Volumen (Quader)','Volumeneinheiten'],
+    didaktik:'Vertieft Flächen aus Kl. 5 (Rechteck → Dreieck) · Erster Schritt in Raumgeometrie' },
+  
+  // K7
+  { id:'t7_1', grade:'k7', icon:'𝑥', name:'Terme mit\nVariablen', hours:'~28 Std.', angle:-35,
+    items:['Variable als Platzhalter','Terme aufstellen & vereinfachen','Gleichartige Terme zusammenfassen','Distributivgesetz','Ausmultiplizieren & Ausklammern'],
+    didaktik:'Der große Übergang: Arithmetik → Algebra · Baut auf Rechengesetzen (Kl. 5/6) auf' },
+  { id:'t7_2', grade:'k7', icon:'⚖️', name:'Lineare\nGleichungen', hours:'~22 Std.', angle:-7,
+    items:['Äquivalenzumformungen','Lösen linearer Gleichungen','Sachaufgaben mit Gleichungsansatz','Ungleichungen (Einführung)'],
+    didaktik:'Waagemodell als Veranschaulichung · Grundlage für Gleichungssysteme (Kl. 8)' },
+  { id:'t7_3', grade:'k7', icon:'📈', name:'Prozentrechnung\nvertieft', hours:'~16 Std.', angle:20,
+    items:['Komplexe Aufgaben (Rabatt, Zins)','Prozentuale Veränderung','Verknüpfung mit Gleichungen','Kritische Bewertung'],
+    didaktik:'Gesellschaftliche Kontexte (Globalisierung, Politik) · Unterscheidung mathematisch vs. außerfachlich' },
+  { id:'t7_4', grade:'k7', icon:'📉', name:'Kenngrößen\nvon Daten', hours:'~14 Std.', angle:47,
+    items:['Median als Mittelwert','Spannweite & Quartile','Boxplots erstellen','Mittelwert vs. Median vergleichen'],
+    didaktik:'Vertieft Mittelwert aus Kl. 6 · Kritisches Denken bei Dateninterpretation' },
+  { id:'t7_5', grade:'k7', icon:'△', name:'Figuren-\ngeometrie', hours:'~40 Std.', angle:75,
+    items:['Winkel an Geradenkreuzungen','Winkelsumme Dreieck & Viereck','Kongruenz (SSS, SWS, WSW, SsW)','Dreieckskonstruktion','Besondere Linien im Dreieck','Punktsymmetrie'],
+    didaktik:'Erste formale Beweise · Vertieft Symmetrie (Kl. 5) · Grundlage für Ähnlichkeit & Pythagoras (Kl. 9)' },
+];
+
+// Longitudinal connections (didaktische Längsschnitte)
+const longitudinals = [
+  { from: 't5_1', to: 't6_3', label: 'ℕ→ℤ→ℚ' },
+  { from: 't6_3', to: 't7_1', label: 'ℚ→Terme' },
+  { from: 't5_5', to: 't6_4', label: 'Dreisatz→%' },
+  { from: 't6_4', to: 't7_3', label: '% vertieft' },
+  { from: 't5_6', to: 't6_6', label: 'Fläche→Raum' },
+  { from: 't6_6', to: 't7_5', label: 'Figuren' },
+  { from: 't5_3', to: 't6_5', label: 'Stochastik' },
+  { from: 't6_5', to: 't7_4', label: 'Statistik' },
+  { from: 't5_2', to: 't7_1', label: 'Rechengesetze→Algebra' },
+];
+
+// ───── LAYOUT ─────
+const GRADE_R = 320;
+const TOPIC_R = 240;
+
+const gradePositions = {};
+grades.forEach(g => {
+  const a = g.angle * Math.PI / 180;
+  g.x = CX + Math.cos(a) * GRADE_R;
+  g.y = CY + Math.sin(a) * GRADE_R;
+  gradePositions[g.id] = { x: g.x, y: g.y };
+});
+
+const topicPositions = {};
+topics.forEach(t => {
+  const gp = gradePositions[t.grade];
+  const baseAngle = grades.find(g=>g.id===t.grade).angle;
+  const a = (baseAngle + t.angle) * Math.PI / 180;
+  t.x = gp.x + Math.cos(a) * TOPIC_R;
+  t.y = gp.y + Math.sin(a) * TOPIC_R;
+  topicPositions[t.id] = { x: t.x, y: t.y };
+});
+
+// ───── RENDER ─────
+const world = document.getElementById('world');
+const svg = document.getElementById('connections');
+
+function createNode(type, cls, x, y, content, delay, onclick) {
+  const div = document.createElement('div');
+  div.className = `node ${type} ${cls}`;
+  div.style.left = x + 'px';
+  div.style.top = y + 'px';
+  div.style.animationDelay = delay + 's';
+  div.innerHTML = content;
+  if (onclick) div.addEventListener('click', onclick);
+  world.appendChild(div);
+  return div;
+}
+
+function bezierPath(x1,y1,x2,y2, color, cls='', delay=0) {
+  const dx = x2-x1, dy = y2-y1;
+  const mx = (x1+x2)/2, my = (y1+y2)/2;
+  const cx1 = x1 + dx*0.3, cy1 = y1 + dy*0.05;
+  const cx2 = x2 - dx*0.3, cy2 = y2 - dy*0.05;
+  const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+  path.setAttribute('d', `M${x1},${y1} C${cx1},${cy1} ${cx2},${cy2} ${x2},${y2}`);
+  path.setAttribute('stroke', color);
+  path.style.animationDelay = delay + 's';
+  if (cls) path.classList.add(cls);
+  svg.appendChild(path);
+  return path;
+}
+
+// Center node
+createNode('node-center', '', CX, CY,
+  `<div class="title">Mathematik<br>Gymnasium Bayern</div><div class="sub">Klasse 5 – 7</div>`, 0);
+
+// Grade nodes + connections to center
+grades.forEach((g, i) => {
+  bezierPath(CX, CY, g.x, g.y, g.color+'55', '', i*0.1);
+  createNode('node-grade', g.id, g.x, g.y,
+    `<div class="num">${g.num}</div><div class="label">${g.label}</div>`, 0.2 + i*0.1);
+});
+
+// Topic nodes + connections to grade
+topics.forEach((t, i) => {
+  const gp = gradePositions[t.grade];
+  const g = grades.find(g=>g.id===t.grade);
+  bezierPath(gp.x, gp.y, t.x, t.y, g.color+'33', '', 0.3 + i*0.04);
+  
+  createNode('node-topic', t.grade, t.x, t.y,
+    `<span class="icon">${t.icon}</span><div class="name">${t.name.replace(/\n/g,'<br>')}</div><div class="hours">${t.hours}</div>`,
+    0.4 + i*0.04,
+    () => showPanel(t)
+  );
+});
+
+// Longitudinal connections
+longitudinals.forEach((l, i) => {
+  const from = topicPositions[l.from];
+  const to = topicPositions[l.to];
+  if (from && to) {
+    bezierPath(from.x, from.y, to.x, to.y, '#a78bfa44', 'long-path', 0);
+  }
+});
+
+// ───── INFO PANEL ─────
+const infoPanel = document.getElementById('infoPanel');
+
+function showPanel(t) {
+  const g = grades.find(g=>g.id===t.grade);
+  document.getElementById('panelIcon').textContent = t.icon;
+  document.getElementById('panelTitle').textContent = t.name.replace(/\n/g,' ');
+  
+  const gradeEl = document.getElementById('panelGrade');
+  gradeEl.textContent = g.label + ' · ' + t.hours;
+  gradeEl.style.background = g.color + '18';
+  gradeEl.style.color = g.color;
+  gradeEl.style.border = `1px solid ${g.color}33`;
+  
+  const itemsEl = document.getElementById('panelItems');
+  itemsEl.innerHTML = t.items.map(i => `<div class="panel-item">${i}</div>`).join('');
+  
+  document.getElementById('panelDidaktik').textContent = '💡 ' + t.didaktik;
+  
+  infoPanel.classList.add('show');
+  
+  // Highlight active topic
+  document.querySelectorAll('.node-topic').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.node-topic').forEach(n => {
+    if (n.querySelector('.name').textContent.replace(/\s+/g,' ') === t.name.replace(/\n/g,' '))
+      n.classList.add('active');
+  });
+}
+
+function closePanel() {
+  infoPanel.classList.remove('show');
+  document.querySelectorAll('.node-topic').forEach(n => n.classList.remove('active'));
+}
+
+// ───── PAN & ZOOM ─────
+let scale = 1, panX = 0, panY = 0;
+let isDragging = false, startX, startY;
+
+function updateTransform() {
+  world.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+  updateMinimap();
+}
+
+// Auto-center on load
+function resetView() {
+  const vw = window.innerWidth, vh = window.innerHeight;
+  scale = Math.min(vw / 2200, vh / 2200, 0.55);
+  scale = Math.max(scale, 0.25);
+  panX = vw/2 - CX * scale;
+  panY = vh/2 - CY * scale;
+  updateTransform();
+}
+
+function zoomIn() { scale = Math.min(scale * 1.25, 2); updateTransform(); }
+function zoomOut() { scale = Math.max(scale / 1.25, 0.15); updateTransform(); }
+
+document.getElementById('canvas').addEventListener('mousedown', e => {
+  if (e.target.closest('.node')) return;
+  isDragging = true;
+  startX = e.clientX - panX;
+  startY = e.clientY - panY;
+  document.body.classList.add('grabbing');
+});
+
+window.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  panX = e.clientX - startX;
+  panY = e.clientY - startY;
+  updateTransform();
+});
+
+window.addEventListener('mouseup', () => {
+  isDragging = false;
+  document.body.classList.remove('grabbing');
+});
+
+document.getElementById('canvas').addEventListener('wheel', e => {
+  e.preventDefault();
+  const delta = e.deltaY > 0 ? 0.9 : 1.1;
+  const rect = document.getElementById('canvas').getBoundingClientRect();
+  const mx = e.clientX - rect.left;
+  const my = e.clientY - rect.top;
+  
+  const newScale = Math.min(Math.max(scale * delta, 0.15), 2);
+  const ratio = newScale / scale;
+  
+  panX = mx - ratio * (mx - panX);
+  panY = my - ratio * (my - panY);
+  scale = newScale;
+  updateTransform();
+}, { passive: false });
+
+// Touch support
+let lastTouchDist = 0, lastTouchX = 0, lastTouchY = 0;
+document.getElementById('canvas').addEventListener('touchstart', e => {
+  if (e.touches.length === 1) {
+    isDragging = true;
+    startX = e.touches[0].clientX - panX;
+    startY = e.touches[0].clientY - panY;
+  } else if (e.touches.length === 2) {
+    isDragging = false;
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    lastTouchDist = Math.sqrt(dx*dx + dy*dy);
+    lastTouchX = (e.touches[0].clientX + e.touches[1].clientX)/2;
+    lastTouchY = (e.touches[0].clientY + e.touches[1].clientY)/2;
+  }
+}, { passive: true });
+
+document.getElementById('canvas').addEventListener('touchmove', e => {
+  e.preventDefault();
+  if (e.touches.length === 1 && isDragging) {
+    panX = e.touches[0].clientX - startX;
+    panY = e.touches[0].clientY - startY;
+    updateTransform();
+  } else if (e.touches.length === 2) {
+    const dx = e.touches[0].clientX - e.touches[1].clientX;
+    const dy = e.touches[0].clientY - e.touches[1].clientY;
+    const dist = Math.sqrt(dx*dx + dy*dy);
+    const delta = dist / lastTouchDist;
+    const newScale = Math.min(Math.max(scale * delta, 0.15), 2);
+    const ratio = newScale / scale;
+    const mx = (e.touches[0].clientX + e.touches[1].clientX)/2;
+    const my = (e.touches[0].clientY + e.touches[1].clientY)/2;
+    panX = mx - ratio * (mx - panX);
+    panY = my - ratio * (my - panY);
+    scale = newScale;
+    lastTouchDist = dist;
+    updateTransform();
+  }
+}, { passive: false });
+
+document.getElementById('canvas').addEventListener('touchend', () => { isDragging = false; });
+
+// ───── MINIMAP ─────
+function updateMinimap() {
+  const mc = document.getElementById('minimapCanvas');
+  const ctx = mc.getContext('2d');
+  const W = 140, H = 100;
+  mc.width = W * 2; mc.height = H * 2;
+  mc.style.width = W + 'px'; mc.style.height = H + 'px';
+  ctx.scale(2,2);
+  ctx.clearRect(0,0,W,H);
+  
+  const worldW = 5000, worldH = 5000;
+  const sx = W/worldW, sy = H/worldH;
+  
+  // Draw nodes
+  grades.forEach(g => {
+    ctx.fillStyle = g.color + '66';
+    ctx.beginPath();
+    ctx.arc(g.x*sx, g.y*sy, 4, 0, Math.PI*2);
+    ctx.fill();
+  });
+  
+  topics.forEach(t => {
+    const g = grades.find(g=>g.id===t.grade);
+    ctx.fillStyle = g.color + '33';
+    ctx.beginPath();
+    ctx.arc(t.x*sx, t.y*sy, 2, 0, Math.PI*2);
+    ctx.fill();
+  });
+  
+  // Center
+  ctx.fillStyle = '#a78bfa44';
+  ctx.beginPath();
+  ctx.arc(CX*sx, CY*sy, 5, 0, Math.PI*2);
+  ctx.fill();
+  
+  // Viewport
+  const vw = window.innerWidth, vh = window.innerHeight;
+  const vpEl = document.getElementById('miniViewport');
+  vpEl.style.left = (-panX / scale * sx) + 'px';
+  vpEl.style.top = (-panY / scale * sy) + 'px';
+  vpEl.style.width = (vw / scale * sx) + 'px';
+  vpEl.style.height = (vh / scale * sy) + 'px';
+}
+
+// Init
+window.addEventListener('resize', resetView);
+resetView();
+</script>
+</body>
+</html>

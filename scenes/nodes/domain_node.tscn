@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://domain_node"]
+
+[ext_resource type="Script" path="res://scripts/universe/node_base.gd" id="1_script"]
+[ext_resource type="Shader" path="res://shaders/star_glow.gdshader" id="2_shader"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1"]
+radius = 1.0
+height = 2.0
+radial_segments = 32
+rings = 16
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 1.2
+
+[node name="DomainNode" type="Node3D"]
+script = ExtResource("1_script")
+node_level = "domain"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_1")
+gi_mode = 1
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_1")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+pixel_size = 0.01
+font_size = 48
+outline_size = 8
+text = "Domain"
+billboard = 1

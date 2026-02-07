@@ -1,0 +1,197 @@
+{
+  "domain": "algebra",
+  "subdomains": [
+    {
+      "id": "algebra.elementary",
+      "name": "Elementary Algebra",
+      "description": "The foundation — variables, expressions, equations, and the language of mathematics.",
+      "importance": 10,
+      "difficulty": 1,
+      "flavor": "The First Star — every explorer's starting point. Simple, but everything grows from here.",
+      "topics": [
+        {
+          "id": "algebra.elementary.variables",
+          "name": "Variables & Expressions",
+          "description": "Using letters to represent unknown quantities. Building and simplifying algebraic expressions.",
+          "keywords": ["variable", "expression", "term", "coefficient", "constant"],
+          "importance": 10,
+          "difficulty": 1,
+          "flavor": "The seed of all algebra — a single letter that can be anything."
+        },
+        {
+          "id": "algebra.elementary.linear-equations",
+          "name": "Linear Equations",
+          "description": "Equations of the form ax + b = c. Solving for unknowns using inverse operations.",
+          "keywords": ["linear", "equation", "solve", "inverse operation", "balance"],
+          "importance": 10,
+          "difficulty": 1,
+          "flavor": "The straight paths of the universe — simple, elegant, and everywhere."
+        },
+        {
+          "id": "algebra.elementary.inequalities",
+          "name": "Inequalities",
+          "description": "Relations using <, >, ≤, ≥. Solving and graphing inequalities on a number line.",
+          "keywords": ["inequality", "less than", "greater than", "number line", "interval"],
+          "importance": 7,
+          "difficulty": 1,
+          "flavor": "Not everything is equal — sometimes we only know the bounds."
+        },
+        {
+          "id": "algebra.elementary.systems",
+          "name": "Systems of Equations",
+          "description": "Two or more equations with multiple unknowns. Substitution and elimination methods.",
+          "keywords": ["system", "substitution", "elimination", "simultaneous", "solution set"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Where two straight lines cross, a secret is revealed."
+        }
+      ]
+    },
+    {
+      "id": "algebra.polynomials",
+      "name": "Polynomials",
+      "description": "Expressions with multiple terms and powers. Factoring, roots, and the fundamental theorem of algebra.",
+      "importance": 9,
+      "difficulty": 2,
+      "flavor": "The Garden of Powers — where expressions bloom into complex and beautiful forms.",
+      "topics": [
+        {
+          "id": "algebra.polynomials.operations",
+          "name": "Polynomial Operations",
+          "description": "Adding, subtracting, multiplying, and dividing polynomials. Long division and synthetic division.",
+          "keywords": ["polynomial", "degree", "leading coefficient", "division", "remainder"],
+          "importance": 8,
+          "difficulty": 2,
+          "flavor": "Combining powers — the arithmetic of expressions."
+        },
+        {
+          "id": "algebra.polynomials.factoring",
+          "name": "Factoring",
+          "description": "Breaking polynomials into irreducible factors. GCF, grouping, difference of squares, sum/difference of cubes.",
+          "keywords": ["factor", "GCF", "difference of squares", "trinomial", "irreducible"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Every polynomial hides a secret structure — factoring reveals it."
+        },
+        {
+          "id": "algebra.polynomials.quadratics",
+          "name": "Quadratic Equations",
+          "description": "ax² + bx + c = 0. The quadratic formula, completing the square, discriminant, and parabolas.",
+          "keywords": ["quadratic", "parabola", "discriminant", "vertex", "quadratic formula"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "The first curve — a parabola arcing through space, connecting algebra to geometry."
+        },
+        {
+          "id": "algebra.polynomials.higher-degree",
+          "name": "Higher-Degree Polynomials",
+          "description": "Cubic, quartic, and beyond. Rational root theorem, Descartes' rule, and end behavior.",
+          "keywords": ["cubic", "quartic", "rational root", "end behavior", "multiplicity"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "The deeper you go, the wilder the curves become."
+        }
+      ]
+    },
+    {
+      "id": "algebra.linear-algebra",
+      "name": "Linear Algebra",
+      "description": "Vectors, matrices, linear transformations, eigenvalues. The backbone of modern applied mathematics.",
+      "importance": 10,
+      "difficulty": 3,
+      "flavor": "The Crystal Lattice — where dimensions multiply and spaces transform.",
+      "topics": [
+        {
+          "id": "algebra.linear-algebra.vectors",
+          "name": "Vectors",
+          "description": "Quantities with magnitude and direction. Vector addition, scalar multiplication, dot and cross products.",
+          "keywords": ["vector", "magnitude", "direction", "dot product", "cross product"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Arrows in space — pointing the way to higher dimensions."
+        },
+        {
+          "id": "algebra.linear-algebra.matrices",
+          "name": "Matrices",
+          "description": "Rectangular arrays of numbers. Matrix operations, determinants, and inverses.",
+          "keywords": ["matrix", "determinant", "inverse", "transpose", "identity"],
+          "importance": 10,
+          "difficulty": 3,
+          "flavor": "Grids of numbers that encode transformations of entire spaces."
+        },
+        {
+          "id": "algebra.linear-algebra.transformations",
+          "name": "Linear Transformations",
+          "description": "Functions that preserve vector addition and scalar multiplication. Rotation, reflection, scaling.",
+          "keywords": ["transformation", "rotation", "reflection", "kernel", "image"],
+          "importance": 9,
+          "difficulty": 3,
+          "flavor": "The universe warps and stretches — but linearly, always linearly."
+        },
+        {
+          "id": "algebra.linear-algebra.eigenvalues",
+          "name": "Eigenvalues & Eigenvectors",
+          "description": "Special vectors that only scale under a transformation. The key to understanding matrix behavior.",
+          "keywords": ["eigenvalue", "eigenvector", "characteristic polynomial", "diagonalization", "spectrum"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "The DNA of a transformation — the directions that refuse to change."
+        }
+      ]
+    },
+    {
+      "id": "algebra.abstract-algebra",
+      "name": "Abstract Algebra",
+      "description": "Groups, rings, fields — the study of algebraic structures at their most general and abstract level.",
+      "importance": 8,
+      "difficulty": 4,
+      "flavor": "The Deep Core — where algebra becomes pure structure, stripped of all specifics.",
+      "topics": [
+        {
+          "id": "algebra.abstract-algebra.groups",
+          "name": "Group Theory",
+          "description": "Sets with a binary operation satisfying closure, associativity, identity, and inverses. Symmetry formalized.",
+          "keywords": ["group", "subgroup", "homomorphism", "symmetry", "Lagrange theorem"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "Symmetry itself, captured in pure mathematics."
+        },
+        {
+          "id": "algebra.abstract-algebra.rings",
+          "name": "Ring Theory",
+          "description": "Sets with two operations (addition and multiplication). Ideals, quotient rings, and polynomial rings.",
+          "keywords": ["ring", "ideal", "quotient", "integral domain", "principal ideal"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Two operations, infinite possibilities."
+        },
+        {
+          "id": "algebra.abstract-algebra.fields",
+          "name": "Field Theory",
+          "description": "Rings where every nonzero element has a multiplicative inverse. Field extensions and Galois theory.",
+          "keywords": ["field", "extension", "Galois", "splitting field", "algebraic closure"],
+          "importance": 7,
+          "difficulty": 5,
+          "flavor": "The final frontier of classical algebra — where Galois proved some equations can never be solved."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "algebra.elementary.variables", "to": "algebra.elementary.linear-equations", "type": "prerequisite" },
+    { "from": "algebra.elementary.linear-equations", "to": "algebra.elementary.inequalities", "type": "prerequisite" },
+    { "from": "algebra.elementary.linear-equations", "to": "algebra.elementary.systems", "type": "prerequisite" },
+    { "from": "algebra.elementary.variables", "to": "algebra.polynomials.operations", "type": "prerequisite" },
+    { "from": "algebra.polynomials.operations", "to": "algebra.polynomials.factoring", "type": "prerequisite" },
+    { "from": "algebra.polynomials.factoring", "to": "algebra.polynomials.quadratics", "type": "prerequisite" },
+    { "from": "algebra.polynomials.quadratics", "to": "algebra.polynomials.higher-degree", "type": "prerequisite" },
+    { "from": "algebra.elementary.systems", "to": "algebra.linear-algebra.vectors", "type": "prerequisite" },
+    { "from": "algebra.linear-algebra.vectors", "to": "algebra.linear-algebra.matrices", "type": "prerequisite" },
+    { "from": "algebra.linear-algebra.matrices", "to": "algebra.linear-algebra.transformations", "type": "prerequisite" },
+    { "from": "algebra.linear-algebra.transformations", "to": "algebra.linear-algebra.eigenvalues", "type": "prerequisite" },
+    { "from": "algebra.polynomials.higher-degree", "to": "algebra.abstract-algebra.groups", "type": "prepares" },
+    { "from": "algebra.abstract-algebra.groups", "to": "algebra.abstract-algebra.rings", "type": "prerequisite" },
+    { "from": "algebra.abstract-algebra.rings", "to": "algebra.abstract-algebra.fields", "type": "prerequisite" },
+    { "from": "algebra.linear-algebra.matrices", "to": "algebra.abstract-algebra.groups", "type": "prepares" }
+  ]
+}

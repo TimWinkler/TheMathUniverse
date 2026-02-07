@@ -1,0 +1,117 @@
+{
+  "domain": "number-theory",
+  "subdomains": [
+    {
+      "id": "number-theory.elementary",
+      "name": "Elementary Number Theory",
+      "description": "The basics — divisibility, primes, modular arithmetic. Accessible yet profound.",
+      "importance": 10,
+      "difficulty": 2,
+      "flavor": "The Outer Ring — where the prime stars shine brightest and every integer has a story.",
+      "topics": [
+        {
+          "id": "number-theory.elementary.divisibility",
+          "name": "Divisibility & GCD",
+          "description": "Division algorithm, greatest common divisor, Euclidean algorithm, least common multiple.",
+          "keywords": ["divisibility", "GCD", "LCM", "Euclidean algorithm", "division algorithm"],
+          "importance": 9,
+          "difficulty": 1,
+          "flavor": "The oldest question in mathematics — does one number divide another?"
+        },
+        {
+          "id": "number-theory.elementary.primes",
+          "name": "Prime Numbers",
+          "description": "The atoms of arithmetic. Fundamental theorem of arithmetic, sieve of Eratosthenes, prime distribution.",
+          "keywords": ["prime", "composite", "fundamental theorem", "sieve", "factorization"],
+          "importance": 10,
+          "difficulty": 2,
+          "flavor": "Indivisible, unpredictable, infinite — the stars that light up number theory."
+        },
+        {
+          "id": "number-theory.elementary.modular",
+          "name": "Modular Arithmetic",
+          "description": "Clock arithmetic. Congruences, residues, Fermat's little theorem, Chinese remainder theorem.",
+          "keywords": ["modular", "congruence", "residue", "Fermat", "Chinese remainder"],
+          "importance": 9,
+          "difficulty": 2,
+          "flavor": "Mathematics that wraps around — where 7 + 6 = 1."
+        },
+        {
+          "id": "number-theory.elementary.diophantine",
+          "name": "Diophantine Equations",
+          "description": "Equations requiring integer solutions. Linear Diophantine equations, Pythagorean triples.",
+          "keywords": ["Diophantine", "integer solution", "Pythagorean triple", "Bezout", "linear"],
+          "importance": 7,
+          "difficulty": 3,
+          "flavor": "Only whole numbers allowed — suddenly everything becomes much harder."
+        }
+      ]
+    },
+    {
+      "id": "number-theory.algebraic-number-theory",
+      "name": "Algebraic Number Theory",
+      "description": "Number theory through the lens of algebra. Algebraic integers, number fields, ideal theory.",
+      "importance": 7,
+      "difficulty": 4,
+      "flavor": "The Inner Nebula — where numbers become algebraic objects of infinite complexity.",
+      "topics": [
+        {
+          "id": "number-theory.algebraic-number-theory.algebraic-integers",
+          "name": "Algebraic Integers",
+          "description": "Roots of monic polynomials with integer coefficients. Number rings and their arithmetic.",
+          "keywords": ["algebraic integer", "number ring", "norm", "trace", "minimal polynomial"],
+          "importance": 7,
+          "difficulty": 4,
+          "flavor": "Integers generalized — the building blocks of algebraic number fields."
+        },
+        {
+          "id": "number-theory.algebraic-number-theory.quadratic-fields",
+          "name": "Quadratic Number Fields",
+          "description": "Fields of the form ℚ(√d). Class numbers, fundamental units, Pell's equation.",
+          "keywords": ["quadratic field", "class number", "Pell equation", "fundamental unit", "discriminant"],
+          "importance": 6,
+          "difficulty": 4,
+          "flavor": "The simplest number fields — yet they still hold unsolved mysteries."
+        }
+      ]
+    },
+    {
+      "id": "number-theory.analytic-number-theory",
+      "name": "Analytic Number Theory",
+      "description": "Using analysis to study the distribution of primes. The Riemann zeta function and beyond.",
+      "importance": 8,
+      "difficulty": 5,
+      "flavor": "The Deep Core — where infinity meets the primes, and the Riemann Hypothesis waits.",
+      "topics": [
+        {
+          "id": "number-theory.analytic-number-theory.prime-distribution",
+          "name": "Distribution of Primes",
+          "description": "The prime counting function, prime number theorem, Chebyshev's bounds, prime gaps.",
+          "keywords": ["prime counting", "prime number theorem", "Chebyshev", "prime gap", "density"],
+          "importance": 9,
+          "difficulty": 4,
+          "flavor": "How are the primes scattered? A question that connects analysis to arithmetic."
+        },
+        {
+          "id": "number-theory.analytic-number-theory.zeta-function",
+          "name": "Riemann Zeta Function",
+          "description": "ζ(s) = Σ 1/nˢ. Analytic continuation, functional equation, the Riemann Hypothesis.",
+          "keywords": ["Riemann zeta", "analytic continuation", "Riemann Hypothesis", "L-function", "zeros"],
+          "importance": 10,
+          "difficulty": 5,
+          "flavor": "The most famous unsolved problem in mathematics lives here."
+        }
+      ]
+    }
+  ],
+  "edges": [
+    { "from": "number-theory.elementary.divisibility", "to": "number-theory.elementary.primes", "type": "prerequisite" },
+    { "from": "number-theory.elementary.primes", "to": "number-theory.elementary.modular", "type": "prerequisite" },
+    { "from": "number-theory.elementary.divisibility", "to": "number-theory.elementary.diophantine", "type": "prerequisite" },
+    { "from": "number-theory.elementary.modular", "to": "number-theory.elementary.diophantine", "type": "prepares" },
+    { "from": "number-theory.elementary.primes", "to": "number-theory.algebraic-number-theory.algebraic-integers", "type": "prerequisite" },
+    { "from": "number-theory.algebraic-number-theory.algebraic-integers", "to": "number-theory.algebraic-number-theory.quadratic-fields", "type": "prerequisite" },
+    { "from": "number-theory.elementary.primes", "to": "number-theory.analytic-number-theory.prime-distribution", "type": "prerequisite" },
+    { "from": "number-theory.analytic-number-theory.prime-distribution", "to": "number-theory.analytic-number-theory.zeta-function", "type": "prerequisite" }
+  ]
+}
