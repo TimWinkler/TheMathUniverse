@@ -2,4 +2,5 @@
 *.import
 export_presets.cfg
 builds/
+build/
 .claude/
