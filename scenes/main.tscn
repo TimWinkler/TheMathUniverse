@@ -21,7 +21,10 @@ script = ExtResource("1_main")
 
 [node name="HUD" parent="UI" instance=ExtResource("4_hud")]
 
-[node name="AchievementToast" parent="UI" instance=ExtResource("5_achievement_toast")]
+[node name="AchievementToastLayer" type="CanvasLayer" parent="UI"]
+layer = 20
+
+[node name="AchievementToast" parent="UI/AchievementToastLayer" instance=ExtResource("5_achievement_toast")]
 
 [node name="ChatPanel" parent="UI" instance=ExtResource("6_chat_panel")]
 
