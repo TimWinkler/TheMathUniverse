@@ -85,6 +85,19 @@ Then open http://localhost:8000 in your browser.
 
 No special server headers (COOP/COEP) are required since thread support is disabled.
 
+## Docker
+
+Build and run the web export in a container:
+
+```bash
+docker build -t math-universe .
+docker run -d -p 8080:80 --name math-universe math-universe
+```
+
+Then open http://localhost:8080 in your browser.
+
+The image uses nginx:alpine with correct MIME types for `.wasm` and `.pck`, gzip compression, and 7-day cache headers.
+
 ## Run in Godot Editor (Desktop)
 
 1. **Install Godot 4.6** from [godotengine.org](https://godotengine.org/download)
