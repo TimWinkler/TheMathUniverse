@@ -94,7 +94,7 @@ func _update_domain_indicators() -> void:
 
 
 func _update_achievement_count() -> void:
-	achievement_label.text = "★ %d/%d" % [Achievements.get_unlocked_count(), Achievements.get_total_count()]
+	achievement_label.text = "%d/%d" % [Achievements.get_unlocked_count(), Achievements.get_total_count()]
 
 
 func show_hover(node_id: String) -> void:

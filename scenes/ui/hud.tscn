@@ -31,6 +31,7 @@ size_flags_horizontal = 3
 [node name="DomainIndicators" type="HBoxContainer" parent="TopBar"]
 unique_name_in_owner = true
 layout_mode = 2
+clip_contents = true
 theme_override_constants/separation = 6
 
 [node name="Spacer2" type="Control" parent="TopBar"]
@@ -40,9 +41,10 @@ size_flags_horizontal = 3
 [node name="AchievementLabel" type="Label" parent="TopBar"]
 unique_name_in_owner = true
 layout_mode = 2
+z_index = 10
 theme_override_font_sizes/font_size = 13
 theme_override_colors/font_color = Color(0.9, 0.75, 0.2, 1)
-text = "★ 0/7"
+text = "0/10"
 
 [node name="ProgressContainer" type="VBoxContainer" parent="."]
 anchors_preset = 10
