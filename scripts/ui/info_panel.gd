@@ -117,8 +117,8 @@ func _show_discovered_node(math_node: MathTypes.MathNode) -> void:
 	if math_node.difficulty > 0:
 		var stars := ""
 		for i in range(5):
-			stars += "★" if i < math_node.difficulty else "☆"
-		difficulty_label.text = "Difficulty: " + stars
+			stars += "#" if i < math_node.difficulty else "-"
+		difficulty_label.text = "Difficulty: [%s] %d/5" % [stars, math_node.difficulty]
 		difficulty_label.visible = true
 	else:
 		difficulty_label.visible = false

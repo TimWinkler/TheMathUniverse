@@ -94,7 +94,7 @@ func _spawn_connections(graph: MathTypes.MathGraph) -> void:
 
 		# Color based on the "from" node's domain color, blended with "to"
 		var color := from_node.color.lerp(to_node.color, 0.3)
-		color.a = 0.3
+		color.a = 0.7
 		conn.setup(from_node.position, to_node.position, color, edge.edge_type)
 		_connection_instances.append(conn)
 
