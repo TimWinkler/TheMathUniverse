@@ -6,6 +6,12 @@ Built with [Godot 4.6](https://godotengine.org/) using pure GDScript. Runs nativ
 
 ![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 
+## Screenshots
+
+| Universe Overview | Info Panel with Learning Resources | Zoomed In with Connections |
+|---|---|---|
+| ![Universe Overview](images/universe_overview.png) | ![Info Panel](images/info_panel_resources.png) | ![Connections](images/connections_closeup.png) |
+
 ## Features
 
 - **13 mathematical galaxies** — Algebra, Analysis, Geometry, Number Theory, Probability, Topology, Combinatorics, Logic, Discrete Math, Differential Equations, Optimization, Applied Math, Category Theory
@@ -15,6 +21,7 @@ Built with [Godot 4.6](https://godotengine.org/) using pure GDScript. Runs nativ
 - **10 achievements** — from First Contact to Universal Mind
 - **Co-op multiplayer** — 2-10 players via WebSocket, shared discovery
 - **Minimap** with click-to-fly navigation
+- **Learning resources** — curated links to Khan Academy, Wikipedia, MIT OCW, Brilliant, and more, filtered by difficulty level
 - **Save system** — auto-saves progress (IndexedDB on web, local file on desktop)
 - **Web export** — plays directly in the browser, no install needed
 
@@ -29,6 +36,7 @@ Built with [Godot 4.6](https://godotengine.org/) using pure GDScript. Runs nativ
 | **H** | Fly to home position |
 | **J** | Open quest log |
 | **M** | Toggle minimap |
+| **C** | Toggle all connections |
 | **F1** | Toggle mute |
 | **F9** | Reset all progress |
 | **Esc** | Close panels |
@@ -97,9 +105,12 @@ TheMathUniverse/
 ├── data/                    # JSON data files
 │   ├── domains.json         # Domain definitions and cross-domain edges
 │   ├── quests.json          # Quest chains and standalone quests
+│   ├── resources.json       # Learning resource links for all 303 nodes
 │   ├── algebra.json         # 13 domain data files with subdomains/topics
 │   ├── analysis.json
 │   └── ...
+├── tools/
+│   └── generate_resources.py  # Generates resources.json from domain data
 ├── scripts/
 │   ├── data/                # Data loading (DataLoader autoload)
 │   ├── game/                # Core systems (autoloads)
