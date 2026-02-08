@@ -132,7 +132,7 @@ func set_connections_visible(showing: bool) -> void:
 func _build_level_toggle() -> void:
 	var top_bar = %TopBar
 
-	# Insert a separator before the achievement label
+	# Insert level toggle at end of top bar
 	var sep := VSeparator.new()
 	sep.add_theme_constant_override("separation", 8)
 	top_bar.add_child(sep)

@@ -4,16 +4,14 @@
 [ext_resource type="Script" path="res://scripts/ui/minimap_canvas.gd" id="2_canvas"]
 
 [node name="Minimap" type="PanelContainer"]
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -260
+offset_left = 10
 offset_top = -260
-offset_right = -10
+offset_right = 260
 offset_bottom = -10
-grow_horizontal = 0
+grow_horizontal = 1
 grow_vertical = 0
 mouse_filter = 1
 script = ExtResource("1_script")
