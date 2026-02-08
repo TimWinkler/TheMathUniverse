@@ -168,23 +168,29 @@ func _raycast_click(event: InputEventMouseButton) -> void:
 	var space := get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(from, to, 2)
 	var result := space.intersect_ray(query)
+	var node_base: MathNodeBase = null
 	if result.size() > 0:
 		var collider = result["collider"]
-		var node_base := (collider.get_parent() as MathNodeBase)
-		if node_base:
-			node_base.on_click()
-			emit_signal("node_clicked", node_base.node_id)
-			# Only fly camera to node in free-camera mode
-			if not _follow_mode:
-				var fly_dist := 15.0
-				match node_base.node_level:
-					"domain":
-						fly_dist = 50.0
-					"subdomain":
-						fly_dist = 25.0
-					"topic":
-						fly_dist = 12.0
-				fly_to(node_base.global_position, fly_dist)
+		node_base = collider.get_parent() as MathNodeBase
+
+	# Fallback: screen-space proximity detection (physics raycast can fail in web exports)
+	if node_base == null:
+		node_base = _find_nearest_node_at_screen(event.position)
+
+	if node_base:
+		node_base.on_click()
+		emit_signal("node_clicked", node_base.node_id)
+		# Only fly camera to node in free-camera mode
+		if not _follow_mode:
+			var fly_dist := 15.0
+			match node_base.node_level:
+				"domain":
+					fly_dist = 50.0
+				"subdomain":
+					fly_dist = 25.0
+				"topic":
+					fly_dist = 12.0
+			fly_to(node_base.global_position, fly_dist)
 
 
 func _raycast_hover() -> void:
@@ -196,22 +202,54 @@ func _raycast_hover() -> void:
 	var space := get_world_3d().direct_space_state
 	var query := PhysicsRayQueryParameters3D.create(from, to, 2)
 	var result := space.intersect_ray(query)
+	var node_base: MathNodeBase = null
 
 	if result.size() > 0:
 		var collider = result["collider"]
-		var node_base := (collider.get_parent() as MathNodeBase)
-		if node_base:
-			if _last_hovered_id != node_base.node_id:
-				# Unhover previous node
-				_clear_hover()
-				node_base.set_hovered(true)
-				_last_hovered_id = node_base.node_id
-				_last_hovered_node = node_base
-				emit_signal("node_hovered", node_base.node_id)
-			return
+		node_base = collider.get_parent() as MathNodeBase
+
+	# Fallback: screen-space proximity detection
+	if node_base == null:
+		node_base = _find_nearest_node_at_screen(mouse_pos)
+
+	if node_base:
+		if _last_hovered_id != node_base.node_id:
+			_clear_hover()
+			node_base.set_hovered(true)
+			_last_hovered_id = node_base.node_id
+			_last_hovered_node = node_base
+			emit_signal("node_hovered", node_base.node_id)
+		return
 
 	# Nothing hovered
 	_clear_hover()
+
+
+func _find_nearest_node_at_screen(screen_pos: Vector2) -> MathNodeBase:
+	var um = get_parent() as UniverseManager
+	if um == null:
+		return null
+	var best_node: MathNodeBase = null
+	var best_dist := INF
+	for instance in um.get_all_node_instances().values():
+		var nb = instance as MathNodeBase
+		if nb == null or not nb.visible:
+			continue
+		if camera.is_position_behind(nb.global_position):
+			continue
+		var sp := camera.unproject_position(nb.global_position)
+		var dist := sp.distance_to(screen_pos)
+		# Scale hit threshold by node level and zoom
+		var threshold := 20.0
+		match nb.node_level:
+			"domain":
+				threshold = 40.0
+			"subdomain":
+				threshold = 30.0
+		if dist < threshold and dist < best_dist:
+			best_dist = dist
+			best_node = nb
+	return best_node
 
 
 func _clear_hover() -> void:
