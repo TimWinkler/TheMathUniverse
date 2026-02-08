@@ -1,0 +1,15 @@
+.godot/
+.claude/
+*.import
+scenes/
+scripts/
+shaders/
+data/
+assets/
+mindmap_v3.html
+*.tscn
+*.gdshader
+*.gd
+project.godot
+export_presets.cfg
+icon.svg
