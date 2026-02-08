@@ -4,6 +4,8 @@ A co-op 3D space exploration game where all of mathematics is a universe to disc
 
 Built with [Godot 4.6](https://godotengine.org/) using pure GDScript. Runs natively on desktop and in the browser via WebAssembly.
 
+**[Play the live demo](https://timwinkler.github.io/TheMathUniverse/)**
+
 ![License](https://img.shields.io/badge/license-GPL--3.0-blue)
 
 ## Screenshots
