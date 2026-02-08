@@ -71,7 +71,7 @@ func _on_connect_pressed() -> void:
 
 func _on_solo_pressed() -> void:
 	NetworkManager.is_online = false
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	SceneTransition.change_scene("res://scenes/main.tscn")
 
 
 func _on_start_pressed() -> void:
@@ -99,7 +99,7 @@ func _on_server_disconnected() -> void:
 
 
 func _on_game_started() -> void:
-	get_tree().change_scene_to_file("res://scenes/main.tscn")
+	SceneTransition.change_scene("res://scenes/main.tscn")
 
 
 func _apply_local_settings() -> void:

@@ -89,7 +89,7 @@ func _process(delta: float) -> void:
 		var camera := get_viewport().get_camera_3d()
 		if camera:
 			var cam_basis := camera.global_transform.basis
-			var move_dir := (cam_basis.x * input.x + cam_basis.y * input.y - cam_basis.z * input.z).normalized()
+			var move_dir := (cam_basis.x * input.x + cam_basis.y * input.y + cam_basis.z * input.z).normalized()
 			_velocity = _velocity.lerp(move_dir * move_speed, delta * 6.0)
 
 			# Rotate ship to face movement direction

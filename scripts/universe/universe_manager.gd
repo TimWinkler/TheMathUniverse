@@ -13,6 +13,7 @@ const ConnectionScene := preload("res://scenes/nodes/connection.tscn")
 var _node_instances: Dictionary = {}  # id -> MathNodeBase
 var _connection_instances: Array[ConnectionLine] = []
 var _layout: ForceLayout
+var _show_all_connections := false
 
 @onready var nodes_container: Node3D = $Nodes
 @onready var connections_container: Node3D = $Connections
@@ -109,9 +110,18 @@ func _apply_all_fog_states() -> void:
 
 func _update_all_connections() -> void:
 	for conn in _connection_instances:
-		var from_discovered := DiscoveryManager.is_discovered(conn.from_id)
-		var to_discovered := DiscoveryManager.is_discovered(conn.to_id)
-		conn.set_visibility_state(from_discovered and to_discovered)
+		if _show_all_connections:
+			conn.set_visibility_state(true)
+		else:
+			var from_discovered := DiscoveryManager.is_discovered(conn.from_id)
+			var to_discovered := DiscoveryManager.is_discovered(conn.to_id)
+			conn.set_visibility_state(from_discovered and to_discovered)
+
+
+func toggle_show_all_connections() -> bool:
+	_show_all_connections = not _show_all_connections
+	_update_all_connections()
+	return _show_all_connections
 
 
 func _on_node_discovered(node_id: String) -> void:

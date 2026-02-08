@@ -12,6 +12,7 @@ class MathNode:
 	var importance: int  # 1-10
 	var difficulty: int  # 1-5
 	var flavor: String
+	var resources: Array = []  # Array of {title, url, level} dictionaries
 	var color: Color
 
 	# Runtime state

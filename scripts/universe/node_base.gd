@@ -218,3 +218,64 @@ func play_discovery_animation() -> void:
 				Color.WHITE, _original_color, 0.6)
 			flash_tween.parallel().tween_method(func(v: float): mat.set_shader_parameter("glow_intensity", v),
 				_original_glow * 3.0, _original_glow, 0.8)
+
+	_spawn_discovery_particles()
+
+
+func _spawn_discovery_particles() -> void:
+	var particles := GPUParticles3D.new()
+	particles.emitting = true
+	particles.one_shot = true
+	particles.amount = 32
+	particles.lifetime = 1.2
+	particles.explosiveness = 0.9
+
+	# Particle material
+	var mat := ParticleProcessMaterial.new()
+	mat.direction = Vector3(0, 0, 0)
+	mat.spread = 180.0
+	mat.initial_velocity_min = 3.0
+	mat.initial_velocity_max = 6.0
+	mat.gravity = Vector3.ZERO
+	mat.damping_min = 2.0
+	mat.damping_max = 4.0
+
+	# Color: domain color fading out
+	var gradient := Gradient.new()
+	gradient.set_color(0, Color(_original_color, 1.0))
+	gradient.set_color(1, Color(_original_color, 0.0))
+	var color_ramp := GradientTexture1D.new()
+	color_ramp.gradient = gradient
+	mat.color_ramp = color_ramp
+
+	# Scale: shrink to zero
+	var scale_curve := CurveTexture.new()
+	var curve := Curve.new()
+	curve.add_point(Vector2(0.0, 1.0))
+	curve.add_point(Vector2(1.0, 0.0))
+	scale_curve.curve = curve
+	mat.scale_curve = scale_curve
+
+	particles.process_material = mat
+
+	# Tiny sphere mesh for each particle
+	var sphere := SphereMesh.new()
+	sphere.radius = 0.05
+	sphere.height = 0.1
+	sphere.radial_segments = 8
+	sphere.rings = 4
+	var sphere_mat := StandardMaterial3D.new()
+	sphere_mat.albedo_color = _original_color
+	sphere_mat.emission_enabled = true
+	sphere_mat.emission = _original_color
+	sphere_mat.emission_energy_multiplier = 3.0
+	sphere.material = sphere_mat
+	particles.draw_pass_1 = sphere
+
+	# Add to parent so scale burst on self doesn't affect particles
+	get_parent().add_child(particles)
+	particles.global_position = global_position
+
+	# Auto-free after lifetime + buffer
+	var timer := get_tree().create_timer(particles.lifetime + 0.5)
+	timer.timeout.connect(particles.queue_free)

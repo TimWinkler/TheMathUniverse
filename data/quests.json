@@ -7,7 +7,7 @@
         {
           "id": "first_light",
           "name": "First Light",
-          "description": "Discover your first topic node. Click on a glowing silhouette near any galaxy.",
+          "description": "Discover your first topic node. First discover a star system near a galaxy, then click a silhouette near that star system.",
           "type": "discover_count",
           "target": 1,
           "filter": "topic",

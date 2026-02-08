@@ -7,6 +7,14 @@ extends PanelContainer
 signal closed
 
 var _current_node: MathTypes.MathNode = null
+var _slide_tween: Tween = null
+var _resources_label: RichTextLabel = null
+
+# Offscreen / onscreen horizontal offsets (panel anchored to right edge)
+const _OFFSET_LEFT_VISIBLE := -380.0
+const _OFFSET_RIGHT_VISIBLE := -20.0
+const _OFFSET_LEFT_HIDDEN := 20.0
+const _OFFSET_RIGHT_HIDDEN := 20.0
 
 @onready var title_label: Label = %TitleLabel
 @onready var level_label: Label = %LevelLabel
@@ -27,10 +35,27 @@ func _ready() -> void:
 	discover_button.visible = false
 	discovery_status_label.visible = false
 
+	# Create resources label after DetailsContainer
+	_resources_label = RichTextLabel.new()
+	_resources_label.bbcode_enabled = true
+	_resources_label.fit_content = true
+	_resources_label.scroll_active = false
+	_resources_label.add_theme_font_size_override("normal_font_size", 12)
+	_resources_label.visible = false
+	details_container.get_parent().add_child(_resources_label)
+	details_container.get_parent().move_child(_resources_label, details_container.get_index() + 1)
+	_resources_label.meta_clicked.connect(_on_resource_clicked)
+
+	DataLoader.resource_level_changed.connect(_on_resource_level_changed)
+
 
 func show_node(math_node: MathTypes.MathNode) -> void:
 	_current_node = math_node
-	visible = true
+	if not visible:
+		_slide_in()
+	else:
+		# Already visible — just update content, no re-slide
+		pass
 
 	var state := DiscoveryManager.get_state(math_node.id)
 
@@ -60,6 +85,10 @@ func _show_adjacent_node(math_node: MathTypes.MathNode) -> void:
 
 	discover_button.visible = true
 	discover_button.text = "Discover"
+
+	# Hide resources for undiscovered nodes
+	if _resources_label:
+		_resources_label.visible = false
 
 	# Clear connections
 	for child in details_container.get_children():
@@ -115,6 +144,9 @@ func _show_discovered_node(math_node: MathTypes.MathNode) -> void:
 	# Show connections
 	_show_connections(math_node)
 
+	# Show learning resources
+	_show_resources(math_node)
+
 
 func _show_connections(math_node: MathTypes.MathNode) -> void:
 	for child in details_container.get_children():
@@ -166,9 +198,73 @@ func _on_discover_pressed() -> void:
 
 
 func _on_close() -> void:
-	visible = false
+	_slide_out()
 	_current_node = null
 	emit_signal("closed")
+
+
+func _slide_in() -> void:
+	if _slide_tween:
+		_slide_tween.kill()
+	# Start offscreen right
+	offset_left = _OFFSET_LEFT_HIDDEN
+	offset_right = _OFFSET_RIGHT_HIDDEN
+	visible = true
+	_slide_tween = create_tween()
+	_slide_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	_slide_tween.tween_property(self, "offset_left", _OFFSET_LEFT_VISIBLE, 0.3)
+	_slide_tween.parallel().tween_property(self, "offset_right", _OFFSET_RIGHT_VISIBLE, 0.3)
+
+
+func _slide_out() -> void:
+	if _slide_tween:
+		_slide_tween.kill()
+	_slide_tween = create_tween()
+	_slide_tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
+	_slide_tween.tween_property(self, "offset_left", _OFFSET_LEFT_HIDDEN, 0.3)
+	_slide_tween.parallel().tween_property(self, "offset_right", _OFFSET_RIGHT_HIDDEN, 0.3)
+	_slide_tween.tween_callback(func(): visible = false)
+
+
+func _show_resources(math_node: MathTypes.MathNode) -> void:
+	if _resources_label == null:
+		return
+	if math_node.resources.is_empty():
+		_resources_label.visible = false
+		return
+
+	var level = DataLoader.resource_level
+	var filtered: Array = []
+	for res in math_node.resources:
+		if res["level"] == level:
+			filtered.append(res)
+
+	if filtered.is_empty():
+		_resources_label.visible = false
+		return
+
+	_resources_label.clear()
+	_resources_label.push_color(Color(0.67, 0.67, 0.8))
+	_resources_label.add_text("Learning Resources:\n")
+	_resources_label.pop()
+	for res in filtered:
+		_resources_label.add_text("  ")
+		_resources_label.push_meta(res["url"])
+		_resources_label.push_color(Color(0.4, 0.7, 1.0))
+		_resources_label.push_underline()
+		_resources_label.add_text(res["title"])
+		_resources_label.pop_all()
+		_resources_label.add_text("\n")
+	_resources_label.visible = true
+
+
+func _on_resource_clicked(meta: Variant) -> void:
+	OS.shell_open(str(meta))
+
+
+func _on_resource_level_changed(_level: String) -> void:
+	if _current_node and visible:
+		_show_resources(_current_node)
 
 
 func _unhandled_input(event: InputEvent) -> void:

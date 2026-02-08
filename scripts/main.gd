@@ -120,7 +120,7 @@ func _on_player_disconnected(peer_id: int) -> void:
 
 func _on_server_disconnected() -> void:
 	# Return to lobby
-	get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+	SceneTransition.change_scene("res://scenes/lobby.tscn")
 
 
 func _on_node_selected(math_node: MathTypes.MathNode) -> void:
@@ -136,12 +136,15 @@ func _on_node_unhovered(node_id: String) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_connections"):
+		var showing := universe.toggle_show_all_connections()
+		hud.set_connections_visible(showing)
 	if event.is_action_pressed("reset_progress"):
 		SaveManager.delete_save()
 		DiscoveryManager.reset()
 		QuestManager.reset()
 		Achievements.reset()
-		get_tree().change_scene_to_file("res://scenes/lobby.tscn")
+		SceneTransition.change_scene("res://scenes/lobby.tscn")
 
 
 func _setup_minimap(player_ship: Node3D) -> void:

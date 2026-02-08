@@ -2,7 +2,10 @@ extends Node
 
 ## Autoload singleton that loads all math data from JSON files.
 
+signal resource_level_changed(level: String)
+
 var graph: MathTypes.MathGraph
+var resource_level: String = "beginner"
 
 var domain_files: Array[String] = [
 	"res://data/algebra.json",
@@ -27,6 +30,7 @@ func _ready() -> void:
 	for file_path in domain_files:
 		_load_domain_file(file_path)
 	print("[DataLoader] Loaded %d nodes, %d edges" % [graph.nodes.size(), graph.edges.size()])
+	_load_resources()
 
 
 func _load_domains_index() -> void:
@@ -140,3 +144,17 @@ func _read_json(file_path: String) -> Variant:
 		push_warning("[DataLoader] JSON parse error in %s: %s" % [file_path, json.get_error_message()])
 		return null
 	return json.data
+
+
+func _load_resources() -> void:
+	var data = _read_json("res://data/resources.json")
+	if data == null:
+		print("[DataLoader] No resources.json found — resources disabled")
+		return
+	var count := 0
+	for node_id in data:
+		var node = graph.nodes.get(node_id, null)
+		if node != null:
+			node.resources = data[node_id]
+			count += 1
+	print("[DataLoader] Loaded resources for %d nodes" % count)
